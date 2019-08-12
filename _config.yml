@@ -12,7 +12,7 @@ sass:
 plainwhite:
   name: Uchechukwu Onyekwuluje
   tagline: Site Reliability Engineer
-  date_format: "%b %-d, %Y"
+#  date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
 
   # generate social links in footer
