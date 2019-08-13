@@ -3,7 +3,7 @@ layout: post
 title:  "Elasticsearch 7.x, Kibana 7.x, Filebeat 7.x Setup"
 categories: logging
 ---
-**Elastic Stack**
+
 The Elastic Stack is primarily a collection of Elasticsearch, Logstash, Kibana and log shippers. At the time of this writing, they are maintained by Elastic. 
 
 #### **Definitions**
@@ -23,7 +23,7 @@ Beyond systems data, this can also be used for processing data in general. Other
 #### **Setup**
 
 |Component      | Size | Systems Specification |
-|-------------- |------|---------------------- |
+|:------------- |:----:| --------------------: |
 |Kibana         |   1  |  2 CPU   4GB RAM      |
 |Elasticsearch  |   3  |  2 CPU   4GB RAM      |
 |Filebeat       |   2  |  1 CPU   2GB RAM      |
