@@ -21,6 +21,8 @@ plainwhite:
     rss: rss
      linkedin: jekyll
 
+remote_theme: thelehhman/plainwhite-jekyll
+
 header_pages:
  - about.md
 
