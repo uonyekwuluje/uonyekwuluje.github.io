@@ -1,22 +1,17 @@
 ---
 layout: post
 title:  "Ansible Cheat Sheet"
+category: Ansible
 ---
 
 Ansible is an open source configuration management tool. It can be used for deployment and orchestration tasks also. Ansible ie known
 for it's simplicity and agentless approach to config management. This is my cheat sheet of ansible commands, role snippets, adhoc commands etc.
 which have come in handy over the years
 
-Install the software package:
-
-{% highlight bash %}
-$ sudo yum install ansible
-{% endhighlight %}
-
 
 **Get Inventory Facts:**
-```javascript
+{% highlight bash %}
 ansible inventory_servers -m setup 
-```
+{% endhighlight %}
 
 [Ansible]: https://www.ansible.com/
