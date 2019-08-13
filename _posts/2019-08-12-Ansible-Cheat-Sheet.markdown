@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Ansible Cheat Sheet"
-categories: Ansible Configuration_Management
 ---
 
 Ansible is an open source configuration management tool. It can be used for deployment and orchestration tasks also. Ansible ie known
