@@ -1,8 +1,7 @@
-title: Uche's Tech Corner | The little things matter
-email: uionyekwuluje@gmail.com
+title: Let's talk DevOps, Site Reliability, Clouds
+email: ""
 url: https://uonyekwuluje.github.io/
 description: DevOps, Site Reliability, Clouds
-#baseurl: "" # the subpath of your site, e.g. /blog
 baseurl: ""
 url: ""
 github_username: uonyekwuluje
@@ -13,5 +12,3 @@ markdown: kramdown
 paginate: 10
 
 theme: minima
-plugins:
-  - jekyll-feed
