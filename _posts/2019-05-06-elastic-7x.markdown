@@ -22,7 +22,7 @@ Beyond systems data, this can also be used for processing data in general. Other
 
 #### **Setup**
 
-|Component      | Size | Systems Specification |
+|Component &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Size | Systems Specification |
 |:------------- |:----:| --------------------: |
 |Kibana         |   1  |  2 CPU   4GB RAM      |
 |Elasticsearch  |   3  |  2 CPU   4GB RAM      |
