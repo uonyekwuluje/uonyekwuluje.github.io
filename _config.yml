@@ -1,18 +1,15 @@
 title: SRE, DevOps, Automation, CICD
-author: uonyekwuluje
-email: uonyekwuluje@gmail.com
-description: > # this means to ignore newlines until "show_exerpts:"
-  My Cheat Sheets 
-show_excerpts: true # set to true to show excerpts on the homepage
+author: uonyekwuluje 
+email: uionyekwuluje@gmail.com
+description: ""
+show_excerpts: true 
 
-# Minima date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
 plainwhite:
   name: Uchechukwu Onyekwuluje
   tagline: Site Reliability Engineer
-#  date_format: "%b %-d, %Y"
+  date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
 
   # generate social links in footer
@@ -23,8 +20,8 @@ plainwhite:
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+header_pages:
+ - about.md
 
 # Build settings
 theme: plainwhite
