@@ -9,6 +9,9 @@ github_username: uonyekwuluje
 
 # Build settings
 markdown: kramdown
+
+paginate: 10
+
 theme: minima
 plugins:
   - jekyll-feed
