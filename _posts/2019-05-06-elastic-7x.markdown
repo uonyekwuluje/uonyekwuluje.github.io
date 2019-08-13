@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "Elasticsearch 7.x, Kibana 7.x, Filebeat 7.x Setup"
+categories: logging
+---
+**Elastic Stack**
+The Elastic Stack is primarily a collection of Elasticsearch, Logstash, Kibana and log shippers. At the time of this writing, they are maintained by Elastic. 
+
+#### **Definitions**
+
+* **Elasticsearch:** This a NoSQL database that is based on the Lucene search engine. 
+* **Logstash:** This a log pipeline tool that accepts inputs from various sources, executes different transformations, and exports the data to various targets. 
+* **Kibana:** This a visualization layer that works on top of Elasticsearch.
+* **Beats:** These are technically log shippers.
+
+
+#### **Why Elastic**
+When setting up and administering systems at scale, it is important to keep an eye on your logs. The logs tell you how well your system is doing.
+Depending on your configuraton settings, you can find errors, warnings, information etc. just about anything you want. The Elastic stack helps in
+aggregation of your logs.
+Beyond systems data, this can also be used for processing data in general. Other use cases includes Business intelligence, compliance, security, analytics etc.
+
+#### **Setup**
+
+|Component      | Size | Systems Specification |
+|-------------- |------|---------------------- |
+|Kibana         |   1  |  2 CPU   4GB RAM      |
+|Elasticsearch  |   3  |  2 CPU   4GB RAM      |
+|Filebeat       |   2  |  1 CPU   2GB RAM      |
+
+**NOTE:**
+You can make changes as needed. The above is just a base systems spec.
+
+#### **Ansible Implementation**
+
+Ansible Implementation of Elastic Stack [ansible-elastic-stack](https://github.com/uonyekwuluje/ansible-elastic-cluster)
