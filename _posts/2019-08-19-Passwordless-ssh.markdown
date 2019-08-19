@@ -55,7 +55,7 @@ The key's randomart image is:
 
 #### **Disable host key checking**
 
-To prevent conitous prompts for accepting known hosts, we can disable this on server1. In this case, the source system. Create a new file or update yours. in this case `/home/sysadmin/.ssh/config`
+To prevent continuous prompts for accepting known hosts, we can disable this on server1. In this case, the source system. Create a new file or update yours. in this case `/home/sysadmin/.ssh/config`
 ```
 Host *
    StrictHostKeyChecking no
