@@ -28,7 +28,7 @@ system's authorized_keys file with the public key of the source system
 
 Generate keypair on server1
 ```
-ssh-keygen -t rsa -b 4096 -C "sysadmin"
+[sysadmin@server1 ~]$ ssh-keygen -t rsa -b 4096 -C "sysadmin"
 
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/sysadmin/.ssh/id_rsa): 
@@ -53,17 +53,40 @@ The key's randomart image is:
 ```
 **note** : enter a secure passphrase
 
-#### **Setup**
+#### **Disable host key checking**
 
-|Component &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Size &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Systems Specification |
-|:------------- |:----:| --------------------: |
-|Kibana         |   1  |  2 CPU   4GB RAM      |
-|Elasticsearch  |   3  |  2 CPU   4GB RAM      |
-|Filebeat       |   2  |  1 CPU   2GB RAM      |
+To prevent conitous prompts for accepting known hosts, we can disable this on server1. In this case, the source system. Create a new file or update yours. in this case `/home/sysadmin/.ssh/config`
+```
+Host *
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
+```
 
-**NOTE:**
-You can make changes as needed. The above is just a base systems spec.
+change file attributes when you are through.
+```
+chmod 0600 .ssh/config
+```
 
-#### **Ansible Implementation**
 
-Ansible Implementation of Elastic Stack [ansible-elastic-stack](https://github.com/uonyekwuluje/ansible-elastic-cluster)
+#### **Server2 Config**
+
+Create ssh folder, create authorized_keys and update attributes
+```
+[sysadmin@server2 ~]$ mkdir ~/.ssh
+[sysadmin@server2 ~]$ chmod 700 ~/.ssh
+[sysadmin@server2 ~]$ touch ~/.ssh/authorized_keys
+[sysadmin@server2 ~]$ chmod 600 ~/.ssh/authorized_keys
+
+```
+Update authorized_keys with public keys from server 1 `/home/sysadmin/.ssh/id_rsa.pub`
+
+
+#### **Test SSH Connection**
+
+ssh into server2 from server1 and it should work without prompting you for a password om user `sysadmin`
+```
+[sysadmin@server1 ~]$ ssh server2
+Warning: Permanently added 'server2,192.168.1.165' (ECDSA) to the list of known hosts.
+Last login: Mon Aug 19 06:53:31 2019 from 192.168.1.164
+[sysadmin@server2 ~]$ 
+```
