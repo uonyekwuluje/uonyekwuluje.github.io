@@ -12,7 +12,7 @@ I work with Azure, GCP, AWS, Linux, Python, Automation Tools, Configuration Mana
 Knowledge Sharing, Metrics etc.
 I have well over 10 years of experience in the IT Industry ranging from Systems Administration, Systems Engineering, DevOps, Site Reliability Engineering and Software Engineering.
 
-This site is about my cheetsheat of facts, solutions and knowledge gained over the years. I have found that sometimes the solutions to the 
+This site is about my cheetsheet of facts, solutions and knowledge gained over the years. I have found that sometimes the solutions to the 
 difficult problems are the little things. Keeping things simple, easy to use and easy to find is what the site is all about.
 
 For more about me from a professional career standpoint, see details
