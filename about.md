@@ -1,18 +1,17 @@
 ---
 layout: page
-title: About Me
+title: About
 permalink: /about/
 ---
 
-Hi, My name is Uchechukwu Onyekwuluje. I love Coding/Scripting, Systems Administration/Engineering/Operation, DevOps, Site Reliability, and All things Clouds.
+<img src="{{ site.baseurl }}/assets/profile-placeholder.gif" title="Profile Picture" class="profile">
 
-This site is about most things Tech, DevOps, Clouds, Security, Coding, Scripting etc. My cheetsheat of facts, solutions and knowledge gained over the years. 
-I have found that sometimes the solutions to the difficult problems are the little things. Keeping things simple, easy to use and easy to find is what the site 
-is all about.
+Centrarium is a custom theme for Jekyll, made by [Ben Centra][bencentra] for his own blog. He'd be humbled if you liked it enough to use it as well! Installation and configuration instructions can be found in the [GitHub repository](https://github.com/bencentra/centrarium).
 
-For more about me from a professional career standpoint, see details
-<a href="https://www.linkedin.com/in/uchechukwu-onyekwuluje-sde" target="_blank">HERE</a>.
+This page is a good place to write about yourself, your project, your product, or whatever it is your site is for. You can replace the image above, or you can get rid of it entirely. 
 
-**NOTE:**
+You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/). And you can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
 
-The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer.
+[centrarium]: https://github.com/bencentra/centrarium
+[bencentra]: http://bencentra.com
+[jekyll]: https://github.com/jekyll/jekyll
