@@ -3,6 +3,8 @@ title: "About"
 permalink: "/about/"
 ---
 
+![Uche](assets/image/mypic.jpg)
+
 Hi, My name is Uchechukwu Onyekwuluje. I am a Software Development Engineer at Nuance.
 
 I love computer systems and I have a preference for the full stack approach to problem solving. Computer systems don't work in isolation
