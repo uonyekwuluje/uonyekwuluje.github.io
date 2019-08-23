@@ -3,7 +3,9 @@ title: "About"
 permalink: "/about/"
 ---
 
+<div class="medium" markdown="1">
 ![Uche](assets/image/mypic.jpg)
+</div>
 
 Hi, My name is Uchechukwu Onyekwuluje. I am a Software Development Engineer at Nuance.
 
