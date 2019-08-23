@@ -3,7 +3,7 @@ title: "About"
 permalink: "/about/"
 ---
 
-<div class="medium" markdown="1">
+<div class="custom" markdown="1">
 ![Uche](assets/image/mypic.jpg)
 </div>
 
