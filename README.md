@@ -13,10 +13,11 @@ I love building tools to automate on-prem and cloud infrastructure in AWS, GCP, 
 
 Some of my specialties and areas of interest are:
 
-- **Programming Languages:** HTML, CSS, JavaScript, Python, BASH
+- **Programming Languages:** HTML, CSS, JavaScript, Java, Python, BASH
 - **Databases:** Postgres, MariaDB, MongoDB
 - **Configuration Management:** Ansible, Puppet, Chef, Salt
-- **Continuous Integration/Delivery/Deployment:** Jenkins, GoCD, Gitlab-CI, Concourse
+- **IaaS Tools:** Terraform, Packer, Vault, Cloudformation
+- **Continuous Integration/Delivery/Deployment:** Jenkins, GoCD, Gitlab-CI, Concourse, ADO "Azure DevOps"
 - **Container Services:** Docker, AWS ECS, Kubernetes, OpenShift, Rancher
 - **Virtualization Platforms:** VMware, KVM, XEN
 - **Networking:** TCP/IP, NIS, NFS, DNS, DHCP, SMTP, BNMP, PXE, LAN, FTP/TFTP

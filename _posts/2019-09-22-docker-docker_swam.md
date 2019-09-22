@@ -12,10 +12,10 @@ This short tutorial walks you through the installtion process along with configu
 For our setup we will be using 3 nodes. One acting as master and the other two as swam task nodes. Our operating system of choice is linux and our distribution will be CentOS 7
 
 |IP Address &nbsp; &nbsp; &nbsp; | Hostname |
-|:------------- | -----------------: |
-|192.168.1.173  |  cicdmaster        |
-|192.168.1.187  |  cicdnode1         |
-|192.168.1.188  |  cicdnode2         |
+|------------- | ----------------- |
+|192.168.1.173 |  cicdmaster       |
+|192.168.1.187 |  cicdnode1        |
+|192.168.1.188 |  cicdnode2        |
 
 **NOTE:**
 *Ensure you have the appropriate ports and selinux configured. In AWS, Azure or Google cloud, remember to update security groups as needed.*
