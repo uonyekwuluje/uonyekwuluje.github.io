@@ -1,7 +1,10 @@
 title: "SRE, DevOps, SysEng, SysAdmin, Clouds"
 author: "Uchechukwu Onyekwuluje"
 description: "DevOps, Site Reliability, AWS, GCP, Azure"
-permalink: /:title/
+
+permalink: /:year-:month-:day/:title/
+paginate:  5
+
 lang: "en"
 
 show_footer: false           # show the "previous" and "next" links at the end of each post
@@ -27,3 +30,5 @@ comments:                    # embed disqus or isso comments
 plugins:
  - jekyll-feed
  - jekyll-default-layout
+ - jekyll-paginate
+ - jekyll-seo-tag
