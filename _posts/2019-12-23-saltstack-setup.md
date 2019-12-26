@@ -31,9 +31,7 @@ salt. I also found myself doing lots of scripting and plumbing to get other tool
 |---------------|------------------|------------------------
 |saltmaster     |  192.168.1.167   |    1    |    2GB
 |linuxminion1   |  192.168.1.168   |    1    |    2GB 
-|linuxminion2   |  192.168.1.169   |    1    |    2GB 
-|windowsminion1 |  192.168.1.170   |    2    |    2GB
-|windowsminion2 |  192.168.1.171   |    2    |    2GB
+|windowsminion1 |  192.168.1.169   |    2    |    2GB
 
 
 **Install Saltmaster**
