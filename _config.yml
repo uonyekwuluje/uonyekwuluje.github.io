@@ -3,25 +3,24 @@ author: "Uchechukwu Onyekwuluje"
 description: "DevOps, Site Reliability, AWS, GCP, Azure"
 
 permalink: /:year-:month-:day/:title/
-paginate:  5
+paginate:  2
 
 lang: "en"
 
-show_footer: false           # show the "previous" and "next" links at the end of each post
-dark_theme: false            # use the dark mode as default
-dark_header: true            # keep the header dark
-dark_footer: false           # keep the footer dark
-# style: minimal             # use a simpler style inspired by the minima theme
+show_footer: true           # show the "previous" and "next" links at the end of each post | false
+dark_theme: false            # use the dark mode as default  | false
+dark_header: true            # keep the header dark          | true
+dark_footer: true           # keep the footer dark           | false
 
 navigation:                  # site navigation in the header
   - README.md
   - Github: "http://github.com/uonyekwuluje"
   - CONTACTME.md
 
-#icons:                      # icons in the header, see http://fontawesome.com/icons
+#  icons:    http://fontawesome.com/icons
 #  envelope: "mailto:niklasbuschmann@users.noreply.github.com"
-#  github: "https://github.com/niklasbuschmann/contrast"
-#  rss: "/contrast/feed.xml"
+#  github:   "https://github.com/niklasbuschmann/contrast"
+#  rss:      "/contrast/feed.xml"
 
 comments:                    # embed disqus or isso comments
 #  disqus: ""
