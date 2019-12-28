@@ -48,8 +48,16 @@ winsaltminion0:
 Sanitization and Administration:<br/>
 ---------------------------------
 ```
-sudo salt-key --list all --out txt       # List all keys. Accepted Keys, Denied Keys, Unaccepted Keys, Rejected Keys
-salt-key -d 'linuxsaltminion0'           # delete key
+# List all keys. Accepted Keys, Denied Keys, Unaccepted Keys, Rejected Keys
+----------------------------------------------------------------------------
+salt-key --list all --out txt      
+
+# delete key
+--------------
+salt-key -d 'linuxsaltminion0'      
+
+# Delete dead keys for dead minions
+------------------------------------
 salt --out txt '*' test.ping | grep "Not connected" | cut -d ":" -f 1 | xargs -I dead_minion salt-key -y -d dead_minion
 ```
 
