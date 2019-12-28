@@ -16,8 +16,8 @@ Saltminion Service Status:
 systemctl status salt-minion
 ```
 
-Command output:
-<hr>
+Command output:<br/>
+------------------------
 Saltstack output comes in handy when you need results in various forms for further automation
 ```
 salt '*' grains.item os --out txt
@@ -38,8 +38,8 @@ winsaltminion0:
 ```
 
 
-Systems Documentation:
-<hr>
+Systems Documentation:<br/>
+------------------------------
 ```
 salt '*' sys.doc         # output sys.doc (all documentation)
 salt '*' sys.doc pkg     # only sys.doc for pkg module
@@ -48,8 +48,8 @@ salt '*' sys.doc system  # only sys.doc for system module
 salt '*' sys.doc status  # only sys.doc for status module
 ```
 
-SaltStack Minion Checks:
-<hr>
+SaltStack Minion Checks:<br/>
+--------------------------------
 ```
 salt-run manage.status  # What is the status of all my minions? (both up and down)
 salt-run manage.up      # Any minions that are up?
