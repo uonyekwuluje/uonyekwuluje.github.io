@@ -16,6 +16,7 @@ Saltminion Service Status:
 systemctl status salt-minion
 ```
 
+<hr>
 Command output:<br/>
 ------------------------
 Saltstack output comes in handy when you need results in various forms for further automation
@@ -37,7 +38,7 @@ winsaltminion0:
         Windows
 ```
 
-
+<hr>
 Systems Documentation:<br/>
 ------------------------------
 ```
@@ -48,6 +49,7 @@ salt '*' sys.doc system  # only sys.doc for system module
 salt '*' sys.doc status  # only sys.doc for status module
 ```
 
+<hr>
 SaltStack Minion Checks:<br/>
 --------------------------------
 ```
