@@ -6,6 +6,12 @@ categories: Configuration Management
 
 Helpful commands and tips for using saltstack.
 
+***Reference Links***
+* https://github.com/harkx/saltstack-cheatsheet
+* https://dev-eole.ac-dijon.fr/doc/cheatsheets/saltstack.html
+* https://github.com/saltstack/salt/wiki/Cheat-Sheet
+
+
 Saltmaster Service Status:
 ```
 systemctl status salt-master
@@ -65,11 +71,11 @@ salt '*' test.ping      # Use test module to check if minion is up and respondin
 Saltstack Networking:<br/>
 --------------------------------
 ```
-salt 'minion1' network.ip_addrs          # Get IP of your minion
-salt 'minion1' network.ping <hostname>   # Ping a host from your minion
-salt 'minion1' network.traceroute <hostname>   # Traceroute a host from your minion
-salt 'minion1' network.get_hostname      # Get hostname
-salt 'minion1' network.mod_hostname      # Modify hostname
+salt 'linuxsaltminion0' network.ip_addrs          # Get IP of your minion
+salt 'linuxsaltminion0' network.ping <hostname>   # Ping a host from your minion
+salt 'linuxsaltminion0' network.traceroute <hostname>   # Traceroute a host from your minion
+salt 'linuxsaltminion0' network.get_hostname      # Get hostname
+salt 'linuxsaltminion0' network.mod_hostname      # Modify hostname
 ```
 
 <hr>
