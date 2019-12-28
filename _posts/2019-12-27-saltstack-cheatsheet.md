@@ -45,6 +45,25 @@ winsaltminion0:
 ```
 
 <hr>
+Sanitization and Administration:<br/>
+---------------------------------
+```
+sudo salt-key --list all --out txt       # List all keys. Accepted Keys, Denied Keys, Unaccepted Keys, Rejected Keys
+salt-key -d 'linuxsaltminion0'           # delete key
+salt --out txt '*' test.ping | grep "Not connected" | cut -d ":" -f 1 | xargs -I dead_minion salt-key -y -d dead_minion
+```
+
+<hr>
+SaltStack Grains:<br/>
+------------------------------
+```
+salt '*' grains.ls                 # List grains
+salt '*' grains.items              # Get all grains            
+salt '*' grains.item os            # Get os information
+salt '*' grains.get 'cpu_model'    # Get CPU Model
+```
+
+<hr>
 Systems Documentation:<br/>
 ------------------------------
 ```
