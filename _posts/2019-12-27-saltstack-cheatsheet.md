@@ -60,3 +60,26 @@ salt-run manage.alived  # Show all alive minions
 salt '*' test.version   # Display salt version
 salt '*' test.ping      # Use test module to check if minion is up and responding.
 ```
+
+<hr>
+Saltstack Networking:<br/>
+--------------------------------
+```
+salt 'minion1' network.ip_addrs          # Get IP of your minion
+salt 'minion1' network.ping <hostname>   # Ping a host from your minion
+salt 'minion1' network.traceroute <hostname>   # Traceroute a host from your minion
+salt 'minion1' network.get_hostname      # Get hostname
+salt 'minion1' network.mod_hostname      # Modify hostname
+```
+
+<hr>
+SaltStack Package Management:<br/>
+--------------------------------
+***note:***  *This primarily affects linux systems*
+```
+salt '*' pkg.list_upgrades             # get a list of packages that need to be upgrade
+salt '*' pkg.upgrade                   # Upgrades all packages via apt-get dist-upgrade (or similar)
+salt '*' pkg.version bash              # get current version of the bash package
+salt '*' pkg.install bash              # install or upgrade bash package
+salt '*' pkg.install bash refresh=True # install or upgrade bash package but
+```
