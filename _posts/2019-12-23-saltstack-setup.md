@@ -8,14 +8,6 @@ Saltstack or salt for for short is a configuration management tool based on pyth
 This coveres on-prem and cloud servers. With appropriate modules, you can also extend coverage to include switches, routers, 
 IoT devices etc.
 
-#### **Definitions**
-
-* **Master:** <>. 
-* **Minion:** <>. 
-* **Pillar:** <>.
-* **Grains:** <>.
-
-
 #### **Why Salt**
 With options in a crowded space that includes the likes of Ansible, Puppet, Chef, Fabric etc. Why Salt? Well, the answer is long but I'll keep it
 simple. Of all the other tools I found salt to be much better in mixed environments. An environment of this nature includes Linux, Windows, MACs.
