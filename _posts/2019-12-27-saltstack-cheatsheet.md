@@ -11,5 +11,7 @@ Saltmaster Service Status
 systemctl status salt-master
 ```
 
-
-
+Saltminion Service Status
+```
+systemctl status salt-minion
+```
