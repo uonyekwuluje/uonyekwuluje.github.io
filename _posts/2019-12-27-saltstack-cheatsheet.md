@@ -6,12 +6,6 @@ categories: Configuration Management
 
 Helpful commands and tips for using saltstack.
 
-***Reference Links***
-* https://github.com/harkx/saltstack-cheatsheet
-* https://dev-eole.ac-dijon.fr/doc/cheatsheets/saltstack.html
-* https://github.com/saltstack/salt/wiki/Cheat-Sheet
-
-
 Saltmaster Service Status:
 ```
 systemctl status salt-master
@@ -116,3 +110,8 @@ salt '*' pkg.version bash              # get current version of the bash package
 salt '*' pkg.install bash              # install or upgrade bash package
 salt '*' pkg.install bash refresh=True # install or upgrade bash package but
 ```
+
+***Reference Links***
+* <a href="https://github.com/harkx/saltstack-cheatsheet" target="_blank">https://github.com/harkx/saltstack-cheatsheet</a> 
+* <a href="https://dev-eole.ac-dijon.fr/doc/cheatsheets/saltstack.html" target="_blank">https://dev-eole.ac-dijon.fr/doc/cheatsheets/saltstack.html</a>
+* <a href="https://github.com/saltstack/salt/wiki/Cheat-Sheet" target="_blank">https://github.com/saltstack/salt/wiki/Cheat-Sheet</a>
