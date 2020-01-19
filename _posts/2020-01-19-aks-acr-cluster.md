@@ -100,7 +100,7 @@ Well, cloud resource(s) costs money. Remember to tear the environment down when 
 az group delete --name ${RESOURCE_GROUP_NAME} \
 --no-wait --subscription ${SUBSCRIPTION_ID} --yes
 ```
-
+<hr>
 
 
 
