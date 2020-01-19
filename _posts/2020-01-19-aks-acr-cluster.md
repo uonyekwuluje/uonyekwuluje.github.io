@@ -93,7 +93,7 @@ az aks create --name ${AKS_CLUSTER_NAME} \
 ```
 <hr>
 
-## **Get Credentials**
+## **Configure Registry**
 Retrieve ACR URL
 ```
 az acr show --name "${ACR_REGISTRY_NAME}" --query "loginServer" --output tsv
@@ -102,6 +102,14 @@ You should see
 ```
 devk8acrregistry.azurecr.io
 ```
+Login and set defaults
+```
+az acr login --name ${ACR_REGISTRY_NAME}
+az configure --defaults acr=${ACR_REGISTRY_NAME}
+```
+<hr>
+
+
 ## **Configure Kubectl**
 Retrieve AKS Credentials
 ```
@@ -120,8 +128,20 @@ aks-pythonpool1-42097787-vmss000000   Ready    agent   81m   v1.14.8
 aks-pythonpool1-42097787-vmss000001   Ready    agent   81m   v1.14.8
 aks-pythonpool1-42097787-vmss000002   Ready    agent   82m   v1.14.8
 ```
+<br>
+Test UI
+```
+kubectl proxy
+```
+You should see this
+```
+Starting to serve on 127.0.0.1:8001
+```
+Open Your browser and type:
+```
+http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/overview?namespace=default
+```
 <hr>
-
 
 
 
