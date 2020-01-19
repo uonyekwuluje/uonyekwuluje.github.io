@@ -22,7 +22,7 @@ Ensure the following requirements are in place before you begin:
 * Valid service principal 
 
 <hr>
-**Setup**
+## **Setup**
 Setup the following environmental variables
 ```
 PREFIX="DevK8ACR"
@@ -41,7 +41,7 @@ SSH_PUB_KEY="~/.ssh/id_rsa.pub"
 ```
 <hr>
 
-**Service Principal**
+## **Service Principal**
 If you don't have a service principal handy you can create one as long as you have the permissions to do so.
 ```
 az ad sp create-for-rbac --name admin --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
@@ -49,14 +49,14 @@ az ad sp create-for-rbac --name admin --role="Contributor" --scopes="/subscripti
 Take note of the following; **appId**, **password** and **tenant**
 <hr>
 
-**Create Resource Group**
+## **Create Resource Group**
 Create the resource group with the command below:
 ```
 az group create --location eastus --name "${RESOURCE_GROUP_NAME}" --subscription "${SUBSCRIPTION_ID}"
 ```
 <hr>
 
-**Azure Container Registry**
+## **Azure Container Registry**
 Create the registry
 ```
 az acr create --name "${ACR_REGISTRY_NAME}" \
@@ -70,7 +70,7 @@ az acr create --name "${ACR_REGISTRY_NAME}" \
 <hr>
 
 
-**Azure Kubernetes Service**
+## **Azure Kubernetes Service**
 Create Kubernetes Cluster
 ```
 az aks create --name ${AKS_CLUSTER_NAME} \
@@ -94,7 +94,7 @@ az aks create --name ${AKS_CLUSTER_NAME} \
 <hr>
 
 
-**Cluster Tear Down**
+## **Cluster Tear Down**
 Well, cloud resource(s) costs money. Remember to tear the environment down when you are through.
 ```
 az group delete --name ${RESOURCE_GROUP_NAME} \
@@ -104,5 +104,5 @@ az group delete --name ${RESOURCE_GROUP_NAME} \
 
 
 
-#### **Ansible Implementation**
+## **Ansible Implementation**
 You can also setup your cluster locally. Click [ansible kubernetes](https://github.com/uonyekwuluje/ansible-kubernetes)
