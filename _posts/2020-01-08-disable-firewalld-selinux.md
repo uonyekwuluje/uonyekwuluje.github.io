@@ -25,6 +25,7 @@ Policy deny_unknown status:     allowed
 Memory protection checking:     actual (secure)
 Max kernel policy version:      31
 ```
+<hr>
 
 **Disable Selinux Temporarily**
 ```
@@ -34,12 +35,14 @@ You can also use the command below:
 ```
 sudo setenforce Permissive
 ```
+<hr>
 
 **Disable Selinux Permanently and Reboot**
 ```
 sudo sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
 sudo reboot
 ```
+<hr>
 
 **Verify**
 When the server is up login and verify
