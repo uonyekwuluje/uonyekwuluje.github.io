@@ -93,6 +93,39 @@ az aks create --name ${AKS_CLUSTER_NAME} \
 ```
 <hr>
 
+## **Get Credentials**
+Retrieve ACR URL
+```
+az acr show --name "${ACR_REGISTRY_NAME}" --query "loginServer" --output tsv
+```
+You should see
+```
+devk8acrregistry.azurecr.io
+```
+## **Configure Kubectl**
+Retrieve AKS Credentials
+```
+az aks get-credentials --name ${AKS_CLUSTER_NAME} --resource-group ${RESOURCE_GROUP_NAME} --overwrite-existing
+```
+
+## **Test**
+Test Cluster
+```
+kubectl get nodes
+```
+You should see this
+```
+NAME                                  STATUS   ROLES   AGE   VERSION
+aks-pythonpool1-42097787-vmss000000   Ready    agent   81m   v1.14.8
+aks-pythonpool1-42097787-vmss000001   Ready    agent   81m   v1.14.8
+aks-pythonpool1-42097787-vmss000002   Ready    agent   82m   v1.14.8
+```
+<hr>
+
+
+
+
+
 
 ## **Cluster Tear Down**
 Well, cloud resource(s) costs money. Remember to tear the environment down when you are through.
