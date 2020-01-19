@@ -143,9 +143,9 @@ http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboar
 ```
 <hr>
 
-
-
-
+## **Terraform Implementation**
+Besides using the azcli tool, you can also create your cluster using other means. One of the tools I love is terraform.
+Click [AKS,ACR Terraform](https://github.com/uonyekwuluje/aks-acr-project/tree/master/Terraform) for more details 
 
 ## **Cluster Tear Down**
 Well, cloud resource(s) costs money. Remember to tear the environment down when you are through.
