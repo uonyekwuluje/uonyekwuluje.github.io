@@ -10,7 +10,7 @@ Ensure kubectl is installed and configured. See links below
 * Local installation of [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * Local installation of [helm](https://helm.sh/docs/intro/install)
 
-##**kubectl test**
+**kubectl test** <br>
 ```
 kubectl version --short
 ```
@@ -23,6 +23,7 @@ Server Version: v1.14.8
 ## **Command Cheat Sheet**
 
 |         Command         |      Description       |               Reference Links               |
-| :---------------------  | :-------------------:  |  -----------------------------------------: |
-|  `kubectl config view`  | View current config    | [kubernetes](https://kubernetes.io/)        |
+| :---------------------  | :-------------------:  |  -----------------------------------------: | 
+|  `kubectl config view`  | View current config    |    [kubernetes](https://kubernetes.io/)     |
+|                         |                        |                                             | 
 <hr>
