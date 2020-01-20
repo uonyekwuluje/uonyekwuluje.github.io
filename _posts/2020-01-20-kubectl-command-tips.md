@@ -4,7 +4,7 @@ title:  "Kubernetes Command Tips & Cheat Sheet"
 categories: Kubernetes
 ---
 
-## **Requirements**
+#### **Requirements**
 Ensure kubectl is installed and configured. See links below
 
 * Local installation of [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
@@ -20,12 +20,15 @@ Client Version: v1.16.0
 Server Version: v1.14.8
 ```
 <hr>
-## **Command Cheat Sheet**
+#### **Command Cheat Sheet**
 
 |         Command                 |      Description             |              Reference Links               |
 |:------------------------------: |:----------------------------:| :----------------------------------------: | 
 |  `kubectl config view`          | View current config          |   [kubernetes](https://kubernetes.io/)     |
-|  `kubectl config get-contexts`  | Get all installed contexts   |                                            | 
-
+|  `kubectl config get-contexts`  | Get all installed contexts   |   [kubernetes](https://kubernetes.io/)     | 
 
 <hr>
+
+#### **Reference Links**
+* Kubernetes Cheat Sheet [Kubernetes](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+* Rancher Kubernetes Cheat Sheet [Rancher](https://rancher.com/learning-paths/how-to-manage-kubernetes-with-kubectl/)
