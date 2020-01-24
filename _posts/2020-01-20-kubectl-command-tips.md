@@ -29,6 +29,17 @@ Server Version: v1.14.8
 
 <hr>
 
+
+**Utilities** <br>
+Deleting resources in bulk using regEx
+```
+# Delete all pods matching a given pattern
+kubectl get pods -n mynamespace --no-headers=true | awk '/pattern1|pattern2/{print $1}'| xargs  kubectl delete -n mynamespace pod
+```
+<hr>
+
+
+
 #### **Reference Links**
 * Kubernetes Cheat Sheet [Kubernetes](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * Rancher Kubernetes Cheat Sheet [Rancher](https://rancher.com/learning-paths/how-to-manage-kubernetes-with-kubectl/)
