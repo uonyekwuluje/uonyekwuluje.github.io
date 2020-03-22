@@ -171,5 +171,17 @@ Open your browser and check this address:
 http://<ip address>:9000/sonarqube
 ```
 
+
+#### **Logs & Diagnostics**
+If you run into any issues, check these logs:
+```
+tail -f /opt/sonarqube/logs/sonar.log
+tail -f /opt/sonarqube/logs/web.log
+tail -f /opt/sonarqube/logs/es.log
+tail -f /opt/sonarqube/logs/ce.log
+```
+
+
+
 #### **Reference Links**
 * SonarQube Site [Sonarqube](https://www.sonarqube.org/)
