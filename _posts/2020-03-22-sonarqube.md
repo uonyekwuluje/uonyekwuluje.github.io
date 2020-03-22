@@ -1,0 +1,232 @@
+---
+layout: post
+title:  "Sonarqube Setup"
+categories: logging
+---
+
+Sonarqube is tool used for static code analysis. In more plain terms, it ensures code quality by checking for bugs, vulnerabilities and known issues. 
+
+#### **Requirements**
+* One server. RHEL 7. 2vCPU and 6GiB Ram
+* One PostgreSql Server. Version 10.
+
+
+#### **Installation**
+
+**Server Inventory**
+
+|Server Name  |  Ip Address    |
+|--------------|------------------|
+|kibana        |  192.168.1.167   |
+|esnode1       |  192.168.1.168   |
+|esnode2       |  192.168.1.169   |
+|esnode3       |  192.168.1.170   |
+|testclient1   |  192.168.1.171   |
+
+**Install Kibana and Elasticsearch on kibana Node**
+```
+sudo yum update -y
+sudo yum install -y wget git pyOpenSSL
+sudo yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk
+sudo yum group install -y "Development Tools"
+rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-7.3.0-x86_64.rpm
+rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.3.0-x86_64.rpm
+
+# Enable Services
+systemctl enable kibana.service
+systemctl enable elasticsearch.service
+
+# Update Kibana Config
+cat << EOF > /etc/kibana/kibana.yml
+server.host: 0.0.0.0
+server.name: kibana
+elasticsearch.hosts: "http://localhost:9200"
+EOF
+
+# Update Elasticsearch Config
+cat << EOF > /etc/elasticsearch/elasticsearch.yml
+cluster.name: "develkcluster"
+node.name: "kibana"
+node.master: false
+node.data: false
+node.ingest: false
+search.remote.connect: false
+network.host: 0.0.0.0
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+discovery.seed_hosts: ["kibana", "esnode1", "esnode2", "esnode3"]
+cluster.initial_master_nodes: ["esnode1", "esnode2", "esnode3"]
+EOF 
+
+# Restart Services
+systemctl restart kibana.service
+systemctl restart elasticsearch.service
+
+# Check Service Status
+systemctl status kibana.service
+systemctl status elasticsearch.service
+```
+
+
+
+
+**Install Elasticsearch on Elasticsearch Nodes**
+```
+sudo yum update -y
+sudo yum install -y wget git pyOpenSSL
+sudo yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk
+sudo yum group install -y "Development Tools"
+rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.0-x86_64.rpm
+
+# Enable Services
+systemctl enable elasticsearch.service
+
+# Update Elasticsearch Config
+# update <server name> with hostname of the elasticsearch node. esnode1,esnode2,esnode3
+cat << EOF > /etc/elasticsearch/elasticsearch.yml
+cluster.name: "develkcluster"
+node.name: "<server name>"
+node.master: true
+node.data: true
+node.ingest: true
+search.remote.connect: true
+network.host: 0.0.0.0   
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+discovery.seed_hosts: ["kibana", "esnode1", "esnode2", "esnode3"]
+cluster.initial_master_nodes: ["esnode1", "esnode2", "esnode3"]
+EOF
+
+# Restart Services
+systemctl restart elasticsearch.service
+
+# Check Service Status
+systemctl status elasticsearch.service
+```
+
+
+
+**Install Filebeat on Test  Node**
+```
+sudo yum update -y
+sudo yum install -y wget git pyOpenSSL
+sudo yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk
+sudo yum group install -y "Development Tools"
+rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.0-x86_64.rpm
+
+# Enable Services
+systemctl enable filebeat.service
+
+# Update Filebeat Config
+cat << EOF > /etc/filebeat/filebeat.yml
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+    - /var/log/*.log
+
+  - type: log
+    enabled: true
+    paths:
+    - /var/log/messages
+
+  - type: log
+    enabled: true
+    paths:
+    - /var/log/syslog
+
+
+processors:
+  - add_host_metadata: ~
+
+filebeat.config:
+  modules:
+    path: ${path.config}/modules.d/*.yml
+    reload.enabled: true
+  inputs:
+    path: ${path.config}/inputs.d/*.yml
+    reload.enabled: true
+
+output.elasticsearch:
+   hosts: ["esnode1", "esnode2", "esnode3"]
+EOF
+
+# Restart Services
+systemctl restart filebeat.service
+
+# Check Service Status
+systemctl status filebeat.service
+```
+
+
+
+
+
+
+
+
+**Test Cluster**
+```
+# Cluster Health
+curl -XGET http://localhost:9200/_cluster/health?pretty
+{
+  "cluster_name" : "dev-cluster",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 4,
+  "number_of_data_nodes" : 3,
+  "active_primary_shards" : 1,
+  "active_shards" : 2,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
+
+
+# Test Elasticsearch
+curl -XGET http://localhost:9200
+{
+  "name" : "kibanaserver",
+  "cluster_name" : "dev-cluster",
+  "cluster_uuid" : "5bP6g8nyQ_ChX2MxIQiVDw",
+  "version" : {
+    "number" : "7.1.0",
+    "build_flavor" : "default",
+    "build_type" : "rpm",
+    "build_hash" : "606a173",
+    "build_date" : "2019-05-16T00:43:15.323135Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.0.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+
+
+# List Nodes
+curl -XGET http://localhost:9200/_cat/nodes?v
+ip            heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+192.168.1.170            7          58 100    3.68    1.08     0.37 dim       -      esnode3
+192.168.1.168           12          60 100    3.49    1.23     0.44 dim       *      esnode1
+192.168.1.167            7          83 100    4.05    1.59     0.58 -         -      kibana
+192.168.1.169           11          59  98    3.96    1.33     0.47 dim       -      esnode2
+
+# List indices
+curl -XGET http://localhost:9200/_cat/indices?v
+health status index                            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   filebeat-7.1.0-2019.08.20-000001 dAvtRWB_Rf2dTe_p7j5Cgw   1   1       7529            0      2.6mb          1.3mb
+green  open   .kibana_1                        rBa6VqQ5QQ2Q9aMYceyFrA   1   1          3            1    145.6kb         72.8kb
+
+# Shard allocation per node
+curl -XGET http://localhost:9200/_cat/allocation?v
+shards disk.indices disk.used disk.avail disk.total disk.percent host          ip            node
+     2        1.4mb     2.3gb     12.6gb     14.9gb           15 192.168.1.169 192.168.1.169 esnode2
+     1        1.3mb     2.3gb     12.6gb     14.9gb           15 192.168.1.170 192.168.1.170 esnode3
+     1       72.8kb     2.3gb     12.6gb     14.9gb           15 192.168.1.168 192.168.1.168 esnode1
+```
