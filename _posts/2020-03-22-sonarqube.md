@@ -4,7 +4,7 @@ title:  "Sonarqube Setup"
 categories: logging
 ---
 
-Sonarqube is tool used for static code analysis. In more plain terms, it ensures code quality by checking for bugs, vulnerabilities and known issues. 
+Sonarqube is tool used for static code analysis. In more plain terms, it ensures code quality by checking for bugs, vulnerabilities and known issues. In this post, we will go through the base configuration of this tool.
 
 #### **Requirements**
 * One server. RHEL 7. 2vCPU and 6GiB Ram
@@ -13,220 +13,162 @@ Sonarqube is tool used for static code analysis. In more plain terms, it ensures
 
 #### **Installation**
 
-**Server Inventory**
-
-|Server Name  |  Ip Address    |
-|--------------|------------------|
-|kibana        |  192.168.1.167   |
-|esnode1       |  192.168.1.168   |
-|esnode2       |  192.168.1.169   |
-|esnode3       |  192.168.1.170   |
-|testclient1   |  192.168.1.171   |
-
-**Install Kibana and Elasticsearch on kibana Node**
+**Base Requirements:**<br>
+Before installing and setting up sonarqube, we need to update the operating system and install some basic packages.
 ```
 sudo yum update -y
-sudo yum install -y wget git pyOpenSSL
-sudo yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk
-sudo yum group install -y "Development Tools"
-rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-7.3.0-x86_64.rpm
-rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.3.0-x86_64.rpm
+sudo yum install -y java-11-openjdk-devel java-11-openjdk
+sudo yum install -y wget unzip 
+```
 
-# Enable Services
-systemctl enable kibana.service
-systemctl enable elasticsearch.service
+**Selinux:**<br>
+We will be disabling selinux this post. In production you need to configure this for security:
+```
+sudo setenforce 0
+sudo setenforce Permissive
+```
 
-# Update Kibana Config
-cat << EOF > /etc/kibana/kibana.yml
-server.host: 0.0.0.0
-server.name: kibana
-elasticsearch.hosts: "http://localhost:9200"
-EOF
+**Systems Settings:**<br>
+Update *sysctl | /etc/sysctl.conf* with these enteries:
+```
+vm.max_map_count=262144
+fs.file-max=65536
+```
+*You can update this based on your systems requirements*
 
-# Update Elasticsearch Config
-cat << EOF > /etc/elasticsearch/elasticsearch.yml
-cluster.name: "develkcluster"
-node.name: "kibana"
-node.master: false
-node.data: false
-node.ingest: false
-search.remote.connect: false
-network.host: 0.0.0.0
-path.data: /var/lib/elasticsearch
-path.logs: /var/log/elasticsearch
-discovery.seed_hosts: ["kibana", "esnode1", "esnode2", "esnode3"]
-cluster.initial_master_nodes: ["esnode1", "esnode2", "esnode3"]
-EOF 
+**Create Sonar User:**<br>
+Create the sonar user account:
+```
+useradd sonar
+mkdir -p /var/sonarqube/data
+mkdir -p /var/sonarqube/temp
+chown -R sonar:sonar /var/sonarqube
+```
 
-# Restart Services
-systemctl restart kibana.service
-systemctl restart elasticsearch.service
+**Install & Configure PostgreSQL:**<br>
+Download and install PostgreSql 10:
+```
+sudo yum install -y https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
+sudo yum install -y postgresql10-server postgresql10-contrib 
+sudo /usr/pgsql-10/bin/postgresql-10-setup initdb
 
-# Check Service Status
-systemctl status kibana.service
-systemctl status elasticsearch.service
+```
+
+**Update PostgreSql Config:**<br>
+Update PostgreSql config
+```
+sudo vim /var/lib/pgsql/10/data/pg_hba.conf
+```
+from
+```
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+```
+to
+```
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust
+host    replication     all             127.0.0.1/32            md5
+host    replication     all             ::1/128                 md5
+```
+Enable and restart PostgreSql
+```
+sudo systemctl start postgresql-10
+sudo systemctl enable postgresql-10
+```
+
+**Configure PostgreSql for SonarQube:**<br>
+```
+su - postgres
+createuser sonar
+psql
+
+ALTER USER sonar WITH ENCRYPTED password 'P)8dEr7d)(*?Q';
+CREATE DATABASE sonar OWNER sonar;
+\q
+exit
+```
+
+**Download, Install and Setup SonarQube:**<br>
+```
+cd /tmp
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.2.0.32929.zip
+unzip sonarqube-8.2.0.32929.zip
+mv sonarqube-8.2.0.32929 /opt/sonarqube
+chown -R sonar:sonar /opt/sonarqube
+```
+
+Update sonar config
+```
+vim /opt/sonarqube/conf/sonar.properties
+
+sonar.jdbc.username=sonar
+sonar.jdbc.password=P)8dEr7d)(*?Q
+sonar.jdbc.url=jdbc:postgresql://localhost/sonar
+sonar.web.host=0.0.0.0
+sonar.web.port=9000
+sonar.web.context=/sonarqube
+sonar.web.javaOpts=-server -Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError
+sonar.search.javaOpts=-server -Xms1024m -Xmx1024m -XX:+HeapDumpOnOutOfMemoryError
+sonar.path.data=/var/sonarqube/data
+sonar.path.temp=/var/sonarqube/temp
+sonar.web.accessLogs.enable=true 
+```
+
+**Create SonarQube Service:**<br>
+```
+vim /etc/systemd/system/sonarqube.service
+
+[Unit]
+Description=SonarQube service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
+ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+LimitNOFILE=65536
+LimitNPROC=4096
+User=sonar
+Group=sonar
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Create and start Sonarqube service:
+```
+systemctl enable sonarqube.service
+systemctl start sonarqube.service
+systemctl status sonarqube.service
 ```
 
 
-
-
-**Install Elasticsearch on Elasticsearch Nodes**
+#### **Test**
+Open your browser and check this address:
 ```
-sudo yum update -y
-sudo yum install -y wget git pyOpenSSL
-sudo yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk
-sudo yum group install -y "Development Tools"
-rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.1.0-x86_64.rpm
-
-# Enable Services
-systemctl enable elasticsearch.service
-
-# Update Elasticsearch Config
-# update <server name> with hostname of the elasticsearch node. esnode1,esnode2,esnode3
-cat << EOF > /etc/elasticsearch/elasticsearch.yml
-cluster.name: "develkcluster"
-node.name: "<server name>"
-node.master: true
-node.data: true
-node.ingest: true
-search.remote.connect: true
-network.host: 0.0.0.0   
-path.data: /var/lib/elasticsearch
-path.logs: /var/log/elasticsearch
-discovery.seed_hosts: ["kibana", "esnode1", "esnode2", "esnode3"]
-cluster.initial_master_nodes: ["esnode1", "esnode2", "esnode3"]
-EOF
-
-# Restart Services
-systemctl restart elasticsearch.service
-
-# Check Service Status
-systemctl status elasticsearch.service
+http://<ip address>:9000/sonarqube
 ```
 
 
-
-**Install Filebeat on Test  Node**
-```
-sudo yum update -y
-sudo yum install -y wget git pyOpenSSL
-sudo yum install -y java-1.8.0-openjdk-devel java-1.8.0-openjdk
-sudo yum group install -y "Development Tools"
-rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.0-x86_64.rpm
-
-# Enable Services
-systemctl enable filebeat.service
-
-# Update Filebeat Config
-cat << EOF > /etc/filebeat/filebeat.yml
-filebeat.inputs:
-  - type: log
-    enabled: true
-    paths:
-    - /var/log/*.log
-
-  - type: log
-    enabled: true
-    paths:
-    - /var/log/messages
-
-  - type: log
-    enabled: true
-    paths:
-    - /var/log/syslog
-
-
-processors:
-  - add_host_metadata: ~
-
-filebeat.config:
-  modules:
-    path: ${path.config}/modules.d/*.yml
-    reload.enabled: true
-  inputs:
-    path: ${path.config}/inputs.d/*.yml
-    reload.enabled: true
-
-output.elasticsearch:
-   hosts: ["esnode1", "esnode2", "esnode3"]
-EOF
-
-# Restart Services
-systemctl restart filebeat.service
-
-# Check Service Status
-systemctl status filebeat.service
-```
-
-
-
-
-
-
-
-
-**Test Cluster**
-```
-# Cluster Health
-curl -XGET http://localhost:9200/_cluster/health?pretty
-{
-  "cluster_name" : "dev-cluster",
-  "status" : "green",
-  "timed_out" : false,
-  "number_of_nodes" : 4,
-  "number_of_data_nodes" : 3,
-  "active_primary_shards" : 1,
-  "active_shards" : 2,
-  "relocating_shards" : 0,
-  "initializing_shards" : 0,
-  "unassigned_shards" : 0,
-  "delayed_unassigned_shards" : 0,
-  "number_of_pending_tasks" : 0,
-  "number_of_in_flight_fetch" : 0,
-  "task_max_waiting_in_queue_millis" : 0,
-  "active_shards_percent_as_number" : 100.0
-}
-
-
-# Test Elasticsearch
-curl -XGET http://localhost:9200
-{
-  "name" : "kibanaserver",
-  "cluster_name" : "dev-cluster",
-  "cluster_uuid" : "5bP6g8nyQ_ChX2MxIQiVDw",
-  "version" : {
-    "number" : "7.1.0",
-    "build_flavor" : "default",
-    "build_type" : "rpm",
-    "build_hash" : "606a173",
-    "build_date" : "2019-05-16T00:43:15.323135Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.0.0",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
-  },
-  "tagline" : "You Know, for Search"
-}
-
-
-# List Nodes
-curl -XGET http://localhost:9200/_cat/nodes?v
-ip            heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
-192.168.1.170            7          58 100    3.68    1.08     0.37 dim       -      esnode3
-192.168.1.168           12          60 100    3.49    1.23     0.44 dim       *      esnode1
-192.168.1.167            7          83 100    4.05    1.59     0.58 -         -      kibana
-192.168.1.169           11          59  98    3.96    1.33     0.47 dim       -      esnode2
-
-# List indices
-curl -XGET http://localhost:9200/_cat/indices?v
-health status index                            uuid                   pri rep docs.count docs.deleted store.size pri.store.size
-green  open   filebeat-7.1.0-2019.08.20-000001 dAvtRWB_Rf2dTe_p7j5Cgw   1   1       7529            0      2.6mb          1.3mb
-green  open   .kibana_1                        rBa6VqQ5QQ2Q9aMYceyFrA   1   1          3            1    145.6kb         72.8kb
-
-# Shard allocation per node
-curl -XGET http://localhost:9200/_cat/allocation?v
-shards disk.indices disk.used disk.avail disk.total disk.percent host          ip            node
-     2        1.4mb     2.3gb     12.6gb     14.9gb           15 192.168.1.169 192.168.1.169 esnode2
-     1        1.3mb     2.3gb     12.6gb     14.9gb           15 192.168.1.170 192.168.1.170 esnode3
-     1       72.8kb     2.3gb     12.6gb     14.9gb           15 192.168.1.168 192.168.1.168 esnode1
-```
