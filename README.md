@@ -13,7 +13,9 @@ I love building tools to automate on-prem and cloud infrastructure in AWS, GCP, 
 
 Some of my specialties and areas of interest are:
 
-- **Programming Languages:** HTML, CSS, JavaScript, Python, BASH
+- **Programming Languages:** Python, BASH<br>
+    *note: My focus is primarily on the backend. That said, languages are simply tools for getting the job done so I tend to pick the best tool or
+    what I feel is best for the job. This includes but not limited to Java, Ryby, NodeJS, GO, HTML, CSS etc*
 - **Databases:** Postgres, MariaDB, MongoDB
 - **Configuration Management:** Ansible, Salt
 - **IaaS Tools:** Terraform, Packer, Vault, Cloudformation
