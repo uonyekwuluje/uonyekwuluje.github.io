@@ -16,15 +16,16 @@ Some of my specialties and areas of interest are:
 - **Programming Languages:** Python, BASH<br>
     *note: My focus is primarily on the backend. That said, languages are simply tools for getting the job done so I tend to pick the best tool or
     what I feel is best for the job. This includes but not limited to Java, Ryby, NodeJS, GO, HTML, CSS etc*
+- **Web Frameworks:** Flask, PHP
 - **Databases:** Postgres, MariaDB, MongoDB
-- **Configuration Management:** Ansible, Salt
+- **Configuration Management:** Ansible, Salt, Chef, Puppet
 - **IaaS Tools:** Terraform, Packer, Vault, Cloudformation
 - **Continuous Integration/Delivery/Deployment:** Jenkins, Gitlab-CI, Azure DevOps
-- **Container Services:** Docker, AWS ECS, AKS 
-- **Virtualization Platforms:** VMware, KVM, XEN
-- **Networking:** TCP/IP, NIS, NFS, DNS, DHCP, SMTP, BNMP, PXE, LAN, FTP/TFTP
+- **Container Services:** Docker, Kubernetes 
+- **Virtualization Platforms:** VMware, KVM, XEN, VirtualBox
 - **Cloud Services:** AWS, GCP, Azure
-- **Monitoring & Data:** Icinga, Prometheus, Sensu, Elasticsearch, Logstash, Kibana, Fluentd, Statsd 
+- **Monitoring:** Icinga, Prometheus, Sensu  
+- **Search & Data:** Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, Fluentd, Statsd 
 
 This site is about my findings, solutions and knowledge gained over the years. I have found that sometimes the solutions to the 
 difficult problems are the little things. Keeping things simple, easy to use and easy to find is what the site is all about.
