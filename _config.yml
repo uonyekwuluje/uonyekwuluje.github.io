@@ -3,7 +3,7 @@ author: "Uchechukwu Onyekwuluje"
 description: "DevOps, Site Reliability, AWS, GCP, Azure"
 
 permalink: /:year-:month-:day/:title/
-paginate: 666666n"
+paginate: 6
 
 show_footer: true           # show the "previous" and "next" links at the end of each post | false
 dark_theme: false            # use the dark mode as default  | false
