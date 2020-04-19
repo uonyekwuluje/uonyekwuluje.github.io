@@ -28,58 +28,66 @@ salt. I also found myself doing lots of scripting and plumbing to get other tool
 
 **Install Saltmaster**
 ```
-#!/bin/bash
-SALT_VERSION="2019.2.2"
+# Folder Preparation
+mkdir -p /srv/{salt,pillar}/{dev,prod}
 
-# Disabling Firewall
-disable_firewall() {
-  sudo systemctl disable firewalld 
-  sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
-}
+# Firewall Setup
+sudo firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
+sudo firewall-cmd --reload
 
-# Folder Prep
-folder_prep() {
-  mkdir -p /srv/{salt,pillar,formulas,files}
-  mkdir -p /srv/pillar/{dev,qa}
-}
+# Package Requirements
+sudo yum update -y
+sudo yum group install -y 'Development Tools'
+sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc
+sudo yum install -y libffi-devel openssl-devel make openssl-devel bzip2-devel python-devel
 
-# cleanup
-cleanup_tasks() {
-  sudo yum remove -y salt-minion
-}
+# Install Python Pip
+cd /tmp
+curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+sudo python get-pip.py
+sudo pip install --upgrade pip
+pip -V
 
+Pip Azure Install Requirements
+sudo pip install packaging cryptography --upgrade
+sudo pip install requests==2.7.0 azure==4.0.0
+sudo pip install boto awscli
 
-disable_firewall
-folder_prep
+# Install Salt Repository for latest salt
+sudo yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
+sudo yum clean expire-cache
 
+# Install SaltStack
+sudo yum install -y salt-master salt-minion salt-ssh salt-syndic salt-cloud salt-api
 
-sudo yum update
-curl -sL https://bootstrap.saltstack.com -o install_salt.sh
-sudo sh install_salt.sh -P -M stable ${SALT_VERSION}
 # updating config files
 cat << 'EOF' > /etc/salt/master
 interface: 0.0.0.0
+hash_type: sha256
 auto_accept: True
 
 file_roots:
-  base:
-    - /srv/salt
-    - /srv/formulas
-    - /srv/salt/roles
+   base:
+     - /srv/salt/
+   dev:
+     - /srv/salt/dev/
+   prod:
+     - /srv/salt/prod/
+
 pillar_roots:
-  base:
-    - /srv/pillar
-  dev:
-    - /srv/pillar/dev
-  qa:
-    - /srv/pillar/qa
+   base:
+     - /srv/pillar
+   dev:
+     - /srv/pillar/dev/
+   prod:
+     - /srv/pillar/prod/
 EOF
 
-sudo systemctl start salt-master.service
+# Enable and Restart Services
 sudo systemctl enable salt-master.service
-
-cleanup_tasks
-
+sudo systemctl start salt-master.service
+sudo systemctl restart salt-master.service
+sudo systemctl status salt-master.service
 ```
 
 
@@ -87,47 +95,51 @@ cleanup_tasks
 
 **Install Linux Salt Minion**
 ```
-#!/bin/bash
-# Substitute Salmaster IP Address and Salt Version
-SALT_VERSION="2019.2.2"
-SALTMASTER_IP="10.0.0.4"
+# Update firewall
+sudo firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
+sudo firewall-cmd --reload
 
-# Disabling Firewall
-disable_firewall() {
-  sudo systemctl disable firewalld
-  sudo sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
-}
+# Package Requirements
+sudo yum update -y
+sudo yum group install -y 'Development Tools'
+sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc
+sudo yum install -y libffi-devel openssl-devel make openssl-devel bzip2-devel python-devel
 
-# cleanup
-cleanup_tasks() {
-  sudo yum remove -y salt-master
-}
+Install Python Pip
+cd /tmp
+curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+sudo python get-pip.py
+sudo pip install --upgrade pip
 
 
-disable_firewall
+# Install Latest Salt Repo
+sudo yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
+sudo yum clean expire-cache
 
-sudo yum update
-curl -sL https://bootstrap.saltstack.com -o install_salt.sh
-sudo sh install_salt.sh -P -A ${SALTMASTER_IP} stable ${SALT_VERSION}
+
+# Install SaltStack
+sudo yum install -y salt-minion
+
+
 
 # updating config files
 cat << 'EOF' > /etc/salt/minion
 master: ${SALTMASTER_IP}
 EOF
 
-sudo systemctl start salt-minion.service
+# Update and Restart service
 sudo systemctl enable salt-minion.service
-
-cleanup_tasks
+sudo systemctl start salt-minion.service
+sudo systemctl restart salt-minion.service
+sudo systemctl status salt-minion.service
 ```
-
 
 
 **Install Windows Salt Minion**
 note: change windows minion name as needed
 ```
 $salt_version = "2019.2.2"
-$saltmaster_ip = "10.0.0.4"
+$saltmaster_ip = "${SALTMASTER_IP}"
 $salt_minion_name = "windowsvm-02"
 
 $url = "https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.ps1"
