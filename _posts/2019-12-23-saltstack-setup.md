@@ -19,11 +19,12 @@ salt. I also found myself doing lots of scripting and plumbing to get other tool
 
 **Server Inventory**
 
-|Server Name    |  Ip Address      |   CPU   |    RAM
-|---------------|------------------|------------------------
-|saltmaster     |  192.168.1.167   |    1    |    2GB
-|linuxminion1   |  192.168.1.168   |    1    |    2GB 
-|windowsminion1 |  192.168.1.169   |    2    |    2GB
+|Server Name                |  Ip Address      |   CPU   |    RAM
+|---------------------------|------------------|------------------------
+|saltmaster                 |  192.168.1.167   |    1    |    2GB
+|saltminion-privlinux-vm0   |  192.168.1.168   |    1    |    2GB 
+|saltminion-privlinux-vm1   |  192.168.1.169   |    1    |    2GB
+|saltminion-privwindo-vm1   |  192.168.1.170   |    2    |    2GB
 
 
 **Install Saltmaster**
@@ -151,3 +152,46 @@ Set-ExecutionPolicy RemoteSigned
 (New-Object System.Net.WebClient).DownloadFile($url, $path)
 C:\Users\azureuser\Downloads\bootstrap-salt.ps1 -minion $salt_minion_name -master $saltmaster_ip -version $salt_version
 ```
+
+
+**Test Setup**
+Run the command below to verify your setup:
+```
+sudo salt '*' test.ping
+```
+you should find something like this:
+```
+saltminion-privlinux-vm0.internal.cloudapp.net:
+    True
+saltminion-privlinux-vm1.internal.cloudapp.net:
+    True
+saltminion-privwindo-vm1.internal.cloudapp.net:
+    True
+```
+
+***NOTE***:**The above setup is designed to be used for a POC. This is not secure since the master accepts any connection.
+A more secure approach will be to update the minions with the Masters Fingerprint. To do this, please use the setup below
+**
+
+
+# Grab Masters Fingerprint
+To get the salt masters fingerprint, type the command below:
+```
+sudo salt-key -F master
+```
+you should see something like:
+```
+Local Keys:
+master.pem:  8e:c4:f7:2d:83:17:5c:d1:7c:77:98:66:14:9d:da:02:87:37:03:8a:42:03:5f:9d:9d:bd:d0:f3:82:f9:9a:03
+master.pub:  ee:2f:8c:25:42:48:fa:90:8a:f4:78:f2:8d:8a:d3:c5:12:38:73:62:7a:fe:96:0b:2d:96:57:38:1e:da:56:62
+```
+
+In the Saltminions, update the config with this option:
+```
+master_finger: <master.pub> # the master.pub fingerprint from above
+```
+restart the minion:
+```
+sudo systemctl restart salt-minion
+```
+That's all
