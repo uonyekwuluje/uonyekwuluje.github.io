@@ -111,6 +111,25 @@ salt '*' pkg.install bash              # install or upgrade bash package
 salt '*' pkg.install bash refresh=True # install or upgrade bash package but
 ```
 
+<hr>
+Deleting Dead Keys:<br/>
+--------------------------------
+Sometimes you run into situations were servers are deleted manually or some other use case such 
+that you have stale keys from dead minions. This can cause lots of problems with your inventory.
+Run the command below to delete dead minion keys 
+```
+salt --out txt '*' test.ping | grep "Not connected" | cut -d ":" -f 1 | xargs -I dead_minion 
+salt-key -y -d dead_minion
+```
+It does not hurt to automate this via cron
+```
+# SALT_CRON_IDENTIFIER:Clean old minion keys
+*/5 * * * * salt-run manage.down removekeys=True
+```
+
+
+
+
 ***Reference Links***
 * <a href="https://github.com/harkx/saltstack-cheatsheet" target="_blank">https://github.com/harkx/saltstack-cheatsheet</a> 
 * <a href="https://dev-eole.ac-dijon.fr/doc/cheatsheets/saltstack.html" target="_blank">https://dev-eole.ac-dijon.fr/doc/cheatsheets/saltstack.html</a>
