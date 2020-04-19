@@ -147,6 +147,6 @@ sudo salt-cloud -a destroy testvm1 testvm2 -y
 ```
 
 #### **Reference Links**
-* Saltstack Cloud [salt-cloud](https://docs.saltstack.com/en/latest/topics/cloud/)
+* Saltstack Cloud [salt cloud](https://docs.saltstack.com/en/latest/topics/cloud/)
 * Salt Coud Azure [salt azure](https://docs.saltstack.com/en/latest/topics/cloud/azure.html)
 

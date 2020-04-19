@@ -50,8 +50,8 @@ pip -V
 
 Pip Azure Install Requirements
 sudo pip install packaging cryptography --upgrade
-sudo pip install requests==2.7.0 azure==4.0.0
-sudo pip install boto awscli
+sudo pip install requests~=2.20.0 azure==4.0.0 python-dateutil~=2.1.0
+sudo pip install boto awscli gitfs
 
 # Install Salt Repository for latest salt
 sudo yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
