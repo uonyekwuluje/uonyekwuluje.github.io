@@ -65,6 +65,8 @@ cat << 'EOF' > /etc/salt/master
 interface: 0.0.0.0
 hash_type: sha256
 auto_accept: True
+file_recv: True
+file_recv_max_size: 100
 
 file_roots:
    base:
@@ -168,7 +170,7 @@ saltminion-privwindo-vm1.internal.cloudapp.net:
     True
 ```
 
-**NOTE**: ***The above setup is designed to be used for a POC. This is not secure since the master accepts any connection. A more secure approach will be to update the minions with the Masters Fingerprint. To do this, please use the setup below***
+**NOTE**: *The above setup is designed to be used for a POC. This is not secure since the master accepts any connection. A more secure approach will be to update the minions with the Masters Fingerprint. To do this, please use the setup below*
 
 
 **Grab Masters Fingerprint**
