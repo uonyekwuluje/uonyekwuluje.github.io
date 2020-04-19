@@ -173,7 +173,7 @@ saltminion-privwindo-vm1.internal.cloudapp.net:
 **NOTE**: *The above setup is designed to be used for a POC. This is not secure since the master accepts any connection. A more secure approach will be to update the minions with the Masters Fingerprint. To do this, please use the setup below*
 
 
-**Grab Masters Fingerprint**
+**Grab Masters Fingerprint**: <br>
 To get the salt masters fingerprint, type the command below:
 ```
 sudo salt-key -F master
