@@ -1,28 +1,32 @@
-title: Long Haul
-description: Long Form Jekyll theme built with SASS / COMPASS / SUSY
+title: "Coding, Toolsmith, Systems"
+author: "Uchechukwu Onyekwuluje"
+description: "DevOps, Site Reliability, AWS, GCP, Azure"
 
-url: http://brianmaierjr.github.com/long-haul
-baseurl: ""
-paginate_path: "blog/page:num/"
-permalink: blog/:title/
+permalink: /:year-:month-:day/:title/
+#paginate:  2
 
-markdown: kramdown
-highlighter: rouge
-plugins: [jekyll-paginate]
-paginate: 5
+lang: "en"
 
-navigation:
-  - title: Home
-    url: /index.html
-  - title: About
-    url: /about
-  - title: Contact
-    url: /contact
+show_footer: true           # show the "previous" and "next" links at the end of each post | false
+dark_theme: false            # use the dark mode as default  | false
+dark_header: true            # keep the header dark          | true
+dark_footer: true           # keep the footer dark           | false
 
-social:
-  github: brianmaierjr
-  twitter: brianmaierjr
-  facebook: brianmaierjr
-  email: brimaidesigns@gmail.com
+navigation:                  # site navigation in the header
+  - README.md
+  - Github: "http://github.com/uonyekwuluje"
+  - CONTACTME.md
 
-google_analytics: "UA-58263416-1"
+#  icons:    http://fontawesome.com/icons
+#  envelope: "mailto:niklasbuschmann@users.noreply.github.com"
+#  github:   "https://github.com/niklasbuschmann/contrast"
+#  rss:      "/contrast/feed.xml"
+
+comments:                    # embed disqus or isso comments
+#  disqus: ""
+#  isso: ""
+
+plugins:
+ - jekyll-feed
+ - jekyll-default-layout
+ - jekyll-paginate

@@ -1,48 +1,38 @@
-![preview Long Haul](/preview.jpg)
+---
+title: "About Me"
+permalink: "/about/"
+---
 
-Long Haul is a minimal jekyll theme built with SASS / GULP / BROWSERSYNC / AUTOPREFIXER and focuses on long form blog posts. It is meant to be used as a starting point for a jekyll blog/website.
+<div class="custom" markdown="1">
+![Uche](assets/image/mypic.jpg)
+</div>
 
-If you really enjoy Long Haul and want to give me credit somewhere on the internet send or tweet out your experience with Long Haul and tag me [@brianmaierjr](https://twitter.com/brianmaierjr).
+Hi, My name is Uchechukwu Onyekwuluje. I am a Software Engineer with over 10 years experience in the IT Industry. I have worked in various capacities ranging from Systems Administration, Systems Engineering, DevOps, Site Reliability Engineering and Software Engineering. 
 
-#### [View Demo](http://brianmaierjr.com/long-haul)
+I love building tools to automate on-prem and cloud infrastructure in AWS, GCP, Azure. Researching open source tools and using my findings to solve complex problems or improve existing system is something I love to do. 
 
-## Features
+Some of my specialties and areas of interest are:
 
-- Minimal, Type Focused Design
-- Built with GULP + SASS + BROWSERSYNC + AUTOPREFIXER
-- SVG Social Icons
-- Responsive Nav Menu
-- XML Feed for RSS Readers
-- Contact Form via Formspree
-- 5 Post Loop with excerpt on Home Page
-- Previous / Next Post Navigation
-- Estimated Reading Time for posts
-- Stylish Drop Cap on posts
-- A Better Type Scale for all devices
+- **Programming Languages:** Python, BASH<br>
+    *note: My focus is primarily on the backend. That said, languages are simply tools for getting the job done so I tend to pick the best tool or
+    what I feel is best for the job. This includes but not limited to Java, Ryby, NodeJS, GO, HTML, CSS etc*
+- **Web Frameworks:** Flask, PHP
+- **Databases:** Postgres, MariaDB, MongoDB
+- **Configuration Management:** Ansible, Salt, Chef, Puppet
+- **IaaS Tools:** Terraform, Packer, Vault, Cloudformation
+- **Continuous Integration/Delivery/Deployment:** Jenkins, Gitlab-CI, Azure DevOps
+- **Container Services:** Docker, Kubernetes 
+- **Virtualization Platforms:** VMware, KVM, XEN, VirtualBox
+- **Cloud Services:** AWS, GCP, Azure
+- **Monitoring:** Icinga, Prometheus, Sensu  
+- **Search & Data:** Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, Fluentd, Statsd 
 
-## Setup
+This site is about my findings, solutions and knowledge gained over the years. I have found that sometimes the solutions to the 
+difficult problems are the little things. Keeping things simple, easy to use and easy to find is what the site is all about.
 
-1. [Install Jekyll](http://jekyllrb.com)
-2. Fork the [Long Haul repo](http://github.com/brianmaierjr/long-haul)
-3. Clone it
-4. [Install Bundler](http://bundler.io/)
-5. Run `bundle install`
-6. Install gulp dependencies by running `npm install`
-7. Run Jekyll and watch files by running `bundle exec gulp`
-8. Customize and watch the magic happen!
+For more about me from a professional career standpoint, see details
+<a href="https://www.linkedin.com/in/uchechukwu-onyekwuluje-sde" target="_blank">HERE</a>.
 
-## Site Settings
+**NOTE:**
 
-The main settings can be found inside the `_config.yml` file:
-
-- **title:** title of your site
-- **description:** description of your site
-- **url:** your url
-- **paginate:** the amount of posts displayed on homepage
-- **navigation:** these are the links in the main site navigation
-- **social** diverse social media usernames (optional)
-- **google_analytics** Google Analytics key (optional)
-
-## License
-
-This is [MIT](LICENSE) with no added caveats, so feel free to use this Jekyll theme on your site without linking back to me or using a disclaimer.
+The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer.
