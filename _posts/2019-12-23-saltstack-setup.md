@@ -15,7 +15,6 @@ With the right modules I can also use this for cloud deployments and orchestrati
 Triggering of actions in response to events is one I found to be very good with the use of reactor. Some of the other options are not as robust as
 salt. I also found myself doing lots of scripting and plumbing to get other tools working. 
 
-#### **Manual Installation**
 
 **Server Inventory**
 
@@ -27,7 +26,7 @@ salt. I also found myself doing lots of scripting and plumbing to get other tool
 |saltminion-privwindo-vm1   |  192.168.1.170   |    2    |    2GB
 
 
-**Install Saltmaster**
+**Install and Configure Saltmaster**
 ```
 # Folder Preparation
 mkdir -p /srv/{salt,pillar}/{dev,prod}
@@ -94,7 +93,7 @@ sudo systemctl status salt-master.service
 
 
 
-**Install Linux Salt Minion**
+**Install and Configure Linux Salt Minion**
 ```
 # Update firewall
 sudo firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
@@ -136,12 +135,12 @@ sudo systemctl status salt-minion.service
 ```
 
 
-**Install Windows Salt Minion**
+**Install and Configure Windows Salt Minion**
 note: change windows minion name as needed
 ```
 $salt_version = "2019.2.2"
 $saltmaster_ip = "${SALTMASTER_IP}"
-$salt_minion_name = "windowsvm-02"
+$salt_minion_name = "saltminion-privwindo-vm1"
 
 $url = "https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.ps1"
 $path = "C:\Users\azureuser\Downloads\bootstrap-salt.ps1"
@@ -169,12 +168,10 @@ saltminion-privwindo-vm1.internal.cloudapp.net:
     True
 ```
 
-***NOTE***:**The above setup is designed to be used for a POC. This is not secure since the master accepts any connection.
-A more secure approach will be to update the minions with the Masters Fingerprint. To do this, please use the setup below
-**
+**NOTE**: ***The above setup is designed to be used for a POC. This is not secure since the master accepts any connection. A more secure approach will be to update the minions with the Masters Fingerprint. To do this, please use the setup below***
 
 
-# Grab Masters Fingerprint
+**Grab Masters Fingerprint**
 To get the salt masters fingerprint, type the command below:
 ```
 sudo salt-key -F master
