@@ -8,14 +8,14 @@ If you use Microsoft Azure as your cloud provider, you may find out that one of 
 From an IaaS IaC point of view salt may not be the best tool at scale but it works if you are dealing with adhoc requests
 for developers. This post is geared at showing you how this can be accomplished using salt.
 
-**Requirements**
+**Requirements**<br>
 This post assumes the following:
 * You have a valid Azure Subscription
 * You have admin permissions and privilleges
 * You have a valid Azure Service Principal 
 * You have a working saltmaster. Please refer to [Saltstack Setup](https://uonyekwuluje.github.io/2019-12-23/saltstack-setup/) for more information
 
-**Microsoft Azure Repository**
+**Microsoft Azure Repository**<br>
 This is optional. If you need added packages for your setup which are azure specific, set this up:
 ```
 sudo rpm -ivh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
@@ -23,7 +23,7 @@ sudo yum update -y
 sudo yum install -y blobfuse cifs-utils
 ```
 
-**Create Certificates For SaltStack**
+**Create Certificates For SaltStack**<br>
 You need to create a certificate for use with salt stack. The **.cer** needs to be uploaded to the Certificate Manager 
 in azure.
 ```
@@ -32,7 +32,7 @@ openssl x509 -inform pem -in /etc/salt/azure.pem -outform der -out /etc/salt/azu
 ```
 
 
-**Configure SaltCloud Provider**
+**Configure SaltCloud Provider**<br>
 Create a new config for azure. ```/etc/salt/cloud.providers.d/azure.conf```
 ```
 azure-config:
@@ -65,7 +65,7 @@ azure-config:
 ```
 
 
-**Configure SaltCloud VM Profile**
+**Configure SaltCloud VM Profile**<br>
 Create a new config profile for azure virtual machines. ```/etc/salt/cloud.profiles.d/azure.conf```
 ```
 azure-rhel7:
@@ -95,7 +95,7 @@ Please note the following:
 * You will need a valid network name
 
 
-**Test Your Config**
+**Test Your Config**<br>
 When You are through, restart the saltmaster service and test your config:
 ```
 sudo systemctl restart salt-master.service
@@ -120,7 +120,6 @@ sudo salt-cloud --list-locations azure-config
 ```
 
 
-# Azure Virtual Machine Tasks
 **Create a Virtual Machine**<br>
 Type the following commands to bootstrap a virtual machine using our profile for RHEL 7:
 ```
@@ -128,8 +127,26 @@ sudo salt-cloud -p azure-rhel7 testvm1 -l debug
 sudo salt-cloud -p azure-rhel7 testvm2 -l debug
 ```
 
-**Delete Azure Virtual Machines**
+**Test Ping Virtual Machines**<br>
+Type the following command to perform a test ping:
+```
+sudo salt '*' test.ping
+```
+you should see this:
+```
+testvm1:
+    True
+testvm2:
+    True
+```
+
+**Delete Azure Virtual Machines**<br>
 Type the following commands to delete the virtual machines:
 ```
 sudo salt-cloud -a destroy testvm1 testvm2 -y
 ```
+
+#### **Reference Links**
+* Saltstack Cloud [salt-cloud](https://docs.saltstack.com/en/latest/topics/cloud/)
+* Salt Coud Azure [salt azure](https://docs.saltstack.com/en/latest/topics/cloud/azure.html)
+
