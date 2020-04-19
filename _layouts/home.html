@@ -7,8 +7,8 @@ layout: default
     {%- assign posts = paginator.posts | default: site.posts -%}
     {% for post in posts %}
     <li>
-      <b><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d %Y" }}</time></b>
-      <b><h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3></b>
+      <b><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></b>
+      <b><a href="{{ post.url | relative_url }}">{{ post.title }}</a></b>
       <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 50 }}{% endif %}</p>
     </li>
     {% endfor %}
