@@ -50,7 +50,7 @@ pip -V
 
 Pip Azure Install Requirements
 sudo pip install packaging cryptography --upgrade
-sudo pip install requests~=2.20.0 azure==4.0.0 python-dateutil~=2.1.0
+sudo pip install requests~=2.20.0 azure==4.0.0 
 sudo pip install boto awscli gitfs pygit2 GitPython
 
 # Install Salt Repository for latest salt
@@ -92,6 +92,7 @@ sudo systemctl restart salt-master.service
 sudo systemctl status salt-master.service
 ```
 
+
 **Install and Configure Linux Salt Minion**
 ```
 SALTMASTER_IP="xx.xx.xx.xx"
@@ -105,7 +106,7 @@ sudo yum group install -y 'Development Tools'
 sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc
 sudo yum install -y libffi-devel openssl-devel make openssl-devel bzip2-devel python-devel
 
-Install Python Pip
+# Install Python Pip
 cd /tmp
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
