@@ -29,7 +29,7 @@ salt. I also found myself doing lots of scripting and plumbing to get other tool
 **Install and Configure Saltmaster**
 ```
 # Folder Preparation
-mkdir -p /srv/{salt,pillar}/{dev,prod}
+mkdir -p /srv/{salt,pillar,files}/{dev,prod}
 
 # Firewall Setup
 sudo firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
@@ -92,11 +92,9 @@ sudo systemctl restart salt-master.service
 sudo systemctl status salt-master.service
 ```
 
-
-
-
 **Install and Configure Linux Salt Minion**
 ```
+SALTMASTER_IP="xx.xx.xx.xx"
 # Update firewall
 sudo firewall-cmd --permanent --zone=public --add-port=4505-4506/tcp
 sudo firewall-cmd --reload
@@ -113,16 +111,12 @@ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
 sudo pip install --upgrade pip
 
-
 # Install Latest Salt Repo
 sudo yum install -y https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
 sudo yum clean expire-cache
 
-
 # Install SaltStack
 sudo yum install -y salt-minion
-
-
 
 # updating config files
 cat << 'EOF' > /etc/salt/minion
