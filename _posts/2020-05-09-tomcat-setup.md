@@ -87,7 +87,7 @@ sudo systemctl start tomcat
 ```
 
 **Update Firewall**
-Update firewall rukes and reload
+Update firewall rules and reload
 ```
 sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload
@@ -106,11 +106,8 @@ Edit ```/opt/tomcat/conf/tomcat-users.xml``` with the update below:
 </tomcat-users>
 ```
 
-To enable web management interface outside localhost update the following config files:<br>
-```
-sudo vim /opt/tomcat/webapps/manager/META-INF/context.xml
-```
-Comment of removing the block below: ***Note: I have commneded this already***
+To enable web management interface outside localhost update ```/opt/tomcat/webapps/manager/META-INF/context.xml```
+with the entry below: ***Note: I have commneded this already***
 ```
 <Context antiResourceLocking="false" privileged="true" >
 <!--
@@ -119,11 +116,7 @@ Comment of removing the block below: ***Note: I have commneded this already***
 -->
 </Context>
 ```
-Next
-```
-sudo vim /opt/tomcat/webapps/host-manager/META-INF/context.xml
-```
-Comment of removing the block below: ***Note: I have commneded this already***
+Next edit ```/opt/tomcat/webapps/host-manager/META-INF/context.xml``` with the block below: ***Note: I have commneded this already***
 ```
   <!--<Valve className="org.apache.catalina.valves.RemoteAddrValve"
      allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->
