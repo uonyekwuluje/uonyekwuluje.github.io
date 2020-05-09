@@ -13,7 +13,7 @@ dark_footer: true           # keep the footer dark           | false
 navigation:                  # site navigation in the header
   - README.md
   - Github: "http://github.com/uonyekwuluje"
-  - CONTACTME.md
+  - Projects.md
 
 #  icons:    http://fontawesome.com/icons
 #  envelope: "mailto:niklasbuschmann@users.noreply.github.com"
