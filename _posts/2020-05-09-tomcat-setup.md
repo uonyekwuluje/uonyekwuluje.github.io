@@ -135,4 +135,3 @@ http://<Your IP Address>:8080
 
 **Caution and Notes**<br>
 The server status in the admin page should be your best friend. This is primarily for monitoring and resource utilization
-```
