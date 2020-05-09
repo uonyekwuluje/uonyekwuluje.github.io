@@ -181,9 +181,9 @@ sudo systemctl restart consul-master
 Check Cluster Membership with ```/usr/local/bin/consul members``` and you should see this:
 ```
 Node                       Address             Status  Type    Build  Protocol  DC       Segment
-consulserver01             192.168.1.137:8301  alive   server  1.7.2  2         DCProd01  <all>
-consulserver02             192.168.1.138:8301  alive   server  1.7.2  2         DCProd01  <all>
-consulserver03             192.168.1.139:8301  alive   server  1.7.2  2         DCProd01  <all>
+consulserver01             192.168.1.137:8301  alive   server  1.7.3  2         DCProd01  <all>
+consulserver02             192.168.1.138:8301  alive   server  1.7.3  2         DCProd01  <all>
+consulserver03             192.168.1.139:8301  alive   server  1.7.3  2         DCProd01  <all>
 ```
 
 
