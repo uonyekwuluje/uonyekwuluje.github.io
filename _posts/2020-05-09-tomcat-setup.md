@@ -107,7 +107,7 @@ Edit ```/opt/tomcat/conf/tomcat-users.xml``` with the update below:
 ```
 
 To enable web management interface outside localhost update ```/opt/tomcat/webapps/manager/META-INF/context.xml```
-with the entry below: ***Note: I have commneded this already***
+with the entry below: ***Note: I have commneted this already***
 ```
 <Context antiResourceLocking="false" privileged="true" >
 <!--
@@ -116,7 +116,7 @@ with the entry below: ***Note: I have commneded this already***
 -->
 </Context>
 ```
-Next edit ```/opt/tomcat/webapps/host-manager/META-INF/context.xml``` with the block below: ***Note: I have commneded this already***
+Next edit ```/opt/tomcat/webapps/host-manager/META-INF/context.xml``` with the block below: ***Note: I have commneted this already***
 ```
   <!--<Valve className="org.apache.catalina.valves.RemoteAddrValve"
      allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->
