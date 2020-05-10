@@ -25,7 +25,7 @@ Some of my specialties and areas of interest are:
 - **Virtualization Platforms:** VMware, KVM, XEN, VirtualBox
 - **Cloud Services:** AWS, GCP, Azure
 - **Monitoring:** Icinga, Prometheus, Sensu  
-- **Search & Data:** Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, Fluentd, Statsd 
+- **Search & Data:** Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, Fluentd, Statsd, InfluxDB, Telegraph 
 
 This site is about my findings, solutions and knowledge gained over the years. I have found that sometimes the solutions to the 
 difficult problems are the little things. Keeping things simple, easy to use and easy to find is what the site is all about.
