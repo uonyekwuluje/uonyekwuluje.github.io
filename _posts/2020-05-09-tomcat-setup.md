@@ -40,10 +40,15 @@ curl -O https://downloads.apache.org/tomcat/tomcat-${TVERSION}/v${TOMCAT_VERSION
 sudo tar xzvf apache-tomcat-${TVERSION}*tar.gz -C /opt/tomcat --strip-components=1
 
 cd /opt/tomcat
-sudo chgrp -R tomcat /opt/tomcat
-sudo chmod -R g+r conf
-sudo chmod g+x conf
-sudo chown -R tomcat webapps/ work/ temp/ logs/
+sudo chgrp -R tomcat conf
+sudo chmod g+rwx conf
+sudo chmod g+r conf/*
+sudo chown -R tomcat logs/ temp/ webapps/ work/
+
+sudo chgrp -R tomcat bin
+sudo chgrp -R tomcat lib
+sudo chmod g+rwx bin
+sudo chmod g+r bin/*
 ```
 
 **Create Tomcat Service**<br>
