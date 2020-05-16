@@ -74,7 +74,12 @@ Create a new keystore for this task:
 ```
 keytool -genkey -alias yourdomain -keyalg RSA -keystore /etc/ssl/java/keystore.jks -storepass changethis -keysize 2048
 ```
-<br><br>
+Update permissions
+```
+chown -R tomcat:tomcat /etc/ssl/java/keystore.jks
+```
+
+<br>
 Test to ensure you have the new entry in your keystore
 ```
 keytool -list -keystore /etc/ssl/java/keystore.jks
