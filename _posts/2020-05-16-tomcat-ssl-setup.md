@@ -99,7 +99,6 @@ Certificate fingerprint (SHA-256): E8:06:39:EB:A8:B7:E7:09:D3:EA:6F:90:CA:7F:BE:
 Export key, certificate and ca-bundle:
 ```
 cat /etc/ssl/java/server.com.cabundle /etc/ssl/certs/ca-bundle.crt > /etc/ssl/java/server.com.allcabundle
-
 openssl pkcs12 -export -in /etc/ssl/java/server.com.crt -inkey /etc/ssl/java/server.com.key -chain -CAfile /etc/ssl/java/server.com.allcabundle -name "server.com" -out /etc/ssl/java/server.com.p12
 
 Enter Export Password:
@@ -110,7 +109,7 @@ Verifying - Enter Export Password:
 Import the PKCS12 into your keystore:
 ```
 keytool -importkeystore -deststorepass storePassword -destkeystore /etc/ssl/java/keystore.jks -srckeystore /etc/ssl/java/server.com.p12 -srcstoretype PKCS12
->>
+
 Importing keystore server.com.p12 to keystore.jks...
 Enter source keystore password:  
 Entry for alias server.com successfully imported.
@@ -121,7 +120,7 @@ Import command completed:  1 entries successfully imported, 0 entries failed or 
 Check your keystore to verify new entry:
 ```
 keytool -list -keystore /etc/ssl/java/keystore.jks
->>
+
 Enter keystore password:  
 Keystore type: PKCS12
 Keystore provider: SUN
