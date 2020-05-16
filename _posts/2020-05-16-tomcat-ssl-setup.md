@@ -150,5 +150,5 @@ sudo systemctl start tomcat
 <br>
 ### Reference
 * [Apache Tomcat 9 SSL/TLS Configuration How-To](http://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html)
-* [Coderwall](https://coderwall.com/p/3t4xka/import-private-key-and-certificate-into-java-keystore)
-***I fixed this error ```"Error unable to get issuer certificate getting chain."``` with comments in this post***
+* [Coderwall](https://coderwall.com/p/3t4xka/import-private-key-and-certificate-into-java-keystore)<br>
+*I fixed this error ```"Error unable to get issuer certificate getting chain."``` with comments in this post*
