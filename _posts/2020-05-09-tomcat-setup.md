@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Tomcat9 Centos Installation"
+title:  "Tomcat 9 Centos Installation"
 categories: Java, Tomcat
 ---
 
