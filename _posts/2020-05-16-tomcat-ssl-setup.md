@@ -134,7 +134,6 @@ Certificate fingerprint (SHA-256): B3:BC:48:0B:78:18:E9:5E:12:92:3B:CD:C7:8B:65:
 ```
 
 <br>
-
 Open your server.xml ```/opt/tomcat/conf/server.xml``` and add the following:
 ```
  <Connector protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -148,6 +147,8 @@ sudo systemctl stop tomcat
 sudo systemctl start tomcat
 ```
 
-<br><br>
+<br>
 ### Reference
 * [Apache Tomcat 9 SSL/TLS Configuration How-To](http://tomcat.apache.org/tomcat-9.0-doc/ssl-howto.html)
+* [Coderwall](https://coderwall.com/p/3t4xka/import-private-key-and-certificate-into-java-keystore)
+***I fixed this error ```"Error unable to get issuer certificate getting chain."``` with comments in this post***
