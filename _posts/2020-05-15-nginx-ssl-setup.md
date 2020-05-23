@@ -80,8 +80,7 @@ http {
         ssl_certificate_key "/etc/nginx/ssl/<CERTIFICATE KEY>";
         ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  10m;
-        ssl_ciphers PROFILE=SYSTEM;
-        ssl_prefer_server_ciphers on;
+        ssl_protocols TLSv1.1 TLSv1.2;
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
@@ -160,8 +159,7 @@ http {
         ssl_certificate_key "/etc/nginx/ssl/<CERTIFICATE KEY>";
         ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  10m;
-        ssl_ciphers PROFILE=SYSTEM;
-        ssl_prefer_server_ciphers on;
+        ssl_protocols TLSv1.1 TLSv1.2;
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
