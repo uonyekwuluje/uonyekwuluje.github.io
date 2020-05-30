@@ -13,7 +13,7 @@ This comes in handy if you want to add more lines to a text file:
 - name: Update /etc/security/limits.conf 
   lineinfile: 
     dest: "/etc/security/limits.conf"
-    line: {{{{ item }}}}
+    line: {{"{{ item "}}}}
   with_items:
     - 'elasticsearch soft nofile 65536'
     - 'elasticsearch hard nofile 65536'
@@ -32,6 +32,6 @@ This comes in handy if you want to add a line if it does not exist after a given
   lineinfile:
      dest: "/opt/config/user.properties"
      insertafter: "access_id=xxxxxxxxxxxxxxxxxxxxx"
-     line: name={{{{ ansible_nodename }}}}
+     line: name={{"{{ ansible_nodename" }}}}
   when: test_grep.stdout == "0"
 ```
