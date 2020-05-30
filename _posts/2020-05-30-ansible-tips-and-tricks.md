@@ -13,11 +13,10 @@ This comes in handy if you want to add more lines to a text file:
 - name: Update /etc/security/limits.conf 
   lineinfile: 
     dest: "/etc/security/limits.conf"
-    line: '{{ item }}'
+    line: '\{\{ item \}\}'
   with_items:
     - 'elasticsearch soft nofile 65536'
     - 'elasticsearch hard nofile 65536'
     - 'elasticsearch soft memlock unlimited' 
     - 'elasticsearch hard memlock unlimited'
 ```
-
