@@ -20,3 +20,19 @@ This comes in handy if you want to add more lines to a text file:
     - 'elasticsearch soft memlock unlimited' 
     - 'elasticsearch hard memlock unlimited'
 ```
+
+**Updating existing file(s)**<br>
+This comes in handy if you:
+* Want to add a line if it does not exist after a given line:
+```
+- name: Check for occurence of name in /opt/config/user.properties
+  shell: grep -c "^name=" /opt/config/user.properties || true
+  register: test_grep
+
+- name: Update /opt/config/user.properties configuration file
+  lineinfile:
+     dest: "/opt/config/user.properties"
+     insertafter: "access_id=xxxxxxxxxxxxxxxxxxxxx"
+     line: name={{ ansible_nodename }}
+  when: test_grep.stdout == "0"
+```
