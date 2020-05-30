@@ -22,8 +22,7 @@ This comes in handy if you want to add more lines to a text file:
 ```
 
 **Updating existing file(s)**<br>
-This comes in handy if you:
-* Want to add a line if it does not exist after a given line:
+This comes in handy if you want to add a line if it does not exist after a given line
 ```
 - name: Check for occurence of name in /opt/config/user.properties
   shell: grep -c "^name=" /opt/config/user.properties || true
