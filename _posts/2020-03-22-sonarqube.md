@@ -29,11 +29,19 @@ sudo setenforce Permissive
 ```
 
 **Systems Settings:**<br>
-Update *sysctl | /etc/sysctl.conf* with these enteries:
+Update *sysctl /etc/sysctl.conf* with these enteries:
 ```
-vm.max_map_count=262144
-fs.file-max=65536
+vm.max_map_count=524288
+fs.file-max=131072
 ```
+
+Update */etc/security/limits.conf* with these enteries:
+```
+sonarqube   -   nofile   131072
+sonarqube   -   nproc    8192
+```
+
+
 *You can update this based on your systems requirements*
 
 **Create Sonar User:**<br>
@@ -48,7 +56,7 @@ chown -R sonar:sonar /var/sonarqube
 **Install & Configure PostgreSQL:**<br>
 Download and install PostgreSql 10:
 ```
-sudo yum install -y https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm
+sudo yum install -y https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 sudo yum install -y postgresql10-server postgresql10-contrib 
 sudo /usr/pgsql-10/bin/postgresql-10-setup initdb
 
@@ -112,9 +120,9 @@ exit
 **Download, Install and Setup SonarQube:**<br>
 ```
 cd /tmp
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.2.0.32929.zip
-unzip sonarqube-8.2.0.32929.zip
-mv sonarqube-8.2.0.32929 /opt/sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.4.2.36762.zip
+unzip sonarqube-8.4.2.36762.zip
+mv sonarqube-8.4.2.36762 /opt/sonarqube
 chown -R sonar:sonar /opt/sonarqube
 ```
 
@@ -147,8 +155,8 @@ After=syslog.target network.target
 Type=forking
 ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
 ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
-LimitNOFILE=65536
-LimitNPROC=4096
+LimitNOFILE=131072
+LimitNPROC=8192
 User=sonar
 Group=sonar
 Restart=on-failure
