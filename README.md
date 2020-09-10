@@ -15,10 +15,10 @@ Some of my specialties and areas of interest are:
 
 - **Programming Languages:** Python, BASH
 - **Web Frameworks:** Flask
-- **Databases:** Postgres
+- **Databases:** Postgres, MySQL
 - **Configuration Management:** Ansible, Salt
 - **IaaS Tools:** Terraform, Packer, Vault, Consul, Vagrant, Cloudformation
-- **Continuous Integration/Delivery/Deployment:** Jenkins, Azure DevOps
+- **Continuous Integration/Delivery/Deployment:** Jenkins, Azure DevOps, GitLab CI
 - **Container Services:** Docker, Kubernetes 
 - **Virtualization Platforms:** VMware, KVM, XEN, VirtualBox
 - **Cloud Services:** AWS, GCP, Azure
