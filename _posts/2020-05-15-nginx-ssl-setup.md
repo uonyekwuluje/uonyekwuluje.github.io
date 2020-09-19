@@ -146,7 +146,7 @@ http {
         listen       80 default_server;
         listen       [::]:80 default_server;
         server_name  _;
-	    return 301 https://$host$request_uri;
+        return 301 https://$host$request_uri;
     }
 
     server {
@@ -159,7 +159,9 @@ http {
         ssl_certificate_key "/etc/nginx/ssl/<CERTIFICATE KEY>";
         ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  10m;
-        ssl_protocols TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers on;
+        ssl_protocols  TLSv1.2 TLSv1.3;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256;
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
