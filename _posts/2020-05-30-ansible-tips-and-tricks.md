@@ -5,7 +5,21 @@ categories: Ansible
 ---
 Configuration management with ansible is nice. Simplifies administrative tasks and ensures you have a system that can be reproduced, 
 configured and updated at will. Sometimes you run into use cases that entails going beyond the basics or just employing simple concepts
-differently. This post is geared at sharing some of these tips. 
+from different angles. This post is geared at sharing some of these tips. 
+
+
+**Gathering Ansible Facts**<br>
+This comes in handy when you need host facts for automation. Things like hostname, distribution, network etc
+```
+ansible <hostname> -m setup
+```
+You can run filters based on the outputs for example, finding target host distribution
+```
+ansible -m setup testcluster --limit pubserver
+ansible -m setup testcluster -a "filter=ansible_distribution*" --limit pubserver
+ansible -m setup testcluster -a "filter=ansible_distribution_major_version" --limit pubserver
+```
+
 
 **Appending text blocks to an existing file**<br>
 This comes in handy if you want to add more lines to a text file:
