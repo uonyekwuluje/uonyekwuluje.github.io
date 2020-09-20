@@ -37,8 +37,8 @@ fs.file-max=131072
 
 Update */etc/security/limits.conf* with these enteries:
 ```
-sonarqube   -   nofile   131072
-sonarqube   -   nproc    8192
+sonar   -   nofile   131072
+sonar   -   nproc    8192
 ```
 
 
