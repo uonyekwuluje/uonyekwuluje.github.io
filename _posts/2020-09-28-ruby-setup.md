@@ -54,6 +54,6 @@ rvm list
 
 
 # Reference Links
-[RVM Installation Guide](https://rvm.io/rvm/install)
-[Ruby Development Tutorial](https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/nginx/oss/install_language_runtime.html)
-[Ruby Troubleshooting Guide](https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html?utm_source=ruby-ssl-check#troubleshooting-protocol-errors)
+* [RVM Installation Guide](https://rvm.io/rvm/install)
+* [Ruby Development Tutorial](https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/nginx/oss/install_language_runtime.html)
+* [Ruby Troubleshooting Guide](https://bundler.io/guides/rubygems_tls_ssl_troubleshooting_guide.html?utm_source=ruby-ssl-check#troubleshooting-protocol-errors)
