@@ -23,3 +23,21 @@ tmpfs           194M     0  194M   0% /run/user/1000
 
 ```
 Our goal is to resize ```/dev/sda2        32G  1.6G   30G   6% /``` for **32Gb** to **100Gb**
+
+# Get List of Virtual Machines
+Get a list of virtual machines and shutdown the desired VM
+```
+az vm list -o table
+```
+You should see a list. See below for sample result
+```
+Name              ResourceGroup       Location    Zones
+----------------  ------------------  ----------  -------
+linuxjumphost     DEVLABS-NETWORK-RG  eastus
+privrhelserver-0  DEVLABS-NETWORK-RG  eastus
+
+```
+To stop the vm ```privrhelserver-0```, type command below. *Substitute in your case*
+```
+az vm stop --name privrhelserver-0 --resource-group DEVLABS-NETWORK-RG
+```
