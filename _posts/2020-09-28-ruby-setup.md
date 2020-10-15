@@ -53,7 +53,7 @@ rvm list
 ```
 
 # Install Ruby from Source
-While this is dated, there are use cases for setting up ruby from source to ensure system wide access and stability.
+While this is dated, use cases exists for setting up ruby from source to ensure system wide access and stability.
 ```
 RUBY_MAJOR_VERSION=2.7
 RUBY_MINOR_VERSION=2.7.1
