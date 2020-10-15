@@ -8,7 +8,7 @@ This tutorial documents how to setup ruby in a linux system. I worked on a proje
 around Ruby. I got it working after some early struggles and decided to document my steps for future reference.
 
 
-### Requirements
+# Requirements
 Ubuntu System Requirements:
 ```
 sudo apt-get update
@@ -21,7 +21,7 @@ sudo yum install -y curl gpg gcc gcc-c++ make
 ```
 
 
-### Install Ruby RVM
+# Install Ruby RVM
 Install RVM: *Adjust firewall as needed*
 ```
 sudo gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -31,7 +31,7 @@ source /home/`whoami`/.rvm/scripts/rvm
 ```
 
 
-### Install Ruby with RVM
+# Install Ruby with RVM
 Install Ruby: 
 ```
 # Update to your desired version
@@ -51,6 +51,24 @@ rvm list
 # =* - current && default
 #  * - default
 ```
+
+# Install Ruby from Source
+While this is dated, there are use cases for setting up ruby from source to ensure system wide access and stability.
+```
+RUBY_MAJOR_VERSION=2.7
+RUBY_MINOR_VERSION=2.7.1
+cd /tmp
+wget https://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR_VERSION/ruby-$RUBY_MINOR_VERSION.tar.gz
+tar xzf ruby-$RUBY_MINOR_VERSION.tar.gz
+rm ruby-$RUBY_MINOR_VERSION.tar.gz
+sudo mv ruby-${RUBY_MINOR_VERSION} /opt/
+cd /opt/ruby-${RUBY_MINOR_VERSION}
+sudo ./configure
+sudo make
+sudo make install
+ruby -v
+```
+
 
 
 
