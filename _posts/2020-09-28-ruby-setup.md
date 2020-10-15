@@ -4,10 +4,11 @@ title:  "Ruby Setup"
 categories: Ruby
 ---
 
-This tutorial documents how to setup ruby in a linux system.
+This tutorial documents how to setup ruby in a linux system. I worked on a project a while back and it's core was centered
+around Ruby. I got it working after some early struggles and decided to document my steps for future reference.
 
 
-**Requirements**<br>
+### Requirements
 Ubuntu System Requirements:
 ```
 sudo apt-get update
@@ -20,7 +21,7 @@ sudo yum install -y curl gpg gcc gcc-c++ make
 ```
 
 
-**Install Ruby RVM**<br>
+### Install Ruby RVM
 Install RVM: *Adjust firewall as needed*
 ```
 sudo gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -30,7 +31,7 @@ source /home/`whoami`/.rvm/scripts/rvm
 ```
 
 
-**Install Ruby**<br>
+### Install Ruby with RVM
 Install Ruby: 
 ```
 # Update to your desired version
