@@ -41,3 +41,11 @@ To stop the vm ```privrhelserver-0```, type command below. *Substitute in your c
 ```
 az vm stop --name privrhelserver-0 --resource-group DEVLABS-NETWORK-RG
 ```
+Verify the VM has stopped
+```
+az vm list -o table -d | grep privrhelserver-0
+```
+You should see this
+```
+privrhelserver-0  DEVLABS-NETWORK-RG  VM stopped                            eastus
+```
