@@ -103,7 +103,8 @@ cd into the project directory and update your pom file with the code below:
 
 </project>
 ```
-* Update the base app ```src/main/java/com/javaconcepts/app/App.java```
+
+* Update the base app ```src/main/java/com/javaconcepts/app/App.java``` with code below:
 ```
 package com.javaconcepts.app;
 
@@ -118,7 +119,7 @@ public class App
     }
 }
 ```
-and create a second one ```src/main/java/com/javaconcepts/app/App2.java ```.
+and create a second one ```src/main/java/com/javaconcepts/app/App2.java ``` with code below:
 ```
 package com.javaconcepts.app;
 
