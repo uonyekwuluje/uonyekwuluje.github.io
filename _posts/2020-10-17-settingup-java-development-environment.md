@@ -132,9 +132,22 @@ public class App2
 }
 {% endhighlight %}
 
-* Compile with this command ```mvn clean install assembly:single```. If everything works well, execute with this command ```java -jar target/javaconcepts-1.0-SNAPSHOT-jar-with-dependencies.jar```. If all goes well, you should see this
+* Compile and run with the commands
+```
+mvn clean install assembly:single
+java -jar target/javaconcepts-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+If everything goes well, you should see this:
 ```
 Hello World!
 Welcome to my first App
 Welcome to my second class
 ```
+And that is it
+
+# **Remarks**
+I tried to address a few things here.
+* Show how to use Maven for basic command line project scaffolding
+* How to update project pom file to achieve executable JAR
+* How to call a class from a main class.
+This primarily serves as a base reminder when I am working with JAVA.
