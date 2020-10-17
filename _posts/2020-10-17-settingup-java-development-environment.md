@@ -105,7 +105,7 @@ Change directory ```cd javaconcepts``` and update your pom.xml file with the cod
 {% endhighlight %}
 
 * Update the base app **src/main/java/com/javaconcepts/app/App.java** with code below:
-```
+{% highlight java %}
 package com.javaconcepts.app;
 
 public class App 
@@ -118,9 +118,9 @@ public class App
         newapp.displayName();        
     }
 }
-```
+{% endhighlight %}
 and create a second one **src/main/java/com/javaconcepts/app/App2.java** with code below:
-```
+{% highlight java %}
 package com.javaconcepts.app;
 
 public class App2 
@@ -130,7 +130,8 @@ public class App2
         System.out.println("Welcome to my second class");
     }
 }
-```
+{% endhighlight %}
+
 * Compile with this command ```mvn clean install assembly:single```. If everything works well, execute with this command ```java -jar target/javaconcepts-1.0-SNAPSHOT-jar-with-dependencies.jar```. If all goes well, you should see this
 ```
 Hello World!
