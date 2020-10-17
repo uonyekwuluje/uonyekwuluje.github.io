@@ -57,8 +57,8 @@ features and functionality.
 ```
 mvn archetype:generate -DgroupId=com.javaconcepts.app -DartifactId=javaconcepts -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
-update your pom.xml file with the code below: 
-```
+Change directory ```cd javaconcepts``` and update your pom.xml file with the code below: 
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
