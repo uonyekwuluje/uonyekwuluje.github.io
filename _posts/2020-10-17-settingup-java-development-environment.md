@@ -57,7 +57,7 @@ features and functionality.
 ```
 mvn archetype:generate -DgroupId=com.javaconcepts.app -DartifactId=javaconcepts -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
-cd into the project directory and update your pom file with the code below:
+cd into the project directory and update your pom file with the code below: <br>
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -103,7 +103,7 @@ cd into the project directory and update your pom file with the code below:
 
 </project>
 ```
-
+<br>
 * Update the base app ```src/main/java/com/javaconcepts/app/App.java``` with code below:
 ```
 package com.javaconcepts.app;
@@ -131,6 +131,7 @@ public class App2
     }
 }
 ```
+<br>
 * Compile with this command ```mvn clean install assembly:single```. If everything works well, execute with this command ```java -jar target/javaconcepts-1.0-SNAPSHOT-jar-with-dependencies.jar```. If all goes well, you should see this
 ```
 Hello World!
