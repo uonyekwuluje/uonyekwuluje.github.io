@@ -13,10 +13,11 @@ This site is about my findings, solutions and knowledge gained over the years. S
 
 Some of my specialties and areas of interest are:
 
-- **Programming Languages:** Python, BASH
+- **Programming Languages:** JAVA, Python, BASH
+- **Web Development:** HTML5, CSS5, JavaScript
 - **Web Frameworks:** Flask
 - **Databases:** Postgres, MySQL
-- **Configuration Management:** Ansible, Salt
+- **Configuration Management:** Ansible, Chef, Salt
 - **IaaS Tools:** Terraform, Packer, Vault, Consul, Vagrant, Cloudformation
 - **Continuous Integration/Delivery/Deployment:** Jenkins, Azure DevOps, GitLab CI
 - **Container Services:** Docker, Kubernetes 
@@ -29,5 +30,4 @@ For more about me from a professional career standpoint, see details
 <a href="https://www.linkedin.com/in/uchechukwu-onyekwuluje-sde" target="_blank">HERE</a>.
 
 **NOTE:**
-
 The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer.
