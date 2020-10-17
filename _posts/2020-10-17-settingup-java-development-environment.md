@@ -104,7 +104,7 @@ Change directory ```cd javaconcepts``` and update your pom.xml file with the cod
 </project>
 {% endhighlight %}
 
-* Update the base app ```src/main/java/com/javaconcepts/app/App.java``` with code below:
+* Update the base app **src/main/java/com/javaconcepts/app/App.java** with code below:
 ```
 package com.javaconcepts.app;
 
@@ -119,7 +119,7 @@ public class App
     }
 }
 ```
-and create a second one ```src/main/java/com/javaconcepts/app/App2.java ``` with code below:
+and create a second one **src/main/java/com/javaconcepts/app/App2.java** with code below:
 ```
 package com.javaconcepts.app;
 
