@@ -40,9 +40,52 @@ We will be building a 3 node cluster with the following specs:<br>
 
 ### **Cluster Servers**
 Our cluster will be made up of the following:<br>
-| Hostname    | IP Address  |
-| ----------- | ----------- | 
-| kafkanode1  | 10.0.2.4    |
-| kafkanode2  | 10.0.2.5    |
-| kafkanode3  | 10.0.2.6    |
 
+| Hostname      | IP Address |
+| ----------- | ----------- |
+| kafkanode1      | 10.0.2.4       |
+| kafkanode2   | 10.0.2.5        |
+| kafkanode3   | 10.0.2.6        |
+
+### **Operating System**
+This post will be focused on CentOS/RHEL. At the time of this post, I'll be using CentOS 7/RHEL7
+
+### **Firewall Configurations**
+This update needs to be done on all 3 Nodes
+* Using your favorite editor, create ```/etc/firewalld/services/zooKeeper.xml```
+```
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>ZooKeeper</short>
+  <description>Firewall rule for ZooKeeper ports</description>
+  <port protocol="tcp" port="2888"/>
+  <port protocol="tcp" port="3888"/>
+  <port protocol="tcp" port="2181"/>
+</service>
+```
+and ```/etc/firewalld/services/kafka.xml```
+```
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Kafka</short>
+  <description>Firewall rule for Kafka port</description>
+  <port protocol="tcp" port="9092"/>
+</service>
+```
+* Activate the rules and restart the firewall
+```
+sudo firewall-cmd --permanent --add-service=zooKeeper
+sudo firewall-cmd --permanent --add-service=kafka
+sudo service firewalld restart
+sudo firewall-cmd --list-services
+```
+
+### **Systems User**
+Create kafka user in all the nodes and update permissions on data folder
+```
+sudo adduser kafka
+sudo passwd kafka
+sudo usermod -aG wheel kafka
+sudo mkdir /data/zookeeper
+sudo chown -R kafka:kafka /data/zookeeper
+```
