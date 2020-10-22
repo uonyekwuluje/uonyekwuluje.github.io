@@ -295,9 +295,15 @@ you can repeat for node 2 and 3*
     ```
     Type a string on the producer console and you should see the output on the consumer
     ```
-    [kafka@kafkanode1 ~]$ /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
->Men This feels good
 
-    [kafka@kafkanode3 ~]$ /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
-Men This feels good
-    ```
+That is it. Your use case will be different so make changes as needed. 
+
+### **Post Enhancements**
+Kafka is administered from the command line. Web UI tools exist from third parties and a few open source alternatives. In my next post, I'll focus
+on Web UI tools for kafka. Like all things systems I always recommend porting your configs to a Configuration Management tool. I will update this 
+with ansible implementation
+
+### **References**
+* [Kafka Introduction](https://kafka.apache.org/intro)
+* [Apache Kafka](https://en.wikipedia.org/wiki/Apache_Kafka)
+* [Kafka Download](https://kafka.apache.org/downloads)
