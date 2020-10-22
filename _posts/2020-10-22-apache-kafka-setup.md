@@ -54,23 +54,23 @@ This post will be focused on CentOS/RHEL. At the time of this post, I'll be usin
 This update needs to be done on all 3 Nodes
 * Using your favorite editor, create **/etc/firewalld/services/zooKeeper.xml**
 ```
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>ZooKeeper</short>
-  <description>Firewall rule for ZooKeeper ports</description>
-  <port protocol="tcp" port="2888"/>
-  <port protocol="tcp" port="3888"/>
-  <port protocol="tcp" port="2181"/>
-</service>
+    <?xml version="1.0" encoding="utf-8"?>
+    <service>
+      <short>ZooKeeper</short>
+      <description>Firewall rule for ZooKeeper ports</description>
+      <port protocol="tcp" port="2888"/>
+      <port protocol="tcp" port="3888"/>
+      <port protocol="tcp" port="2181"/>
+    </service>
 ```
 and **/etc/firewalld/services/kafka.xml**
 ```
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>Kafka</short>
-  <description>Firewall rule for Kafka port</description>
-  <port protocol="tcp" port="9092"/>
-</service>
+    <?xml version="1.0" encoding="utf-8"?>
+    <service>
+      <short>Kafka</short>
+      <description>Firewall rule for Kafka port</description>
+      <port protocol="tcp" port="9092"/>
+    </service>
 ```
 * Activate the rules and restart the firewall
 ```
