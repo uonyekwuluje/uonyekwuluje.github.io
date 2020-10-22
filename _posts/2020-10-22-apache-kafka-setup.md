@@ -275,7 +275,8 @@ sudo as user kafka and run the following
 ```
 you can repeat for node 2 and 3*
 * Create a Topic with 3 partitions and replicationfactor of 3
-```/opt/kafka/bin/kafka-topics.sh --create --zookeeper kafkanode1:2181,kafkanode2:2181,kafkanode3:2181 --topic testtopic --partitions 3 --replication-factor 3 --config cleanup.policy=delete --config delete.retention.ms=60000```
+```
+    /opt/kafka/bin/kafka-topics.sh --create --zookeeper kafkanode1:2181,kafkanode2:2181,kafkanode3:2181 --topic testtopic --partitions 3 --replication-factor 3 --config cleanup.policy=delete --config delete.retention.ms=60000```
 * Describe Topic. ```/opt/kafka/bin/kafka-topics.sh --describe --zookeeper kafkanode1:2181 --topic testtopic```. You should see this
 ```
     Topic: testtopic	PartitionCount: 3	ReplicationFactor: 3	Configs: cleanup.policy=delete,delete.retention.ms=60000
@@ -294,9 +295,9 @@ you can repeat for node 2 and 3*
     ```
     Type a string on the producer console and you should see the output on the consumer
     ```
-	[kafka@kafkanode1 ~]$ /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
+    [kafka@kafkanode1 ~]$ /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
 >Men This feels good
 
-	[kafka@kafkanode3 ~]$ /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
+    [kafka@kafkanode3 ~]$ /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
 Men This feels good
     ```
