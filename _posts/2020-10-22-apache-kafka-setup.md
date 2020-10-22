@@ -39,7 +39,13 @@ We will be building a 3 node cluster with the following specs:<br>
 ### **Cluster Servers**
 Our cluster will be made up of the following:<br>
 | Hostname    | IP Address  |
-| ------------| ----------- | 
+| ----------- | ----------- | 
 | kafkanode1  | 10.0.2.4    |
 | kafkanode2  | 10.0.2.5    |
 | kafkanode3  | 10.0.2.6    |
+
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
