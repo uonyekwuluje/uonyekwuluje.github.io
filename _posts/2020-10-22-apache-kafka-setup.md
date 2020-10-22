@@ -30,11 +30,13 @@ Kafka has a few APIs. I'll focus on the major apis relevant to this post:
 
 ### **Cluster Layout**
 We will be building a 3 node cluster with the following specs:<br>
-| Specification  | Defaults  |
-| -------------- | --------- |
-| CPU            | 2Ghz      |
-| Memory         | 8GB       |
-| Disk           | 50Gb      |
+
+| Specification      | Defaults |
+| ----------- | ----------- |
+| CPU      | 2Ghz       |
+| Memory   | 8GB        |
+| Disk   | 50Gb        |
+
 
 ### **Cluster Servers**
 Our cluster will be made up of the following:<br>
@@ -44,8 +46,3 @@ Our cluster will be made up of the following:<br>
 | kafkanode2  | 10.0.2.5    |
 | kafkanode3  | 10.0.2.6    |
 
-
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
