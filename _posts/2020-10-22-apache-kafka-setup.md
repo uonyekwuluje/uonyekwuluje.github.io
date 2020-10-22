@@ -108,7 +108,7 @@ Create Broker IDs on each node:<br>
 | kafkanode3   | sudo echo '3' > /data/zookeeper/myid       |
 
 ### **Install Kafka**
-Download and install kafka on all nodes:<br>
+Download and install kafka on all 3 nodes:<br>
 ```
 cd /tmp
 wget https://downloads.apache.org/kafka/2.6.0/kafka_2.13-2.6.0.tgz
@@ -118,3 +118,77 @@ sudo mkdir /opt/kafka/logs
 sudo chown -R kafka:kafka /opt/kafka
 sudo rm -Rf kafka_2.13-2.6.0.tgz
 ```
+
+### **Service Updates**
+Create kafka and zookeeper service on all 3 nodes :<br>
+**/lib/systemd/system/zookeeper.service**
+```
+[Unit]
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=kafka
+ExecStart=/opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
+ExecStop=/opt/kafka/bin/zookeeper-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+```
+**/etc/systemd/system/kafka.service**
+```
+[Unit]
+Requires=network.target remote-fs.target zookeeper.service
+After=network.target remote-fs.target zookeeper.service
+
+[Service]
+Type=simple
+User=kafka
+ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+ExecStop=/opt/kafka/bin/kafka-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### **Update Zookeeper**
+Update zookeeper config on all 3 nodes: **/opt/kafka/config/zookeeper.properties**<br>
+```
+# The directory where the snapshot is stored.
+dataDir=/data/zookeeper
+# the port at which the clients will connect
+clientPort=2181
+clientPortAddress=kafkanode1
+# disable the per-ip limit on the number of connections since this is a non-production config
+maxClientCnxns=0
+# Disable the adminserver by default to avoid port conflicts.
+# Set the port to something non-conflicting if choosing to enable this
+admin.enableServer=false
+# admin.serverPort=8080
+# The number of milliseconds of each tick
+tickTime=2000
+
+# The number of ticks that the initial synchronization phase can take
+initLimit=10
+
+# The number of ticks that can pass between 
+# sending a request and getting an acknowledgement
+syncLimit=5
+
+# zoo servers
+server.1=kafkanode1:2888:3888
+server.2=kafkanode2:2888:3888
+server.3=kafkanode3:2888:3888
+```
+*note: Change **clientPortAddress** as needed per node*
+
+
+### **Update Server Properties**
+Update Server Properties Config on all 3 nodes: **/opt/kafka/config/server.properties**. The following should be updated as needed
+* ```broker.id=<id as configured above```
+* ```listeners=PLAINTEXT://0.0.0.0:9092```
+* ```advertised.listeners=PLAINTEXT://<kafka node name>:9092```
+* ```zookeeper.connect=kafkanode1:2181,kafkanode2:2181,kafkanode3:2181```
