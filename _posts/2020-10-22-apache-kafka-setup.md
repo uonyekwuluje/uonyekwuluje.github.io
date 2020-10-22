@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Kafaka Multinode Cluster Setup"
+title:  "Kafka Multinode Cluster Setup"
 categories: Kafka
 ---
 
