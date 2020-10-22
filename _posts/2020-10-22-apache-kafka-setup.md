@@ -29,7 +29,7 @@ Kafka has a few APIs. I'll focus on the major apis relevant to this post:
     * Admin API – Manage Kafka topics,brokers and other Kafka objects.
 
 ### **Cluster Layout**
-We will be building a 3 node cluster with the following specs:
+We will be building a 3 node cluster with the following specs:<br>
 | Specification     | Defaultis |
 | ------------------| --------- |
 | CPU               | 2Ghz      |
@@ -37,7 +37,7 @@ We will be building a 3 node cluster with the following specs:
 | Disk              | 50Gb      |
 
 ### **Cluster Servers**
-Our cluster will be made up of the following:
+Our cluster will be made up of the following:<br>
 | Hostname     | IP Address  |
 | -------------|-------------| 
 | kafkanode1   | 10.0.2.4    |
