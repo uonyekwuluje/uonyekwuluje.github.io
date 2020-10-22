@@ -264,7 +264,7 @@ sudo as user kafka and run the following
 2742 Kafka
 3276 Jps
 ```
-* Verify Brokers ```/opt/kafka/bin/zookeeper-shell.sh kafkanode1:2181 ls /brokers/ids```. You should see
+* Verify Brokers **/opt/kafka/bin/zookeeper-shell.sh kafkanode1:2181 ls /brokers/ids**. You should see
 ```
 Connecting to kafkanode1:2181
 
@@ -273,7 +273,7 @@ WATCHER::
 WatchedEvent state:SyncConnected type:None path:null
 [1, 2, 3]
 ```
-*note: you can repeat for node 2 and 3*
+you can repeat for node 2 and 3*
 * Create a Topic with 3 partitions and replicationfactor of 3
 ```/opt/kafka/bin/kafka-topics.sh --create --zookeeper kafkanode1:2181,kafkanode2:2181,kafkanode3:2181 --topic testtopic --partitions 3 --replication-factor 3 --config cleanup.policy=delete --config delete.retention.ms=60000```
 * Describe Topic. ```/opt/kafka/bin/kafka-topics.sh --describe --zookeeper kafkanode1:2181 --topic testtopic```. You should see this
