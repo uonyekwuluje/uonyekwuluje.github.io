@@ -266,20 +266,37 @@ sudo as user kafka and run the following
 ```
 * Verify Brokers **/opt/kafka/bin/zookeeper-shell.sh kafkanode1:2181 ls /brokers/ids**. You should see
 ```
-Connecting to kafkanode1:2181
+    Connecting to kafkanode1:2181
 
-WATCHER::
+    WATCHER::
 
-WatchedEvent state:SyncConnected type:None path:null
-[1, 2, 3]
+    WatchedEvent state:SyncConnected type:None path:null
+    [1, 2, 3]
 ```
 you can repeat for node 2 and 3*
 * Create a Topic with 3 partitions and replicationfactor of 3
 ```/opt/kafka/bin/kafka-topics.sh --create --zookeeper kafkanode1:2181,kafkanode2:2181,kafkanode3:2181 --topic testtopic --partitions 3 --replication-factor 3 --config cleanup.policy=delete --config delete.retention.ms=60000```
 * Describe Topic. ```/opt/kafka/bin/kafka-topics.sh --describe --zookeeper kafkanode1:2181 --topic testtopic```. You should see this
 ```
-Topic: testtopic	PartitionCount: 3	ReplicationFactor: 3	Configs: cleanup.policy=delete,delete.retention.ms=60000
-	Topic: testtopic	Partition: 0	Leader: 1	Replicas: 1,3,2	Isr: 1,3,2
-	Topic: testtopic	Partition: 1	Leader: 2	Replicas: 2,1,3	Isr: 2,1,3
-	Topic: testtopic	Partition: 2	Leader: 3	Replicas: 3,2,1	Isr: 3,2,1
+    Topic: testtopic	PartitionCount: 3	ReplicationFactor: 3	Configs: cleanup.policy=delete,delete.retention.ms=60000
+	    Topic: testtopic	Partition: 0	Leader: 1	Replicas: 1,3,2	Isr: 1,3,2
+	    Topic: testtopic	Partition: 1	Leader: 2	Replicas: 2,1,3	Isr: 2,1,3
+	    Topic: testtopic	Partition: 2	Leader: 3	Replicas: 3,2,1	Isr: 3,2,1
 ```
+* Start Producer on one node and Consumer on another:
+    * Producer on kafkanode1
+    ```
+    /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
+    ```
+    * Consumer on kafkanode2:
+    ```
+    /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
+    ```
+    Type a string on the producer console and you should see the output on the consumer
+    ```
+    [kafka@kafkanode1 ~]$ /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
+>Men This feels good
+
+    [kafka@kafkanode3 ~]$ /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
+Men This feels good
+    ```
