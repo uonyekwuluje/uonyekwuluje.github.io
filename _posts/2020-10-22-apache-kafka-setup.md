@@ -97,3 +97,24 @@ sudo yum update -y
 sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget vim make gcc telnet \
 libffi-devel openssl-devel openssl-devel bzip2-devel java-11-openjdk-devel java-11-openjdk
 ```
+
+### **Create Broker IDs**
+Create Broker IDs on each node:<br>
+
+| Hostname      | Command |
+| ----------- | ----------- |
+| kafkanode1      | sudo echo '1' > /data/zookeeper/myid       |
+| kafkanode2   | sudo echo '2' > /data/zookeeper/myid        |
+| kafkanode3   | sudo echo '3' > /data/zookeeper/myid       |
+
+### **Install Kafka**
+Download and install kafka on all nodes:<br>
+```
+cd /tmp
+wget https://downloads.apache.org/kafka/2.6.0/kafka_2.13-2.6.0.tgz
+tar -zxvf kafka_2.13-2.6.0.tgz
+sudo mv kafka_2.13-2.6.0 /opt/kafka
+sudo mkdir /opt/kafka/logs
+sudo chown -R kafka:kafka /opt/kafka
+sudo rm -Rf kafka_2.13-2.6.0.tgz
+```
