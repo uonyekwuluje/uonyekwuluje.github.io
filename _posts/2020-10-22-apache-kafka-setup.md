@@ -52,7 +52,7 @@ This post will be focused on CentOS/RHEL. At the time of this post, I'll be usin
 
 ### **Firewall Configurations**
 This update needs to be done on all 3 Nodes
-* Using your favorite editor, create ```/etc/firewalld/services/zooKeeper.xml```
+* Using your favorite editor, create **/etc/firewalld/services/zooKeeper.xml**
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -63,7 +63,7 @@ This update needs to be done on all 3 Nodes
   <port protocol="tcp" port="2181"/>
 </service>
 ```
-and ```/etc/firewalld/services/kafka.xml```
+and **/etc/firewalld/services/kafka.xml**
 ```
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -88,4 +88,12 @@ sudo passwd kafka
 sudo usermod -aG wheel kafka
 sudo mkdir /data/zookeeper
 sudo chown -R kafka:kafka /data/zookeeper
+```
+
+### **Package Requirements**
+Run these on all 3 Nodes
+```
+sudo yum update -y
+sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget vim make gcc telnet \
+libffi-devel openssl-devel openssl-devel bzip2-devel java-11-openjdk-devel java-11-openjdk
 ```
