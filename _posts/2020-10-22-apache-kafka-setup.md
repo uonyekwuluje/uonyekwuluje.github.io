@@ -192,3 +192,94 @@ Update Server Properties Config on all 3 nodes: **/opt/kafka/config/server.prope
 * ```listeners=PLAINTEXT://0.0.0.0:9092```
 * ```advertised.listeners=PLAINTEXT://<kafka node name>:9092```
 * ```zookeeper.connect=kafkanode1:2181,kafkanode2:2181,kafkanode3:2181```
+
+
+### **Enable Services**
+Enable Kafka and Zookeeper services on all nodes
+```
+sudo systemctl enable zookeeper.service
+sudo systemctl enable kafka.service
+
+sudo systemctl start zookeeper.service
+sudo systemctl start kafka.service
+```
+After starting the services, verify they are working correctly.<br>
+**Verify Zookeeper**
+```
+sudo systemctl status zookeeper.service
+```
+if this works well, you should see this
+```
+● zookeeper.service
+   Loaded: loaded (/usr/lib/systemd/system/zookeeper.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2020-10-22 08:03:55 UTC; 12s ago
+ Main PID: 1859 (java)
+   CGroup: /system.slice/zookeeper.service
+           └─1859 java -Xmx512M -Xms512M -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInl...
+
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.net.Socket.connect(Socket.java:609)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at org.apache.zookeeper.server.quorum.QuorumCnxManager.initiateConnection(QuorumCnxManager.java:373)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at org.apache.zookeeper.server.quorum.QuorumCnxManager$QuorumConnectionReqThread.run(QuorumCnxManag...ava:436)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+Oct 22 08:04:03 kafkanode1 zookeeper-server-start.sh[1859]: at java.base/java.lang.Thread.run(Thread.java:834)
+Oct 22 08:04:06 kafkanode1 zookeeper-server-start.sh[1859]: [2020-10-22 08:04:06,382] WARN Exception causing close of session 0x0: ZooKeeperServer not running ...verCnxn)
+Hint: Some lines were ellipsized, use -l to show in full.
+```
+**Verify Kafka**
+```
+sudo systemctl status kafka.service
+```
+if all works well, you should see
+```
+● kafka.service
+   Loaded: loaded (/etc/systemd/system/kafka.service; enabled; vendor preset: disabled)
+   Active: active (running) since Thu 2020-10-22 08:04:01 UTC; 13s ago
+ Main PID: 2229 (java)
+   CGroup: /system.slice/kafka.service
+           └─2229 java -Xmx1G -Xms1G -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineL...
+
+Oct 22 08:04:10 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:10,524] INFO Socket error occurred: kafkanode3/10.0.2.6:2181: Connection refused (or...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,005] INFO Opening socket connection to server kafkanode2/10.0.2.5:2181. Will not ...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,009] INFO Socket error occurred: kafkanode2/10.0.2.5:2181: Connection refused (or...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,670] INFO Opening socket connection to server kafkanode1/10.0.2.4:2181. Will not ...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,670] INFO Socket connection established, initiating session, client: /10.0.2.4:47...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,675] INFO Unable to read additional data from server sessionid 0x0, likely server...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,935] INFO Opening socket connection to server kafkanode3/10.0.2.6:2181. Will not ...ientCnxn)
+Oct 22 08:04:12 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:12,937] INFO Socket error occurred: kafkanode3/10.0.2.6:2181: Connection refused (or...ientCnxn)
+Oct 22 08:04:14 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:14,621] INFO Opening socket connection to server kafkanode2/10.0.2.5:2181. Will not ...ientCnxn)
+Oct 22 08:04:14 kafkanode1 kafka-server-start.sh[2229]: [2020-10-22 08:04:14,622] INFO Socket error occurred: kafkanode2/10.0.2.5:2181: Connection refused (or...ientCnxn)
+Hint: Some lines were ellipsized, use -l to show in full.
+```
+
+
+### **Tests and Verification**
+sudo as user kafka and run the following 
+* ```jps```. You should see this
+```
+1859 QuorumPeerMain
+2742 Kafka
+3276 Jps
+```
+* Verify Brokers ```/opt/kafka/bin/zookeeper-shell.sh kafkanode1:2181 ls /brokers/ids```. You should see
+```
+Connecting to kafkanode1:2181
+
+WATCHER::
+
+WatchedEvent state:SyncConnected type:None path:null
+[1, 2, 3]
+```
+*note: you can repeat for node 2 and 3*
+* Create a Topic with 3 partitions and replicationfactor of 3
+```/opt/kafka/bin/kafka-topics.sh --create --zookeeper kafkanode1:2181,kafkanode2:2181,kafkanode3:2181 --topic testtopic --partitions 3 --replication-factor 3 --config cleanup.policy=delete --config delete.retention.ms=60000```
+* Describe Topic. ```/opt/kafka/bin/kafka-topics.sh --describe --zookeeper kafkanode1:2181 --topic testtopic```. You should see this
+```
+Topic: testtopic	PartitionCount: 3	ReplicationFactor: 3	Configs: cleanup.policy=delete,delete.retention.ms=60000
+	Topic: testtopic	Partition: 0	Leader: 1	Replicas: 1,3,2	Isr: 1,3,2
+	Topic: testtopic	Partition: 1	Leader: 2	Replicas: 2,1,3	Isr: 2,1,3
+	Topic: testtopic	Partition: 2	Leader: 3	Replicas: 3,2,1	Isr: 3,2,1
+```
