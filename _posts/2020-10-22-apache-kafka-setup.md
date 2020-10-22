@@ -294,9 +294,9 @@ you can repeat for node 2 and 3*
     ```
     Type a string on the producer console and you should see the output on the consumer
     ```
-    [kafka@kafkanode1 ~]$ /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
+	[kafka@kafkanode1 ~]$ /opt/kafka/bin/kafka-console-producer.sh --broker-list kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic
 >Men This feels good
 
-    [kafka@kafkanode3 ~]$ /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
+	[kafka@kafkanode3 ~]$ /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server kafkanode1:9092,kafkanode2:9092,kafkanode3:9092 --topic testtopic --from-beginning
 Men This feels good
     ```
