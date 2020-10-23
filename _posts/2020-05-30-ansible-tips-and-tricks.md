@@ -61,8 +61,6 @@ This comes in handy if you want to make decisions based on system facts. For exa
 ```
 
 
-
-
 **Appending text blocks to an existing file**<br>
 This comes in handy if you want to add more lines to a text file:
 ```
@@ -94,5 +92,12 @@ This comes in handy if you want to add a line if it does not exist after a given
 
 
 
-
-
+**Unarchive into folder**<br>
+This comes in handy if you want to unzip, untar a file into a directory
+```
+- name: Extract archive
+  unarchive:
+    src: file.tar.gz
+    dest: /foo/bar
+    extra_opts: [--strip-components=1]
+```
