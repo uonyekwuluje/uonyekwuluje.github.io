@@ -74,7 +74,7 @@ Run the command below to create an organization and associate the admin user
 sudo chef-server-ctl org-create devenv "Dev Environment" --association_user chefadmin -f /etc/chef/devenv-validator.pem
 ```
 
-# **Create Chef Manage**
+**Create Chef Manage**<br>
 Run the commands below to create Chef Manage:
 ```
 sudo chef-server-ctl install chef-manage 
@@ -167,3 +167,71 @@ Connecting to host chefserver.home:443
 Successfully verified certificates from `chefserver.home'
 ```
 
+# Bootstrap Existing Node
+To bootstrap an existing node. Loginto the chef workstation and run the command below:
+```
+knife bootstrap 192.168.1.142 --node-name chefclient --connection-user centos --sudo --ssh-identity-file ~/.ssh/id_rsa
+```
+you should see this.
+```
+Connecting to 192.168.1.142 using ssh
+The authenticity of host '192.168.1.142 ()' can't be established.
+fingerprint is SHA256:etC4Kf1belep3aK4oZ7xk6udPIg3+lKc/rU7FN6vneU.
+
+Are you sure you want to continue connecting
+? (Y/N) Y
+Connecting to 192.168.1.142 using ssh
+Creating new client for chefclient
+Creating new node for chefclient
+Bootstrapping 192.168.1.142
+ [192.168.1.142] -----> Installing Chef Omnibus (stable/16)
+downloading https://omnitruck.chef.io/chef/install.sh
+  to file /tmp/install.sh.1762/install.sh
+ [192.168.1.142] trying curl...
+ [192.168.1.142] el 7 x86_64
+Getting information for chef stable 16 for el...
+downloading https://omnitruck.chef.io/stable/chef/metadata?v=16&p=el&pv=7&m=x86_64
+  to file /tmp/install.sh.1768/metadata.txt
+ [192.168.1.142] trying curl...
+ [192.168.1.142] sha1	4a39c750d80858fcc4e85f0a2374a311c4f7cec7
+sha256	cbe863f28a8d9b061aea6e56d66f18f46ccc4bf50a54761ecaec9a5ab79952e1
+url	https://packages.chef.io/files/stable/chef/16.6.14/el/7/chef-16.6.14-1.el7.x86_64.rpm
+version	16.6.14
+ [192.168.1.142] 
+ [192.168.1.142] downloaded metadata file looks valid...
+ [192.168.1.142] downloading https://packages.chef.io/files/stable/chef/16.6.14/el/7/chef-16.6.14-1.el7.x86_64.rpm
+  to file /tmp/install.sh.1768/chef-16.6.14-1.el7.x86_64.rpm
+ [192.168.1.142] trying curl...
+ [192.168.1.142] Comparing checksum with sha256sum...
+ [192.168.1.142] Installing chef 16
+installing with rpm...
+ [192.168.1.142] warning: /tmp/install.sh.1768/chef-16.6.14-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+ [192.168.1.142] Preparing...                          
+ [192.168.1.142] ########################################
+ [192.168.1.142] Updating / installing...
+chef-16.6.14-1.el7                    
+ [192.168.1.142] #
+ [192.168.1.142] #
+ [192.168.1.142] #
+ [192.168.1.142] #
+ [192.168.1.142] Thank you for installing Chef Infra Client! For help getting started visit https://learn.chef.io
+ [192.168.1.142] Starting the first Chef Infra Client Client run...
+ [192.168.1.142] +---------------------------------------------+
+✔ 2 product licenses accepted.
++---------------------------------------------+
+ [192.168.1.142] Starting Chef Infra Client, version 16.6.14
+Patents: https://www.chef.io/patents
+ [192.168.1.142] resolving cookbooks for run list: []
+ [192.168.1.142] Synchronizing Cookbooks:
+ [192.168.1.142] Installing Cookbook Gems:
+Compiling Cookbooks...
+[2020-10-27T13:22:41-04:00] WARN: Node chefclient has an empty run list.
+ [192.168.1.142] Converging 0 resources
+ [192.168.1.142] 
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 0/0 resources updated in 02 seconds
+```
+
+**Test new node**<br>
+Test new node with this command ```knife node list```. You should see ```chefclient```
