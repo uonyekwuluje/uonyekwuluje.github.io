@@ -8,16 +8,17 @@ Chef is a configuration management tool written in Ruby. It is used for configur
 The chef workstation is used for developing recipes and cookbooks. This is then uploaded to the chef server and the clients pull to update their configs.
 In this post, we are going to install Chef 13 server, workstation on CentOS7 and test a sample cookbook on a target client.
 
-# **Requirements**
-
-| Component   | Systems Specification |
-| ----------- | ----------- |
-| chefserver  | 2 CPU  4GB RAM  20GB Storage      |
-| chefworkstation   | 2 CPU  4GB RAM  20GB Storage        |
+# **System Requirements**
+Systems specification for chef server and chef workstation
+| Component   | Systems Specification | Operating System |
+| ----------- | ----------- | ---------------------------|
+| chefserver  | 2 CPU  4GB RAM  20GB Storage      | CentOS 7/RHEL 7 |
+| chefworkstation   | 2 CPU  4GB RAM  20GB Storage        | CentOS 7/RHEL 7 |
 
 **NOTE:**
 * You can make changes as needed. The above is just a base systems spec.
 * I intentionally skipped the client for later.
+* For Debian/Ubuntu, MAC, Windows etc. Download components for your operating system [here](https://downloads.chef.io/)
 
 # **Chef Server Installation**
 Run the following on your designated chef server. This installs the required packages on the chef server.
@@ -60,3 +61,32 @@ run: postgresql: (pid 19437) 569s; run: log: (pid 12019) 728s
 run: rabbitmq: (pid 20635) 531s; run: log: (pid 13845) 627s
 run: redis_lb: (pid 19395) 571s; run: log: (pid 19394) 571s
 ``` 
+**Create User:**<br>
+Run the command below to create a user in the chef server
+```
+sudo chef-server-ctl user-create chefadmin Chef Admin chefadmin@local.dev usesecurepassword -f /etc/chef/chef-admin.pem
+```
+*note: change entry as needed.*
+
+**Create Organization:**<br>
+Run the command below to create an organization and associate the admin user
+```
+sudo chef-server-ctl org-create devenv "Dev Environment" --association_user chefadmin -f /etc/chef/devenv-validator.pem
+```
+
+# **Create Chef Manage**
+Run the commands below to create Chef Manage:
+```
+sudo chef-server-ctl install chef-manage 
+sudo chef-server-ctl reconfigure 
+sudo chef-manage-ctl reconfigure 
+```
+*note: enter yes for all defaults*
+
+**Test Chef UI:**<br>
+Open a browser and test
+```
+FQDN: https://192.168.1.141
+username: chefadmin
+password: usesecurepassword
+```
