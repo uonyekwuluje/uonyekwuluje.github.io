@@ -10,10 +10,10 @@ In this post, we are going to install Chef 13 server, workstation on CentOS7 and
 
 # **System Requirements**
 Systems specification for chef server and chef workstation
-| Component   | Systems Specification | Operating System |
-| ----------- | ----------- | ---------------------------|
-| chefserver  | 2 CPU  4GB RAM  20GB Storage      | CentOS 7/RHEL 7 |
-| chefworkstation   | 2 CPU  4GB RAM  20GB Storage        | CentOS 7/RHEL 7 |
+| Component         | Systems Specification          | Operating System  |
+| ----------------- | ------------------------------ | ----------------- |
+| chefserver        | 2 CPU  4GB RAM  20GB Storage   | CentOS 7/RHEL 7   |
+| chefworkstation   | 2 CPU  4GB RAM  20GB Storage   | CentOS 7/RHEL 7   |
 
 **NOTE:**
 * You can make changes as needed. The above is just a base systems spec.
@@ -90,3 +90,80 @@ FQDN: https://192.168.1.141
 username: chefadmin
 password: usesecurepassword
 ```
+
+
+# **Chef Workstation Installation**
+Run the following on your designated chef workstation. This installs the required packages on chef workstation.
+```
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum update -y
+sudo yum group install -y 'Development Tools'
+sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc \
+libffi-devel openssl-devel make openssl-devel bzip2-devel vim screen nc jq
+```
+**Install Chef Workstation:**<br>
+Run the command below in the chef work station
+```
+curl -sO https://packages.chef.io/files/stable/chef-workstation/20.7.96/el/7/chef-workstation-20.7.96-1.el7.x86_64.rpm
+sudo rpm -ivh chef-workstation-20.7.96-1.el7.x86_64.rpm 
+```
+
+**Setup bash profile**<br>
+```
+echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
+source ~/.bash_profile
+which ruby
+```
+Run this command to verify your client ```chef-client -v```. You should see something like this
+```
+Chef Infra Client: 16.2.73
+```
+
+**Configure Workstation**<br>
+For the purpose of this post, I will use the default credentials created for the server. This will be the admin user pem file and validator pem file.
+For production use, non privilleged accounts should be created with the right permission and scope.
+Copy ```/etc/chef/chef-admin.pem``` and ```/etc/chef/devenv-validator.pem``` from master and update the chef workstation
+```
+mkdir ~/.chef
+scp <user>@<chef server ip>:/etc/chef/chef-admin.pem .chef/
+scp <user>@<chef server ip>:/etc/chef//etc/chef/devenv-validator.pem .chef/
+```
+
+**Generate Repo**<br>
+Generate Chef Repo:
+```
+chef generate repo chef-repo
+```
+*note: yes for all defaults*
+
+**Configure Knife**<br>
+Create a new knife config ```vim ~/.chef/config.rb``` with these
+```
+current_dir              = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                'chefadmin'
+client_key               "#{current_dir}/chef-admin.pem"
+validation_client_name   'multienv-validator'
+validation_key           "#{current_dir}/multienv-validator.pem"
+chef_server_url          'https://chefserver.home/organizations/devenv'
+syntax_check_cache_path  '/home/centos/.chef/syntax_check_cache'
+cookbook_path            "/home/centos/chef-repo/cookbooks"
+```
+
+**Fetch SSL Certificates**<br>
+Run this command to fetch ssl certificates ```knife ssl fetch```. You should see this:
+```
+WARNING: Certificates from chefserver.home will be fetched and placed in your trusted_cert
+       directory (/home/centos/.chef/trusted_certs).
+       
+       Knife has no means to verify these are the correct certificates. You should
+       verify the authenticity of these certificates after downloading.
+Adding certificate for chefserver_home in /home/centos/.chef/trusted_certs/chefserver_home.crt
+```
+Check SSL certificate using this command ```knife ssl check```. You should see.
+```
+Connecting to host chefserver.home:443
+Successfully verified certificates from `chefserver.home'
+```
+
