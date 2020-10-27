@@ -235,3 +235,7 @@ Chef Infra Client finished, 0/0 resources updated in 02 seconds
 
 **Test new node**<br>
 Test new node with this command ```knife node list```. You should see ```chefclient```
+
+# Reference Links
+* [Chef Downloads](https://downloads.chef.io/)
+* [Chef Setup](https://docs.chef.io/)
