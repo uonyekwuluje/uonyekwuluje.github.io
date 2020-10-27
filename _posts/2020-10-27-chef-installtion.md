@@ -6,14 +6,15 @@ categories: OpsCode Chef
 
 Chef is a configuration management tool written in Ruby. It is used for configuring and managing servers. With installed plugins, chef can be used to manage any cloud environment. A functioning system comprises a Chef Server, a Chef Workstation and target clients.
 The chef workstation is used for developing recipes and cookbooks. This is then uploaded to the chef server and the clients pull to update their configs.
-In this post, we are going to install Chef 13 server, workstation on CentOS7 and test a sample cookbook on a target client.
+In this post, we are going to install Chef 13 server, workstation on CentOS7 and bootstrap a target client.
 
 # **System Requirements**
 Systems specification for chef server and chef workstation
-| Component         | Systems Specification          | Operating System  |
-| ----------------- | ------------------------------ | ----------------- |
-| chefserver        | 2 CPU  4GB RAM  20GB Storage   | CentOS 7/RHEL 7   |
-| chefworkstation   | 2 CPU  4GB RAM  20GB Storage   | CentOS 7/RHEL 7   |
+
+ Component         | Systems Specification          | Operating System  
+ ---------------- | ---------------------------- | ---------------- 
+ chefserver        | 2 CPU  4GB RAM  20GB Storage   | CentOS 7/RHEL 7   
+ chefworkstation   | 2 CPU  4GB RAM  20GB Storage   | CentOS 7/RHEL 7   
 
 **NOTE:**
 * You can make changes as needed. The above is just a base systems spec.
@@ -234,7 +235,8 @@ Chef Infra Client finished, 0/0 resources updated in 02 seconds
 ```
 
 **Test new node**<br>
-Test new node with this command ```knife node list```. You should see ```chefclient```
+Test new node with this command ```knife node list```. You should see 
+```chefclient```
 
 # Reference Links
 * [Chef Downloads](https://downloads.chef.io/)
