@@ -33,22 +33,21 @@ sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 Download and install Tomcat
 ```
 cd /tmp
-sudo mkdir /opt/tomcat
 TVERSION="9"
-TOMCAT_VERSION="9.0.34"
+TOMCAT_VERSION="9.0.39"
 curl -O https://downloads.apache.org/tomcat/tomcat-${TVERSION}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 sudo tar xzvf apache-tomcat-${TVERSION}*tar.gz -C /opt/tomcat --strip-components=1
 
 cd /opt/tomcat
-sudo chgrp -R tomcat conf
-sudo chmod g+rwx conf
-sudo chmod g+r conf/*
-sudo chown -R tomcat logs/ temp/ webapps/ work/
+sudo chgrp -R tomcat /opt/tomcat/conf
+sudo chmod g+rwx /opt/tomcat/conf
+sudo chmod g+r /opt/tomcat/conf/*
+sudo chown -R tomcat /opt/tomcat/logs /opt/tomcat/temp /opt/tomcat/webapps /opt/tomcat/work
 
-sudo chgrp -R tomcat bin
-sudo chgrp -R tomcat lib
-sudo chmod g+rwx bin
-sudo chmod g+r bin/*
+sudo chgrp -R tomcat /opt/tomcat/bin
+sudo chgrp -R tomcat /opt/tomcat/lib
+sudo chmod g+rwx /opt/tomcat/bin
+sudo chmod g+r /opt/tomcat/bin/*
 ```
 
 **Create Tomcat Service**<br>
