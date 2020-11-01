@@ -296,12 +296,8 @@ you can repeat for node 2 and 3*
     Type a string on the producer console and you should see the output on the consumer
     ```
 
-That is it. Your use case will be different so make changes as needed. Click [Kafka Ansible](https://github.com/uonyekwuluje/ansible-kafka) for ansible automation
+That is it. Your use case will be different so make changes as needed. 
 
-
-### **Post Enhancements**
-Kafka is administered from the command line. Web UI tools exist from third parties and a few open source alternatives. In my next post, I'll focus
-on Web UI tools for kafka. 
 
 ### **References**
 * [Kafka Introduction](https://kafka.apache.org/intro)
