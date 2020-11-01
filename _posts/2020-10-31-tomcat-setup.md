@@ -137,5 +137,10 @@ Open your browser and type the following
 http://<Your IP Address>:8080
 ```
 
+## Hosting Application
+To host your application, copy your **war file** to ```/opt/tomcat/webapps```. Browse to your application context and you should be set.
+when in doubt check your tomcat manager
+
+
 **Caution and Notes**<br>
 The server status in the admin page should be your best friend. This is primarily for monitoring and resource utilization
