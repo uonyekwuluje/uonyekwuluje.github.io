@@ -11,18 +11,12 @@ In this post we will be looking at setting up a Kubernetes Cluster from the grou
 
 ## **Server Requirements**
 We will be building a 3 node cluster comprised of one master and 2 worker nodes:
-|    Hostname          |  IP Address     |    Host Specifications       |   Operating System  |
-|:-------------------: |:---------------:| :--------------------------: | :-----------------: |
-|  kube8-master-node   | 192.168.1.160   |   2 CPU, 8GB RAM, 20GB HDD   |      CentOS 7       |  
-|  kube8-node-1        | 192.168.1.161   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
-|  kube8-node-2        | 192.168.1.162   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
 
-| Hostname      |  Ip Address      | Host Specifications |
-|---------------|------------------|---------------------|
-|kube8-master-node |  192.168.1.160   |2 CPU, 8GB RAM, 20GB HDD |
-|kube8-node-1 |  192.168.1.161   | 2 CPU, 4GB RAM, 20GB HDD |
-|kube8-node-2 |  192.168.1.162   | 2 CPU, 4GB RAM, 20GB HDD |
-
+| Hostname      |  Ip Address      | Host Specifications | Operating System |
+|---------------|------------------|---------------------|------------------|
+|kube8-master-node |  192.168.1.160   |2 CPU, 8GB RAM, 20GB HDD | CentOS 7  |
+|kube8-node-1 |  192.168.1.161   | 2 CPU, 4GB RAM, 20GB HDD | CentOS 7 |
+|kube8-node-2 |  192.168.1.162   | 2 CPU, 4GB RAM, 20GB HDD | CentOS 7 |
 
 *NOTE: The above should be updated based on your specification*
 
