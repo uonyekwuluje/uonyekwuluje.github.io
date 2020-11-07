@@ -9,7 +9,7 @@ These solutions shields the grunt work and makes this easier to use and adopt. T
 In this post we will be looking at setting up a Kubernetes Cluster from the ground up. This option gives us the most control and flexibility.
 
 
-### **Server Requirements**
+## **Server Requirements**
 We will be building a 3 node cluster comprised of one master and 2 worker nodes:
 |    Hostname          |  IP Address     |    Host Specifications       |   Operating System  |
 |:-------------------: |:---------------:| :--------------------------: | :-----------------: |
@@ -18,7 +18,7 @@ We will be building a 3 node cluster comprised of one master and 2 worker nodes:
 |  kube8-node-2        | 192.168.1.162   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
 *NOTE: The above should be updated based on your specification*
 
-### **Package Installation and System Configuration**
+## **Package Installation and System Configuration**
 Perform these tasks on all 3 hosts. This assumes you are logged in as a user with sudo privilleges.
 
 **Update Hostname, Hosts file and install base packages:**<br>
@@ -206,6 +206,31 @@ kube-system   kube-scheduler-kube8-master-node            1/1     Running   0   
 kube-system   weave-net-wk5nd                             2/2     Running   0          3m15s
 ```
 Your cluster is now ready.
+
+## **Kubernetes Dashboard**
+To enable the Kubernetes Dashboard, See [Kubernetes Web UI](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). In summary, type the following:
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+```
+Test and ensure all pods are up by typing this command ```kubectl get pods --all-namespaces```. You should see this
+```
+NAMESPACE              NAME                                         READY   STATUS    RESTARTS   AGE
+kube-system            coredns-f9fd979d6-8kxcj                      1/1     Running   0          42m
+kube-system            coredns-f9fd979d6-d877x                      1/1     Running   0          42m
+kube-system            etcd-kube8-master-node                       1/1     Running   0          42m
+kube-system            kube-apiserver-kube8-master-node             1/1     Running   0          42m
+kube-system            kube-controller-manager-kube8-master-node    1/1     Running   0          42m
+kube-system            kube-proxy-dlndf                             1/1     Running   0          42m
+kube-system            kube-proxy-fnv9r                             1/1     Running   0          9m5s
+kube-system            kube-proxy-mcppx                             1/1     Running   0          8m13s
+kube-system            kube-scheduler-kube8-master-node             1/1     Running   0          42m
+kube-system            weave-net-26q6n                              2/2     Running   0          8m13s
+kube-system            weave-net-f9vrs                              2/2     Running   1          9m5s
+kube-system            weave-net-wk5nd                              2/2     Running   0          38m
+kubernetes-dashboard   dashboard-metrics-scraper-7b59f7d4df-q4hx4   1/1     Running   0          73s
+kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-2mnqp        1/1     Running   0          73s
+```
+At this point run ```kubectl proxy``` and check your browser on ```http://127.0.0.1:8001``` or what ever the prompt gives you
 
 
 
