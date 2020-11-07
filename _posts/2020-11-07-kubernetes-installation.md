@@ -13,9 +13,9 @@ In this post we will be looking at setting up a Kubernetes Cluster from the grou
 We will be building a 3 node cluster comprised of one master and 2 worker nodes:
 |    Hostname          |  IP Address     |    Host Specifications       |   Operating System  |
 |:-------------------: |:---------------:| :--------------------------: | :-----------------: |
-|  kube8-master-node   | 192.168.1.160   |   2 CPU, 8GB RAM, 20GB HDD   |      CentOS 8       |  
-|  kube8-node-1        | 192.168.1.161   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 8       |
-|  kube8-node-2        | 192.168.1.162   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 8       |
+|  kube8-master-node   | 192.168.1.160   |   2 CPU, 8GB RAM, 20GB HDD   |      CentOS 7       |  
+|  kube8-node-1        | 192.168.1.161   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
+|  kube8-node-2        | 192.168.1.162   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
 *NOTE: The above should be updated based on your specification*
 
 ### **Package Installation and System Configuration**
@@ -31,11 +31,11 @@ sudo bash -c 'cat <<EOF>> /etc/hosts
 192.168.1.162 kube8-node-2
 EOF'
 
-sudo dnf update -y
-sudo dnf group install -y 'Development Tools'
-sudo dnf install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc \
+sudo yum update -y
+sudo yum group install -y 'Development Tools'
+sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc \
 libffi-devel openssl-devel make openssl-devel bzip2-devel nc jq
-sudo dnf install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 ```
 
 **Update Firewall & Selinux:**<br>
@@ -61,36 +61,6 @@ firewall-cmd --reload
 **Load Modules:**<br>
 ```
 sudo modprobe br_netfilter
-sudo modprobe ip6_udp_tunnel
-sudo modprobe ip_set
-sudo modprobe ip_set_hash_ip
-sudo modprobe ip_set_hash_net
-sudo modprobe iptable_filter
-sudo modprobe iptable_nat
-sudo modprobe iptable_mangle
-sudo modprobe iptable_raw
-sudo modprobe nf_conntrack_netlink
-sudo modprobe nf_conntrack
-sudo modprobe nf_conntrack_ipv4
-sudo modprobe nf_defrag_ipv4
-sudo modprobe nf_nat
-sudo modprobe nf_nat_ipv4
-sudo modprobe nf_nat_masquerade_ipv4
-sudo modprobe nfnetlink
-sudo modprobe udp_tunnel
-sudo modprobe veth
-sudo modprobe vxlan
-sudo modprobe x_tables
-sudo modprobe xt_addrtype
-sudo modprobe xt_conntrack
-sudo modprobe xt_comment
-sudo modprobe xt_mark
-sudo modprobe xt_multiport
-sudo modprobe xt_nat
-sudo modprobe xt_recent
-sudo modprobe xt_set
-sudo modprobe xt_statistic
-sudo modprobe xt_tcpudp
 ```
 <br>
 **Create Custom sysctl:**<br>
@@ -114,16 +84,17 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 exclude=kubelet kubeadm kubectl
 EOF'
 
-sudo dnf upgrade -y
-sudo dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+sudo yum upgrade -y
+sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 sudo systemctl enable kubelet 
+sudo systemctl start kubelet 
 ```
 
 <br>
 **Install Docker:**<br>
 ```
-sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install docker-ce -y --nobest
+sudo sudo yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce -y 
 sudo usermod -aG docker $USER
 
 sudo mkdir /etc/docker
@@ -144,6 +115,7 @@ sudo bash -c 'cat <<EOF>> /etc/docker/daemon.json
 EOF'
 
 sudo systemctl enable docker
+sudo systemctl start docker
 ```
 
 <br>
@@ -153,34 +125,82 @@ sudo vim /etc/fstab
 ```
 Reboot all nodes when this is completed
 
-#### **Requirements**
-For our barebones install
 
-* Local installation of [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
-* Local installation of [helm](https://helm.sh/docs/intro/install)
-
-**kubectl test** <br>
+### **Initialize Cluster:**
+Log into the kubernetes Master and initialize the cluster.
 ```
-kubectl version --short
+sudo kubeadm init
+```
+This will initialize the cluster and output the connection string. This section is what you want to focus on
+
+```
+....
+....
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.1.160:6443 --token ty30fx.l6kbncckfazhpgot \
+    --discovery-token-ca-cert-hash sha256:9aa1ac3b77d34c9bee94f9c1282149308dd760fe1b45f959c1d6686abe2a91fc 
+```
+<br>
+Test your installation by typeing this command ```kubectl get nodes```. You should see
+```
+NAME                STATUS     ROLES    AGE    VERSION
+kube8-master-node   NotReady   master   4m9s   v1.19.3
+```
+
+Now, login to the other nodes and type this command:
+```
+kubeadm join 192.168.1.160:6443 --token ty30fx.l6kbncckfazhpgot \
+    --discovery-token-ca-cert-hash sha256:9aa1ac3b77d34c9bee94f9c1282149308dd760fe1b45f959c1d6686abe2a91fc
+``` 
+
+Now log back to the master node and run this command ```kubectl get nodes```. If all goes well, you should see this
+```
+NAME                STATUS     ROLES    AGE     VERSION
+kube8-master-node   NotReady   master   9m52s   v1.19.3
+kube8-node-1        NotReady   <none>   41s     v1.19.3
+kube8-node-2        NotReady   <none>   8s      v1.19.3
+```
+
+Create Pod network:
+```
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+```
+*NOTE: Wait for about 1 minutes and check all namespace pods*
+Run this command:
+```
+kubectl get pods --all-namespaces
 ```
 You should see this:
 ```
-Client Version: v1.16.0
-Server Version: v1.14.8
+NAMESPACE     NAME                                        READY   STATUS    RESTARTS   AGE
+kube-system   coredns-f9fd979d6-8kxcj                     1/1     Running   0          7m48s
+kube-system   coredns-f9fd979d6-d877x                     1/1     Running   0          7m48s
+kube-system   etcd-kube8-master-node                      1/1     Running   0          7m50s
+kube-system   kube-apiserver-kube8-master-node            1/1     Running   0          7m50s
+kube-system   kube-controller-manager-kube8-master-node   1/1     Running   0          7m50s
+kube-system   kube-proxy-dlndf                            1/1     Running   0          7m48s
+kube-system   kube-scheduler-kube8-master-node            1/1     Running   0          7m49s
+kube-system   weave-net-wk5nd                             2/2     Running   0          3m15s
 ```
-<hr>
-#### **Command Cheat Sheet**
-
-|         Command                 |      Description             |              Reference Links               |
-|:------------------------------: |:----------------------------:| :----------------------------------------: | 
-|  `kubectl config view`          | View current config          |   [kubernetes](https://kubernetes.io/)     |
-|  `kubectl config get-contexts`  | Get all installed contexts   |   [kubernetes](https://kubernetes.io/)     | 
-
-<hr>
+Your cluster is now ready.
 
 
 
-
-#### **Reference Links**
+## **Reference Links**
 * Kubernetes Cheat Sheet [Kubernetes](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * Rancher Kubernetes Cheat Sheet [Rancher](https://rancher.com/learning-paths/how-to-manage-kubernetes-with-kubectl/)
+* [kubectl Installation](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* [Helm Installation](https://helm.sh/docs/intro/install)
