@@ -121,7 +121,8 @@ sudo systemctl start docker
 <br>
 **Disable SWAP:**<br>
 ```
-sudo vim /etc/fstab
+sudo sed -i '/swap/d' /etc/fstab
+sudo swapoff -a
 ```
 Reboot all nodes when this is completed
 
@@ -173,8 +174,17 @@ kube8-master-node   NotReady   master   9m52s   v1.19.3
 kube8-node-1        NotReady   <none>   41s     v1.19.3
 kube8-node-2        NotReady   <none>   8s      v1.19.3
 ```
+For detailed node information, type ```kubectl get nodes -o wide```. You should see
+```
+NAME                STATUS   ROLES    AGE    VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION                CONTAINER-RUNTIME
+kube8-master-node   Ready    master   35m    v1.19.3   192.168.1.163   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
+kube8-node-1        Ready    <none>   114s   v1.19.3   192.168.1.164   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
+kube8-node-2        Ready    <none>   62s    v1.19.3   192.168.1.165   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
+```
 
-Create Pod network:
+
+**Create Pod network:**<br> 
+We will be using Weavnet for our pod network. For more information on its use and configuration, see [Weave Net](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/). For other options, see [Kubernetes Network Options](https://kubernetes.io/docs/concepts/cluster-administration/addons/)
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
