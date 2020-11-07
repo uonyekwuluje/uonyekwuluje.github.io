@@ -17,11 +17,11 @@ We will be building a 3 node cluster comprised of one master and 2 worker nodes:
 |  kube8-node-1        | 192.168.1.161   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
 |  kube8-node-2        | 192.168.1.162   |   2 CPU, 4GB RAM, 20GB HDD   |      CentOS 7       |
 
-| Hostname      |  Ip Address      |
-|---------------|------------------|
-|kube8-master-node |  192.168.1.160   |
-|kube8-node-1 |  192.168.1.161   |
-|kube8-node-2 |  192.168.1.162   |
+| Hostname      |  Ip Address      | Host Specifications |
+|---------------|------------------|---------------------|
+|kube8-master-node |  192.168.1.160   |2 CPU, 8GB RAM, 20GB HDD |
+|kube8-node-1 |  192.168.1.161   | 2 CPU, 4GB RAM, 20GB HDD |
+|kube8-node-2 |  192.168.1.162   | 2 CPU, 4GB RAM, 20GB HDD |
 
 
 *NOTE: The above should be updated based on your specification*
