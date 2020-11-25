@@ -77,7 +77,7 @@ sudo rm -rf /var/lib/cassandra/data/system/*
 * Edit ```/etc/cassandra/default.conf/cassandra.yaml``` using your favorite editor. Update the following:
   - cluster_name: "Test Cluster" 
   - num_tokens: 256
-  - - seeds: "cassandra01, cassandra02, cassandra03"
+  - -seeds: "cassandra01, cassandra02, cassandra03"
   - listen_address: "cassandra01"
   - rpc_address: "cassandra01"
   - endpoint_snitch: GossipingPropertyFileSnitch 
@@ -85,8 +85,8 @@ sudo rm -rf /var/lib/cassandra/data/system/*
   - listen_address: ""
   - rpc_address: ""
 * Edit ```/etc/cassandra/default.conf/cassandra-rackdc.properties``` using your favorite editor. Update the following:
-  - dc=""
-  - rack=""
+  - dc="DEVLABS_DC"
+  - rack="RACK1"
 * Restart the service on all nodes
 ```
 sudo systemctl restart cassandra
@@ -108,13 +108,5 @@ UN  192.168.1.234  275.66 KiB  256     ?                 b7f42478-12bc-439c-b565
 ```
 <br><br>
 
-
-
-
-
-
-
-
-
-
-
+## **Reference**
+* [Apache Cassandra](https://cassandra.apache.org/)
