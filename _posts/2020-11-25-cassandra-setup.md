@@ -75,7 +75,7 @@ sudo service cassandra stop
 sudo rm -rf /var/lib/cassandra/data/system/*
 ```
 * Edit ```/etc/cassandra/default.conf/cassandra.yaml``` using your favorite editor. Update the following:
-  - cluster_name: '<Your Cluster Name>'
+  - cluster_name: \'<Your Cluster Name>\'
   - num_tokens: '<desired num token>'  # default 256
   - - seeds: "<comma seperated list of cassandra servers>"
   - listen_address: "<host IP or Hostname>"
