@@ -75,18 +75,18 @@ sudo service cassandra stop
 sudo rm -rf /var/lib/cassandra/data/system/*
 ```
 * Edit ```/etc/cassandra/default.conf/cassandra.yaml``` using your favorite editor. Update the following:
-  - cluster_name: \'<Your Cluster Name>\'
-  - num_tokens: '<desired num token>'  # default 256
-  - - seeds: "<comma seperated list of cassandra servers>"
-  - listen_address: "<host IP or Hostname>"
-  - rpc_address: "<host IP or Hostname>"
+  - cluster_name: "Test Cluster" 
+  - num_tokens: 256
+  - - seeds: "cassandra01, cassandra02, cassandra03"
+  - listen_address: "cassandra01"
+  - rpc_address: "cassandra01"
   - endpoint_snitch: GossipingPropertyFileSnitch 
-* Repeat previous steps on all servers changing the following as needed
-  - listen_address: "<host IP or Hostname>"
-  - rpc_address: "<host IP or Hostname>"
+* Repeat previous steps on all servers changing the following as needed for cassandra02 and cassandra03
+  - listen_address: ""
+  - rpc_address: ""
 * Edit ```/etc/cassandra/default.conf/cassandra-rackdc.properties``` using your favorite editor. Update the following:
-  - dc=<datacenter name>
-  - rack=<rack name>
+  - dc=""
+  - rack=""
 * Restart the service on all nodes
 ```
 sudo systemctl restart cassandra
