@@ -10,7 +10,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 * Standalone Mode
 * Cluster Mode
 
-### **Systems Requirement for clustered/multi node setup** 
+#### **Systems Requirement for clustered/multi node setup** 
 
 |  Hosts       | Systems Specification |
 |--------------|--------------------------------|
@@ -18,7 +18,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 |cassandra02   |  2 CPU  4GB RAM  40GB Storage  |
 |cassandra03   |  2 CPU  4GB RAM  40GB Storage  |
 
-### **Systems Requirement for standalone node setup** 
+#### **Systems Requirement for standalone node setup** 
 
 |  Hosts    | Systems Specification |
 |-----------|--------------------------------|
@@ -26,7 +26,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 
 ***NOTE:***  *You can make changes as needed. The above is just a base systems spec. for our POC*
 
-### **Package Installation**
+#### **Package Installation**
 We will be running our setup on CentOS based servers. Run this command on all servers
 ```
 sudo yum update -y
@@ -49,6 +49,39 @@ Install Cassandra
 ```
 sudo yum update -y && sudo yum install -y cassandra
 ```
+Enable and start cassandra services
+```
+sudo systemctl enable cassandra 
+sudo systemctl start cassandra
+```
+Test out installation by running this command ```nodetool status```. if all goes well, you should see this:
+```
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens  Owns (effective)  Host ID                               Rack 
+UN  127.0.0.1  73.28 KiB  256     ?                 74aed20b-6a72-4b88-9d55-997aa8e00283  rack1
+```
+At this point you should be all set for the standalone setup
+
+
+#### **Multi Node Cassandra Setup**
+The following steps outlines base configs and updates for a multi node clister setup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -61,6 +94,10 @@ sudo yum update -y && sudo yum install -y cassandra
 
 #### **Ansible Implementation**
 For Elastic Stack automation see [ansible-elastic-stack](https://github.com/uonyekwuluje/ansible-elastic-stack) for ansible deployment
+
+
+
+
 
 
 #### **Manual Installation**
