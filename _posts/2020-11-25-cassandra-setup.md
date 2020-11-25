@@ -10,7 +10,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 * Standalone Mode
 * Cluster Mode
 
-### Systems Requirement for clustered/multi node setup 
+# Systems Requirement for clustered/multi node setup 
 
 |  Hosts       | Systems Specification |
 |--------------|--------------------------------|
@@ -18,7 +18,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 |cassandra02   |  2 CPU  4GB RAM  40GB Storage  |
 |cassandra03   |  2 CPU  4GB RAM  40GB Storage  |
 
-### Systems Requirement for standalone node setup 
+# Systems Requirement for standalone node setup 
 
 |  Hosts    | Systems Specification |
 |-----------|--------------------------------|
@@ -26,6 +26,29 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 
 ***NOTE:***  *You can make changes as needed. The above is just a base systems spec. for our POC*
 
+# Package Installation.
+We will be running our setup on CentOS based servers. Run this command on all servers
+```
+sudo yum update -y
+sudo yum group install -y 'Development Tools'
+sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc libffi-devel \
+openssl-devel make openssl-devel bzip2-devel java-11-openjdk-devel java-11-openjdk 
+```
+Configure Cassandra Repository
+```
+sudo bash -c 'cat <<EOF>> /etc/yum.repos.d/cassandra.repo
+[cassandra]  
+name=Apache Cassandra
+baseurl=https://www.apache.org/dist/cassandra/redhat/40x/
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.apache.org/dist/cassandra/KEYS
+EOF'
+```
+Install Cassandra
+```
+sudo yum update -y && sudo yum install -y cassandra
+```
 
 
 
