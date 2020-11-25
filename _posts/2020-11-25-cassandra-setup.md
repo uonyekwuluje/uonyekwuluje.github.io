@@ -66,10 +66,15 @@ UN  127.0.0.1  73.28 KiB  256     ?                 74aed20b-6a72-4b88-9d55-997a
 At this point you should be all set for the standalone setup
 
 
-#### **Multi Node Cassandra Setup**
+<br><br>
+## **Multi Node Cassandra Setup**
 The following steps outlines base configs and updates for a multi node clister setup
-
-
+* Stop the service and delete the contents of the data folder
+```
+sudo service cassandra stop
+sudo rm -rf /var/lib/cassandra/data/system/*
+```
+<br><br>
 
 
 
