@@ -74,6 +74,10 @@ The following steps outlines base configs and updates for a multi node clister s
 sudo service cassandra stop
 sudo rm -rf /var/lib/cassandra/data/system/*
 ```
+* Edit ```/etc/cassandra/default.conf/cassandra.yaml``` using your favorite editor. Update the following:
+  ** cluster_name
+  ** num_tokens 
+
 <br><br>
 
 
