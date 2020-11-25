@@ -10,7 +10,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 * Standalone Mode
 * Cluster Mode
 
-# Systems Requirement for clustered/multi node setup 
+### **Systems Requirement for clustered/multi node setup** 
 
 |  Hosts       | Systems Specification |
 |--------------|--------------------------------|
@@ -18,7 +18,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 |cassandra02   |  2 CPU  4GB RAM  40GB Storage  |
 |cassandra03   |  2 CPU  4GB RAM  40GB Storage  |
 
-# Systems Requirement for standalone node setup 
+### **Systems Requirement for standalone node setup** 
 
 |  Hosts    | Systems Specification |
 |-----------|--------------------------------|
@@ -26,7 +26,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 
 ***NOTE:***  *You can make changes as needed. The above is just a base systems spec. for our POC*
 
-# Package Installation.
+### **Package Installation**
 We will be running our setup on CentOS based servers. Run this command on all servers
 ```
 sudo yum update -y
@@ -49,6 +49,13 @@ Install Cassandra
 ```
 sudo yum update -y && sudo yum install -y cassandra
 ```
+
+
+
+
+
+
+
 
 
 
