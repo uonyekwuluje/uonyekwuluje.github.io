@@ -11,6 +11,7 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 * Cluster Mode
 
 ### Systems Requirement for clustered/multi node setup 
+
 |  Hosts       | Systems Specification |
 |--------------|--------------------------------|
 |cassandra01   |  2 CPU  4GB RAM  40GB Storage  |
@@ -18,9 +19,11 @@ This post is geared at a base installation of Apache Cassandra 4.x in one of two
 |cassandra03   |  2 CPU  4GB RAM  40GB Storage  |
 
 ### Systems Requirement for standalone node setup 
+
 |  Hosts    | Systems Specification |
 |-----------|--------------------------------|
 |cassandra  |  2 CPU  4GB RAM  40GB Storage  |
+
 ***NOTE:***  *You can make changes as needed. The above is just a base systems spec. for our POC*
 
 
