@@ -137,5 +137,9 @@ Info: Caching catalog for puppetagent1.home
 Info: Applying configuration version '1606500654'
 Notice: Applied catalog in 0.01 seconds
 ```
-<br>
 That is it. You can continue with module and artifact development
+
+<br><br>
+# Puppet Reference
+* [Puppet Documents](https://puppet.com/docs/)
+* [Puppet Cookbook](https://www.puppetcookbook.com/)
