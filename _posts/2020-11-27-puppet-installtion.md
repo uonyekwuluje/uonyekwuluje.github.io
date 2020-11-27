@@ -15,7 +15,7 @@ Systems specification for our POC
  puppetserver   | puppetserver.home | 192.168.1.156 | 2 CPU  4GB RAM  20GB Storage |  CentOS 8/RHEL 8   
  puppetagent1   | puppetagent1.home | 192.168.1.250 | 1 CPU  2GB RAM  10GB Storage |  CentOS 8/RHEL 8   
 
-**NOTE:** * You can make changes as needed. The above is just a base systems spec.*
+**NOTE:** *You can make changes as needed. The above is just a base systems spec.*
 
 # **CentOS 8 Puppet Server Installation**
 Run the following on your designated puppet server. 
@@ -91,7 +91,7 @@ service { 'puppet':
   provider => 'systemd',
 }
 ```
-
+<br><br>
 # **Sign Certificates**
 To sign agent node certificate on master server, loginto the agent and type this command
 ```
