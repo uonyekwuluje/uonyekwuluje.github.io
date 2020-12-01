@@ -9,11 +9,10 @@ OpenLDAP is am open-source implementation of the Lightweight Directory Access Pr
 In this post, I will be installing an LDAP Server and two clients. The primary use case here is to centralize and manage user accounts and logins in a linux environment.
 
 ### **Servers**
-  Component  |  Systems Specification   | Operating System 
--------------|--------------------------|------------------
-ldapserver   | 2 CPU  4GB RAM  20GB HDD |  CentOS 7.x
-ldapclient01 | 1 CPU  2GB RAM  20GB HDD |  CentOS 7.x
-ldapclient02 | 1 CPU  2GB RAM  20GB HDD |  Ubuntu 18.04 LTS
+  Component   |  Systems Specification   | Operating System 
+ ------------ | ------------------------ | -----------------
+ ldapserver   | 2 CPU  4GB RAM  20GB HDD |  CentOS 7.x
+ ldapclient01 | 1 CPU  2GB RAM  20GB HDD |  CentOS 7.x
+ ldapclient02 | 1 CPU  2GB RAM  20GB HDD |  Ubuntu 18.04 LTS
 
-**NOTE:**
-You can make changes as needed. The above is just a base systems spec.
+**NOTE:** *You can make changes as needed. The above is just a base systems spec.*
