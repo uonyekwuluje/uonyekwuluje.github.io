@@ -72,10 +72,10 @@ olcRootPW: {SSHA}fp290ZG8IcHC/9U8f+q4ScOrYebz8uqv
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
 add: olcAccess
-olcAccess: to attrs=userPassword by self write by anonymous auth by dn.base="cn=ldapadm,dc=infralabs,dc=com" write by * none
-
-add: olcAccess
-olcAccess: to * by self write by dn.base="cn=ldapadm,dc=infralabs,dc=com" write by * read
+olcAccess: {0}to attrs=userPassword,shadowLastChange by
+  dn="cn=service,dc=test,dc=com" write by anonymous auth by self write by * none
+olcAccess: {1}to dn.base="" by * read
+olcAccess: {2}to * by dn="cn=service,dc=test,dc=com" write by * read
 ```
 
 Apply Updates
@@ -177,4 +177,3 @@ Verify LDAP Connectivity
 ```
 getent passwd pparker
 ```
-
