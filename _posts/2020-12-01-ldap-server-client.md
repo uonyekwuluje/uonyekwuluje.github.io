@@ -145,6 +145,11 @@ shadowLastChange: 17058
 shadowMin: 0
 shadowMax: 99999
 shadowWarning: 7
+
+dn: cn=pparker,ou=People,dc=infralabs,dc=com
+objectClass: top
+objectClass: posixGroup
+gidNumber: 1001
 ```
 Add to database
 ```
@@ -176,4 +181,8 @@ sudo systemctl start nslcd
 Verify LDAP Connectivity
 ```
 getent passwd pparker
+```
+You should see this
+```
+pparker:x:9900:1001:Peter Parker:/home/pparker:/bin/bash
 ```
