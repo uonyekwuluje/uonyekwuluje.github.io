@@ -14,7 +14,6 @@ In this post, I will be installing an LDAP Server and two clients. The primary u
  ------------ | ------------------------ | ----------------- | ------------------------------
  ldapserver   | 2 CPU  4GB RAM  20GB HDD |  CentOS 7.x       |  ldapserver.infralabs.com
  ldapclient01 | 1 CPU  2GB RAM  20GB HDD |  CentOS 7.x       |  ldapclient01.infralabs.com
- ldapclient02 | 1 CPU  2GB RAM  20GB HDD |  Ubuntu 18.04 LTS |  ldapclient02.infralabs.com
 
 # **LDAP Org Stack**
 
@@ -160,9 +159,9 @@ sudo ldapadd -x -W -D "cn=ldapadm,dc=infralabs,dc=com" -f user.db.ldif
 
 
 
-
-### **Install LDAP Client**
-Update and install packages on CentOS 7 Client
+<br>
+### **Install LDAP Client CentOS 7**
+Update and install packages on Client
 ```
 sudo yum update -y
 sudo yum group install -y 'Development Tools'
@@ -178,6 +177,52 @@ Enable Services
 sudo systemctl enable nslcd
 sudo systemctl start nslcd
 ```
+Verify LDAP Connectivity
+```
+getent passwd pparker
+```
+You should see this
+```
+pparker:x:9900:1001:Peter Parker:/home/pparker:/bin/bash
+```
+
+<br>
+### **Install LDAP Client Ubuntu 18**
+Update and install packages on Client
+```
+sudo apt update
+sudo apt -y install libnss-ldap libpam-ldap ldap-utils nscd
+```
+Configure Auth
+```
+LDAP server Uniform Resource Identifier:  ldapserver.infralabs.com
+Distinguished name of the search base: dc=infralabs,dc=com
+LDAP version to use: 3
+Make local root Database admin: Yes
+Does the LDAP database require login?: No
+LDAP account for root: cn=ldapadm,dc=infralabs,dc=com
+LDAP root account password: securepassword
+```
+
+Update nsswitch. ```/etc/nsswitch.conf```:
+```
+passwd:         compat systemd ldap
+group:          compat systemd ldap
+shadow:         compat
+ 
+```
+
+update common-session. ```/etc/pam.d/common-session```:
+```
+session required        pam_mkhomedir.so skel=/etc/skel umask=077
+```
+
+restart service
+```
+sudo systemctl enable nscd
+sudo systemctl start nscd
+```
+
 Verify LDAP Connectivity
 ```
 getent passwd pparker
