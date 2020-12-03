@@ -72,9 +72,9 @@ dn: olcDatabase={2}hdb,cn=config
 changetype: modify
 add: olcAccess
 olcAccess: {0}to attrs=userPassword,shadowLastChange by
-  dn="cn=service,dc=test,dc=com" write by anonymous auth by self write by * none
+  dn="cn=ldapadm,dc=infralabs,dc=com" write by anonymous auth by self write by * none
 olcAccess: {1}to dn.base="" by * read
-olcAccess: {2}to * by dn="cn=service,dc=test,dc=com" write by * read
+olcAccess: {2}to * by dn="cn=ldapadm,dc=infralabs,dc=com" write by * read
 ```
 
 Apply Updates
