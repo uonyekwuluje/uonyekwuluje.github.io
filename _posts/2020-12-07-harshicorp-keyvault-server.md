@@ -208,3 +208,8 @@ Log into the Web Interface:
 http://<server ip>:8200/ui/vault/init
 password: <token>
 ```
+
+
+### **References**
+* [HashiCorp Vault](https://www.vaultproject.io)
+* [HashiCorp Vault Architecture](https://www.vaultproject.io/docs/internals/architecture)
