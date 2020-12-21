@@ -9,7 +9,7 @@ layout: default
     <li>
       <b><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></b>&nbsp;&nbsp;&nbsp;&nbsp;
       <b><a href="{{ post.url | relative_url }}">{{ post.title }}</a></b>
-      <p>
+      <p class="palign">
         {% if post.description %}
            {{ post.description }}
         {% else %}
