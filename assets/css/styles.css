@@ -6,13 +6,13 @@
    padding: 0px 60px 0px 60px;
 }
 
-/* Code Highlight Block */
+/* ------ Code Highlight Block ----- */
 pre, code {
   width: 100%;
   color: #fff;
   background-color: #222;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  font-size: 14px;
+  font-size: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
   border-radius: 4px;
   min-width: 320px;
@@ -33,7 +33,7 @@ pre code {
   display: block;
   box-shadow: none;
 }
-/* End Code Highlight Block */ 
+/* ----- End Code Highlight Block ----- */ 
 
 body {
   min-height: 100vh;
