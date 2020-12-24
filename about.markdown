@@ -24,7 +24,7 @@ Some of my specialties and areas of interest are:
 - **Databases:** Postgres, MySQL, Cassandra
 - **Configuration Management:** Ansible, Chef, Salt
 - **IaaS Tools:** Terraform, Packer, Vault, Consul, Vagrant, Cloudformation
-- **Continuous Integration/Delivery/Deployment:** Jenkins, Azure DevOps, GitLab CI
+- **Continuous Integration/Delivery/Deployment:** Jenkins, Azure DevOps, GitLab CI, GitHub Actions
 - **Container Services:** Docker, Kubernetes 
 - **Virtualization Platforms:** VMware, KVM, XEN, VirtualBox
 - **Cloud Services:** AWS, GCP, Azure
