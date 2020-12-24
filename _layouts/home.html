@@ -14,7 +14,7 @@ layout: default
         {% if post.description %}
            {{ post.description }}
         {% else %}
-           {{ post.excerpt | strip_html | truncatewords: 23 }}
+           {{ post.excerpt | strip_html | truncatewords: 40 }}
         {% endif %}
       </p>
     </li>
