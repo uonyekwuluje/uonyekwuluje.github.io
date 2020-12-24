@@ -3,7 +3,7 @@ author: "Uchechukwu Onyekwuluje"
 description: "DevOps, Site Reliability, AWS, GCP, Azure"
 
 permalink: /:year-:month-:day/:title/
-paginate: 9
+paginate: 10
 
 #  icons:    http://fontawesome.com/icons
 #  envelope: "mailto:niklasbuschmann@users.noreply.github.com"
