@@ -76,6 +76,7 @@ article {
 }
 
 /* Image Sizing for About Me  */
+/* https://www.xaprb.com/blog/how-to-style-images-with-markdown/ */
 img[src*="#thumbnail"] {
    width:200px;
    height:250px;
