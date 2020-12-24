@@ -29,9 +29,19 @@ permalink: "/about/"
 
     <div class="row">
       <div class="col-sm">
-        <ul class="fa-ul">
-          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Programming Languages: JAVA, Python, BASH</li>
-          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Web Development: HTML5, CSS5, JavaScript</li>
+        <ul>
+          <li><b>Programming Languages:</b> JAVA, Python, BASH</li>
+          <li><b>Web Development:</b> HTML5, CSS5, JavaScript</li>
+          <li><b>Web Frameworks:</b> Flask</li>
+          <li><b>Databases:</b> Postgres, MySQL, Cassandra</li>
+          <li><b>Configuration Management:</b> Ansible, Chef, Salt</li>
+          <li><b>IaaS Tools:</b> Terraform, Packer, Vault, Consul, Vagrant, Cloudformation</li>
+          <li><b>Continuous Integration/Delivery/Deployment:</b> Jenkins, Azure DevOps, GitLab CI, GitHub Actions</li>
+          <li><b>Container Services:</b> Docker, Kubernetes</li>
+          <li><b>Virtualization Platforms:</b> VMware, KVM, XEN, VirtualBox</li>
+          <li><b>Cloud Services:</b> AWS, GCP, Azure</li>
+          <li><b>Monitoring:</b> Icinga, Prometheus, Sensu</li>
+          <li><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>
       </div>
     </div>
@@ -44,7 +54,6 @@ permalink: "/about/"
   </p>
 
   <p>
-    **NOTE:**<br>
-    The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer.
+    <b>NOTE:</b> The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer.
   </p>
 </div>
