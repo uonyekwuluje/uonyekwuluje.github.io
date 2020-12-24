@@ -6,7 +6,7 @@ layout: default
   <header><h3>&nbsp;&nbsp;&nbsp;Posts</h3></header>
   <ul>
     {%- assign posts = paginator.posts | default: site.posts -%}
-    {% for post in posts limit:9%}
+    {% for post in posts limit:7%}
     <li>
       <b><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></b>&nbsp;&nbsp;&nbsp;
       <b><a href="{{ post.url | relative_url }}">{{ post.title }}</a></b>
