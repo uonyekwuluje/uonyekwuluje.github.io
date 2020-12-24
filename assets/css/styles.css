@@ -70,7 +70,7 @@ footer {
 }
 
 .aboutmeformat {
-  padding: 10px 110px 10px 110px;
+  padding: 10px 130px 10px 130px;
 }
 
 article {
@@ -85,9 +85,4 @@ img[src*="#thumbnail"] {
    border-radius: 4px;
    float: left;
    padding: 10px;
-}
-
-/* Paragraph Setting for About Me */
-.aboutmeparagraphsetting {
-  padding: 5px 20px 5px 0px;
 }
