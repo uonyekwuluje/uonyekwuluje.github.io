@@ -1,0 +1,90 @@
+.palign {
+  text-align: justify;
+}
+
+.container-fluid {
+   padding: 0px 60px 0px 60px;
+}
+
+pre, code {
+  width: 100%;
+  color: #fff;
+  background-color: #222;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  font-size: 14px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  border-radius: 4px;
+}
+
+pre {
+  padding: 10px 20px;
+  overflow: auto;
+}
+
+code {
+  padding: 3px;
+  margin: 0 3px;
+}
+
+pre code {
+  display: block;
+  box-shadow: none;
+}
+
+code, pre {
+  min-width: 320px;
+  max-width: 780px;
+  font-size: 11px;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  padding-bottom: 100px; //height of the footer
+  box-sizing: border-box;
+}
+
+footer {
+  text-align: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  #padding: 1rem;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #242321;
+  color: white;
+}
+
+.postarticleformat {
+  padding: 10px 80px 10px 80px;
+}
+
+.pagearticleformat {
+  padding: 10px 80px 10px 80px;
+}
+
+.mainpagearticleformat {
+  padding: 10px 80px 10px 80px;
+}
+
+article {
+  text-align: justify;
+}
+
+/* Image Sizing for About Me  */
+img[src*="#thumbnail"] {
+   width:200px;
+   height:250px;
+   border-radius: 4px;
+   float: left;
+   padding: 10px;
+}
+
+/* Paragraph Setting for About Me */
+.aboutmeparagraphsetting {
+  padding: 5px 20px 5px 0px;
+}

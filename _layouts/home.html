@@ -1,26 +1,28 @@
 ---
 layout: default
 ---
-<article>
-  <header><h1>&nbsp;&nbsp; Posts</h1></header>
-  <ul class="archive">
+<div class="mainpagearticleformat">
+ <article>
+  <header><h3>&nbsp;&nbsp;&nbsp;Posts</h3></header>
+  <ul>
     {%- assign posts = paginator.posts | default: site.posts -%}
     {% for post in posts limit:6%}
     <li>
-      <b><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></b>&nbsp;&nbsp;&nbsp;&nbsp;
+      <b><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></b>&nbsp;&nbsp;&nbsp;
       <b><a href="{{ post.url | relative_url }}">{{ post.title }}</a></b>
       <p class="palign">
         {% if post.description %}
            {{ post.description }}
         {% else %}
-           {{ post.excerpt | strip_html | truncatewords: 50 }}
+           {{ post.excerpt | strip_html | truncatewords: 23 }}
         {% endif %}
       </p>
     </li>
     {% endfor %}
   </ul>
   {{ content }}
-</article>
+ </article>
+</div>
 
 <!--{% if paginator.total_pages > 1 %}-->
 <footer>

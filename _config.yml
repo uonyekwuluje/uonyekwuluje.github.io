@@ -3,17 +3,7 @@ author: "Uchechukwu Onyekwuluje"
 description: "DevOps, Site Reliability, AWS, GCP, Azure"
 
 permalink: /:year-:month-:day/:title/
-paginate: 6
-
-show_footer: true           # show the "previous" and "next" links at the end of each post | false
-dark_theme: false            # use the dark mode as default  | false
-dark_header: true            # keep the header dark          | true
-dark_footer: true           # keep the footer dark           | false
-
-navigation:                  # site navigation in the header
-  - README.md
-  - Github: "http://github.com/uonyekwuluje"
-  - Projects.md
+paginate: 10
 
 #  icons:    http://fontawesome.com/icons
 #  envelope: "mailto:niklasbuschmann@users.noreply.github.com"
@@ -28,3 +18,16 @@ plugins:
  - jekyll-feed
  - jekyll-default-layout
  - jekyll-paginate
+
+your_copyright: "© Copyright 2019 InfraCID Consulting Rights - All Rights Reserved"
+show_footer: true           # show the "previous" and "next" links at the end of each post | false
+dark_theme: false            # use the dark mode as default  | false
+dark_header: true            # keep the header dark          | true
+dark_footer: true           # keep the footer dark           | false
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
