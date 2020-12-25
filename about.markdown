@@ -41,17 +41,12 @@ permalink: "/about/"
           <li><b>Virtualization Platforms:</b> VMware, KVM, XEN, VirtualBox</li>
           <li><b>Cloud Services:</b> AWS, GCP, Azure</li>
           <li><b>Monitoring:</b> Icinga, Prometheus, Sensu</li>
-          <li><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
+          <li><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>
       </div>
     </div>
   </div>  
-
   <br>
-  <p>
-    For more about me from a professional career standpoint, see details
-    <a href="https://www.linkedin.com/in/uchechukwu-onyekwuluje-sde" target="_blank">HERE</a>.
-  </p>
 
   <p>
     <b>NOTE:</b> The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer.
