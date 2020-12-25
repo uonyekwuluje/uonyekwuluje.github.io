@@ -19,7 +19,7 @@ plugins:
  - jekyll-default-layout
  - jekyll-paginate
 
-your_copyright: "© Copyright 2019 InfraCID Consulting Rights - All Rights Reserved"
+your_copyright: "© Copyright 2019 InfraCID Consulting - All Rights Reserved"
 show_footer: true           # show the "previous" and "next" links at the end of each post | false
 dark_theme: false            # use the dark mode as default  | false
 dark_header: true            # keep the header dark          | true
