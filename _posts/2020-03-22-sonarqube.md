@@ -119,10 +119,11 @@ exit
 
 **Download, Install and Setup SonarQube:**<br>
 ```
+SONARQUBE_VERSION="8.6.0.39681"
 cd /tmp
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.4.2.36762.zip
-unzip sonarqube-8.4.2.36762.zip
-mv sonarqube-8.4.2.36762 /opt/sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-${SONARQUBE_VERSION}.zip
+unzip sonarqube-${SONARQUBE_VERSION}.zip
+mv sonarqube-${SONARQUBE_VERSION} /opt/sonarqube
 chown -R sonar:sonar /opt/sonarqube
 ```
 
@@ -202,3 +203,4 @@ tail -f /opt/sonarqube/logs/ce.log
 
 #### **Reference Links**
 * SonarQube Site [Sonarqube](https://www.sonarqube.org/)
+* SonarQube Downloads [Downloads](https://binaries.sonarsource.com/Distribution/sonarqube/)

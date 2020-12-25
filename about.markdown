@@ -11,7 +11,7 @@ permalink: "/about/"
    </div>
 
    <p class="aboutmeparagraphsetting">
-   Hi, My name is Uchechukwu Onyekwuluje. I am a Site Reliability Engineer. I have worked in various capacities ranging from Systems Administration, Systems Engineering, DevOps, and Software Engineering. I love building tools to automate on-prem and cloud infrastructure in AWS, GCP, Azure. Researching open source tools and using my findings to solve complex problems or improve existing system is something I love to do. 
+   Hi, My name is Uchechukwu Onyekwuluje. I am a Site Reliability Engineer. I have worked in various capacities ranging from Systems Administration, Systems Engineering, DevOps, and Software Engineering. I love building tools to automate on-prem and cloud infrastructure in AWS, GCP, Azure. Researching open source tools and using my findings to solve complex problems or improve existing systems is something I love to do. 
    </p>
 
    <p class="aboutmeparagraphsetting">
