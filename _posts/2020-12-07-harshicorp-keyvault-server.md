@@ -4,7 +4,7 @@ title:  "HashiCorp Vault Setup"
 categories: Security Automation, Secrets
 ---
 
-Managing secrets, tokens, credentials, sensitive data etc., is one of the hallmarks of IT operations. They are lots of tools out there but we will focus on HashiCorp Vault. [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. In this post, we will install, configure, and access Vault in a DEV envronment to illustrate Vault’s features and API. We will use the latest version of Vault, which is 1.6.0 at the time of this writing.
+Managing secrets, tokens, credentials, sensitive data etc., is one of the hallmarks of IT operations. They are lots of tools out there but we will focus on HashiCorp Vault. [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. In this post, we will install, configure, and access Vault in a DEV envronment to illustrate Vault’s features and API. We will use the latest version of Vault, which is 1.6.1 at the time of this writing.
 
 ### **Server Requirements**
 We will be installing Vault in a CentOS 7 Server. Ensure you have the required permissions and you also have your firewalls configured accordingly.
@@ -33,13 +33,13 @@ sudo chown -R vault:vault /opt/vault
 ### **Install and Configure Vault**
 Download and install Vault:
 ```
-VAULT_VERSION=1.6.0
+VAULT_VERSION=1.6.1
 wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
 sudo unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /opt/vault/bin
 ```
 Test Vault with this command ```/opt/vault/bin/vault --version```. You should see this
 ```
-Vault v1.6.0 (7ce0bd9691998e0443bc77e98b1e2a4ab1e965d4)
+Vault v1.6.1 (7ce0bd9691998e0443bc77e98b1e2a4ab1e965d4)
 ```
 
 Create new file for configuration settings. ```/etc/vault/config.hcl```. 
@@ -128,7 +128,7 @@ Dec 07 07:27:34 vaultserver vault[966]:                Log Level: info
 Dec 07 07:27:34 vaultserver vault[966]:                    Mlock: supported: true, enabled: false
 Dec 07 07:27:34 vaultserver vault[966]:            Recovery Mode: false
 Dec 07 07:27:34 vaultserver vault[966]:                  Storage: file
-Dec 07 07:27:34 vaultserver vault[966]:                  Version: Vault v1.6.0
+Dec 07 07:27:34 vaultserver vault[966]:                  Version: Vault v1.6.1
 Dec 07 07:27:34 vaultserver vault[966]:              Version Sha: 7ce0bd9691998e0443bc77e98b1e2a4ab1e965d4
 Dec 07 07:27:34 vaultserver vault[966]: ==> Vault server started! Log data will stream in below:
 Dec 07 07:27:34 vaultserver vault[966]: 2020-12-07T07:27:34.117-0500 [INFO]  proxy environment: http_proxy= https_proxy= no_proxy=
@@ -188,7 +188,7 @@ Initialized     true
 Sealed          false
 Total Shares    5
 Threshold       3
-Version         1.6.0
+Version         1.6.1
 Storage Type    file
 Cluster Name    devvault
 Cluster ID      a7004e68-4285-70b1-a6ab-51d6b67ac8b9
