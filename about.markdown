@@ -27,31 +27,21 @@ permalink: "/about/"
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-sm">
-        <ul>
-          <li><b>Programming Languages:</b> JAVA, Python, BASH</li>
-          <li><b>Web Development:</b> HTML5, CSS5, JavaScript</li>
-          <li><b>Web Frameworks:</b> Flask</li>
-          <li><b>Databases:</b> Postgres, MySQL, Cassandra</li>
-          <li><b>Configuration Management & Deployments:</b> Ansible, Chef, Salt</li>
-          <li><b>IaaS Tools:</b> Terraform, Packer, Vault, Consul, Vagrant, Cloudformation</li>
-          <li><b>Continuous Integration/Delivery:</b> Jenkins, Azure DevOps, GitLab CI, GitHub Actions</li>
-          <li><b>Container Services:</b> Docker, Kubernetes</li>
-          <li><b>Virtualization Platforms:</b> VMware, KVM, XEN, VirtualBox</li>
-          <li><b>Cloud Services:</b> AWS, GCP, Azure</li>
-          <li><b>Monitoring:</b> Icinga, Prometheus, Sensu</li>
-          <li><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
-        </ul>
-      </div>
-
-     <div class="row">
+   <div class="row">
       <div class="col-sm">
         <ul class="fa-ul">
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span>List icons can</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span>be used to</li>
-           <li><span class="fa-li"><i class="fas fa-spinner fa-pulse"></i></span>replace bullets</li>
-           <li><span class="fa-li"><i class="far fa-square"></i></span>in lists</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> JAVA, Python, BASH</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Development:</b> HTML5, CSS5, JavaScript</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Frameworks:</b> Flask</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Databases:</b> Postgres, MySQL, Cassandra</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Configuration Management & Deployments:</b> Ansible, Chef, Salt</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>IaaS Tools:</b> Terraform, Packer, Vault, Consul, Vagrant, Cloudformation</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Continuous Integration/Delivery:</b> Jenkins, Azure DevOps, GitLab CI, GitHub Actions</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Container Services:</b> Docker, Kubernetes</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Virtualization Platforms:</b> VMware, KVM, XEN, VirtualBox</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Cloud Services:</b> AWS, GCP, Azure</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Monitoring:</b> Icinga, Prometheus, Sensu</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>
       </div>
     </div>
