@@ -86,3 +86,19 @@ img[src*="#thumbnail"] {
    float: left;
    padding: 10px;
 }
+
+.footer_content_align_left {
+  position: absolute;
+  text-align: left;
+  padding: 0px 0px 0px 60px;
+}
+
+.footer_content_align_right {
+  position: right;
+  text-align: right;
+  padding: 0px 60px 0px 0px;
+}
+
+.contactcolor {
+  color: white;
+}

@@ -30,17 +30,18 @@ permalink: "/about/"
    <div class="row">
       <div class="col-sm">
         <ul class="fa-ul">
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> JAVA, Python, BASH</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Development:</b> HTML5, CSS5, JavaScript</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> Python, BASH</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Development:</b> HTML, CSS, JavaScript, Bootstrap</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Frameworks:</b> Flask</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Databases:</b> Postgres, MySQL, Cassandra</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Configuration Management & Deployments:</b> Ansible, Chef, Salt</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Databases:</b> Postgres, MySQL</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Configuration Management & Deployments:</b> Ansible, Chef, Saltstack</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>IaaS Tools:</b> Terraform, Packer, Vault, Consul, Vagrant, Cloudformation</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Continuous Integration/Delivery:</b> Jenkins, Azure DevOps, GitLab CI, GitHub Actions</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Container Services:</b> Docker, Kubernetes</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Virtualization Platforms:</b> VMware, KVM, XEN, VirtualBox</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Cloud Services:</b> AWS, GCP, Azure</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Monitoring:</b> Icinga, Prometheus, Sensu</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Virtualization:</b> KVM, XEN, VMWare</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Operating Systems:</b> RedHat, CentOS, Debian, Ubuntu, Windows, MAC OS</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Monitoring:</b> Nagios, Icinga, Prometheus, Sensu</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>
       </div>
