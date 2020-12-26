@@ -44,6 +44,16 @@ permalink: "/about/"
           <li><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>
       </div>
+
+     <div class="row">
+      <div class="col-sm">
+        <ul class="fa-ul">
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span>List icons can</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span>be used to</li>
+           <li><span class="fa-li"><i class="fas fa-spinner fa-pulse"></i></span>replace bullets</li>
+           <li><span class="fa-li"><i class="far fa-square"></i></span>in lists</li>
+        </ul>
+      </div>
     </div>
   </div>  
   <br>
