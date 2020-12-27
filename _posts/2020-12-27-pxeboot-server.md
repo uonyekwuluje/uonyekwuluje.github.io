@@ -24,6 +24,8 @@ sudo yum install -y dhcp-server tftp tftp-server syslinux vsftpd xinetd
 ***NOTE:*** *Adjust your firewall rules and selinux as needed*
 <br>
 **Configure DHCP**<br>
+***NOTE:*** *Change 192.168.1.196 to your PXE Boot Address*
+<br>
 Create your DHCP Config. ```/etc/dhcp/dhcpd.conf```.
 ```
 # dhcpd.conf
@@ -65,7 +67,7 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
  max-lease-time 7200;
 
  # IP of PXE Server
- next-server 192.168.1.7;
+ next-server 192.168.1.196;
  filename "pxelinux.0";
 }
 ```
@@ -105,7 +107,7 @@ sudo mkdir /var/ftp/pub/centos8
 ```
 
 ### **Distribution ISO Updates**
-Download CentOS 8 and CentOS 7 ISO. Extract the files and copy them to the shared mounts.
+Download CentOS 7 and CentOS 8 ISO. Extract the files and copy them to the shared mounts.
 ```
 sudo mkdir /mnt/test
 sudo mount -o loop CentOS-7-x86_64-DVD-2009.iso /mnt/test/
@@ -278,7 +280,7 @@ python
 reboot
 ```
 
-### **PXE Boot Menu***
+### **PXE Boot Menu**
 ***NOTE:*** *Change 192.168.1.196 to your PXE Boot Address*
 <br>
 Create the PXE boot menu. Edit/Create ```/var/lib/tftpboot/pxelinux.cfg/default```
@@ -321,4 +323,4 @@ sudo systemctl restart vsftpd
 On the new servers, ensure that network boot is enabled and configured. Start the server. If all goes well,
 you should see the pxe boot menu. Section the OS Label of your choice and that should be it.
 <br>
-*NOTE: For customised installations, configure your kickstart config as needed*
+*NOTE: For customized installations, configure your kickstart config as needed*
