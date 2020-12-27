@@ -323,7 +323,7 @@ sudo systemctl restart vsftpd
 On the new servers, ensure that network boot is enabled and configured. Start the server. If all goes well,
 you should see the pxe boot menu. Section the OS Label of your choice and that should be it.
 <div class="custom" markdown="1">
- ![PXE Boot Screen](../assets/post_images/pxeboot-screen.png#pxeboot)
+ ![PXE Boot Screen](assets/post_images/pxeboot-screen.png#pxeboot)
 </div>
 
 <br>
