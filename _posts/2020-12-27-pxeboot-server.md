@@ -298,3 +298,27 @@ MENU LABEL CentOS 8_X64
 KERNEL /networkboot/centos8/vmlinuz
 APPEND initrd=/networkboot/centos8/initrd.img inst.repo=ftp://192.168.1.196/pub/centos8/AppStream ks=ftp://192.168.1.196/pub/centos8/centos8.cfg
 ``` 
+
+### **Enable Services**
+Enable xinetd, dhcp and vsftpd service
+```
+sudo systemctl daemon-reload
+
+sudo systemctl start xinetd
+sudo systemctl enable xinetd
+sudo systemctl restart xinetd
+
+sudo systemctl start dhcpd.service
+sudo systemctl enable dhcpd.service
+sudo systemctl restart dhcpd.service
+
+sudo systemctl start vsftpd
+sudo systemctl enable vsftpd
+sudo systemctl restart vsftpd
+```
+
+### **BootStrap CentOS 7 or 8 Servers**
+On the new servers, ensure that network boot is enabled and configured. Start the server. If all goes well,
+you should see the pxe boot menu. Section the OS Label of your choice and that should be it.
+<br>
+*NOTE: For customised installations, configure your kickstart config as needed*
