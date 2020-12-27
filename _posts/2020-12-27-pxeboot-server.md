@@ -321,6 +321,6 @@ sudo systemctl restart vsftpd
 
 ### **BootStrap CentOS 7 or 8 Servers**
 On the new servers, ensure that network boot is enabled and configured. Start the server. If all goes well,
-you should see the pxe boot menu. Section the OS Label of your choice and that should be it.
+you should see the pxe boot menu. Select the OS Label of your choice and that should be it.
 <br>
 *NOTE: For customized installations, configure your kickstart config as needed*
