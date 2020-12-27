@@ -87,6 +87,16 @@ img[src*="#thumbnail"] {
    padding: 10px;
 }
 
+img[src*="#pxeboot"] {
+   width:200px;
+   height:250px;
+   border-radius: 4px;
+   float: left;
+   padding: 10px;
+}
+
+
+
 .footer_content_align_left {
   position: absolute;
   text-align: left;
