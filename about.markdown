@@ -30,7 +30,7 @@ permalink: "/about/"
    <div class="row">
       <div class="col-sm">
         <ul class="fa-ul">
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> Python, BASH</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> Python, Golang, BASH</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Development:</b> HTML, CSS, JavaScript, Bootstrap</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Frameworks:</b> Flask</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Databases:</b> Postgres, MySQL</li>
