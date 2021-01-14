@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Passwordless SSH Setup"
-categories: systems_administration
+categories: Systems Administration
 ---
 
 SSH is a client/server protocol used for remote access of linux systems. It does so over a secure encrypted tunnel.
