@@ -1,33 +1,40 @@
-title: "WebDev, SysOps, SysAdmin, DevOps, SRE"
-author: "Uchechukwu Onyekwuluje"
-description: "DevOps, Site Reliability, AWS, GCP, Azure"
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
 
-permalink: /:year-:month-:day/:title/
-paginate: 10
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["README.md"] # files to exclude
+highlighter: rouge
+markdown: kramdown
+disqus: dbyll
+google_analytics: dbyll
+title: dbyll
 
-#  icons:    http://fontawesome.com/icons
-#  envelope: "mailto:niklasbuschmann@users.noreply.github.com"
-#  github:   "https://github.com/niklasbuschmann/contrast"
-#  rss:      "/contrast/feed.xml"
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      title: dbyll
 
-comments:                    # embed disqus or isso comments
-#  disqus: ""
-#  isso: ""
+description: Stylish Jekyll Theme
+author:
+  name: dbyll
+  email: dbyll@ismaildemirbilek.com
+  github: dbtek
+  twitter: dbtek
+  pinterest: asd123
+  linkedin: asd123
+  bio: Your stylish, minimalist theme!
+  email_md5: 726351295ec82e145928582f595aa3aa
+
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+# set it as url of an image
+# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
+
+BASE_PATH:
 
 plugins:
- - jekyll-feed
- - jekyll-default-layout
- - jekyll-paginate
-
-your_copyright: "© Copyright 2019 InfraCID Consulting - All Rights Reserved"
-show_footer: true           # show the "previous" and "next" links at the end of each post | false
-dark_theme: false            # use the dark mode as default  | false
-dark_header: true            # keep the header dark          | true
-dark_footer: true           # keep the footer dark           | false
-
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
-  hard_wrap: false
-  syntax_highlighter: rouge
+  - jekyll-paginate
