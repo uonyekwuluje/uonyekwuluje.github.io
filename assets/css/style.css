@@ -1,11 +1,11 @@
 @import url(//fonts.googleapis.com/css?family=Ubuntu:500&subset=latin,latin-ext);
 
 body{
-	color: #2c3e50;
+   color: #2c3e50;
 }
 
 .palign {
-  text-align: justify;
+  text-align: center;
 }
 
 .sidebar {
