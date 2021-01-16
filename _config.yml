@@ -7,14 +7,14 @@ highlighter: rouge
 markdown: kramdown
 disqus: InfraCID
 google_analytics: InfraCID
-title: InfraCID
+title: InfraCID Consulting
 
 defaults:
   -
     scope:
       path: "" # empty string for all files
     values:
-      title: InfraCID Consulting
+      title: InfraCID Blog
 
 description: InfraCID Blogs
 author:
