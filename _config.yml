@@ -20,12 +20,12 @@ description: InfraCID Blogs
 author:
   name: Uchechukwu Onyekwuluje
   email: uionyekwuluje@gmail.com
-  github: dbtek
+  github: https://github.com/uonyekwuluje
   twitter: dbtek
   pinterest: asd123
-  linkedin: asd123
+  linkedin: www.linkedin.com/in/uchechukwu-onyekwuluje-sde 
   bio: WebDev, SysOps, SysAdmin, DevOps, SRE
-  email_md5: 726351295ec82e145928582f595aa3aa
+  email_md5: info@infracid.com
 
 rss_path: feed.xml
 categories_path: categories.html
