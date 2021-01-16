@@ -7,19 +7,19 @@ highlighter: rouge
 markdown: kramdown
 disqus: dbyll
 google_analytics: dbyll
-title: dbyll
+title: "WebDev, SysOps, SysAdmin, DevOps, SRE"
 
 defaults:
   -
     scope:
       path: "" # empty string for all files
     values:
-      title: dbyll
+      title: InfraCID Consulting
 
-description: Stylish Jekyll Theme
+description: InfraCID Blogs
 author:
-  name: dbyll
-  email: dbyll@ismaildemirbilek.com
+  name: Uchechukwu Onyekwuluje
+  email: uionyekwuluje@gmail.com
   github: dbtek
   twitter: dbtek
   pinterest: asd123
