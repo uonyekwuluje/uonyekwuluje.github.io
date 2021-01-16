@@ -8,14 +8,14 @@ OpenLDAP is an open-source implementation of the Lightweight Directory Access Pr
 <br>
 In this post, I will be installing an LDAP Server and two clients. The primary use case here is to centralize and manage user accounts and logins in a linux environment.
 
-# **Server Stack**
+### **Server Stack**
 
   Component   |  Systems Specification   | Operating System  |      FQDN
  ------------ | ------------------------ | ----------------- | ------------------------------
  ldapserver   | 2 CPU  4GB RAM  20GB HDD |  CentOS 7.x       |  ldapserver.infralabs.com
  ldapclient01 | 1 CPU  2GB RAM  20GB HDD |  CentOS 7.x       |  ldapclient01.infralabs.com
 
-# **LDAP Org Stack**
+### **LDAP Org Stack**
 
   Domain       |      Domain DN      |   LDAP Server  
  ------------- | --------------------| ----------------- 
