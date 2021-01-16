@@ -16,7 +16,7 @@ self hosted runners.
 For the purpose of this post, setup or provision a VM with the following specs:
 * Ubuntu 18.04/20.04 LTS.
 * Admin Privilleges on the server
-* Network and firewall configuration as needed. *In this post, we will be using CentOS 7 and CentOS8*
+* Network and firewall configuration as needed. 
 * GitHub Personal Access Token
 * GitHub Organization Name
 
