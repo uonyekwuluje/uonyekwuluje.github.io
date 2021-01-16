@@ -51,3 +51,92 @@ curl -L https://github.com/docker/machine/releases/download/v0.16.2/docker-machi
 chmod +x /tmp/docker-machine
 sudo mv /tmp/docker-machine /bin/docker-machine
 ```
+
+### **Action Runner Setup**
+Prepare and install the runners
+```
+sudo mkdir /opt/actions-runner
+sudo chown -R ubuntu:ubuntu /opt/actions-runner
+cd /opt/actions-runner
+
+RUNNER_VERSION="2.271.5"
+curl -O -sL https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz 
+tar xzf actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+rm actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+chown -R ubuntu:ubuntu /opt/actions-runner 
+sudo /opt/actions-runner/bin/installdependencies.sh
+```
+
+### **Action Runner Registration for Organization**
+This section highlights how to register action runners against a given organization
+```
+export ORGANIZATION=<Organization Name>
+export ACCESS_TOKEN=<PAT Personal Access Token>
+export BUILD_LABELS=test
+
+REGISTRATION_TOKEN=$(curl -sX POST -H "Authorization: token ${ACCESS_TOKEN}" https://api.github.com/orgs/${ORGANIZATION}/actions/runners/registration-token | jq .token --raw-output)
+./config.sh --url https://github.com/${ORGANIZATION} --token ${REGISTRATION_TOKEN} --labels ${BUILD_LABELS} --name "runner" --work "_work"
+```
+
+### **Action Runner Registration for Repositories**
+This section highlights how to register action runners against a repository
+```
+export OWNER="<account name>"
+export REPOSITORY="<repository>"
+export ACCESS_TOKEN=<PAT Personal Access Token>
+export BUILD_LABELS=test
+
+REGISTRATION_TOKEN=$(curl -sX POST -H "Authorization: token ${ACCESS_TOKEN}" https://api.github.com/repos/${OWNER}/${REPOSITORY}/actions/runners/registration-token | jq .token --raw-output)
+
+./config.sh --url https://github.com/${OWNER}/${REPOSITORY} --token ${REGISTRATION_TOKEN} --labels ${BUILD_LABELS} --name "runner" --work "_work"
+```
+
+### **Registration Output**
+if the registration process completes successfully, you should see this
+```
+--------------------------------------------------------------------------------
+|        ____ _ _   _   _       _          _        _   _                      |
+|       / ___(_) |_| | | |_   _| |__      / \   ___| |_(_) ___  _ __  ___      |
+|      | |  _| | __| |_| | | | | '_ \    / _ \ / __| __| |/ _ \| '_ \/ __|     |
+|      | |_| | | |_|  _  | |_| | |_) |  / ___ \ (__| |_| | (_) | | | \__ \     |
+|       \____|_|\__|_| |_|\__,_|_.__/  /_/   \_\___|\__|_|\___/|_| |_|___/     |
+|                                                                              |
+|                       Self-hosted runner registration                        |
+|                                                                              |
+--------------------------------------------------------------------------------
+
+# Authentication
+
+√ Connected to GitHub
+# Runner Registration
+
+√ Runner successfully added
+√ Runner connection is good
+
+# Runner settings
+
+√ Settings Saved.
+```
+
+### **Action Sunner Service**
+If registration is successful, you can configure a service for your action runners. To do so, change directory to your installation path
+and run the following:
+```
+# Install service
+sudo ./svc.sh install
+
+# Start Service
+sudo ./svc.sh start
+
+# Check Status
+sudo ./svc.sh status
+
+# Stop Service
+sudo ./svc.sh stop
+```
+
+### **Remove Runner**
+To remove a given agent, loginto Github and check the commands from the console. It should be of the form:
+```
+./config.sh remove --token <runner token>
+```
