@@ -24,8 +24,8 @@ For the purpose of this post, setup or provision a VM with the following specs:
 Update the server and install base packages
 ```
 sudo apt upgrade
-sudo apt install -y libncursesw5 libncursesw5-dev libncurses5 gcc-7 open-vm-tools open-vm-tools-dev \
-gcc dkms libaio1 libcanberra-gtk-module build-essential linux-headers-$(uname -r) libssl-dev openssl \
+sudo apt install -y libncursesw5 libncursesw5-dev libncurses5 gcc-7 gcc dkms libaio1 \
+libcanberra-gtk-module build-essential linux-headers-$(uname -r) libssl-dev openssl \
 zip zlib1g-dev cmake zlib1g-dev libxi-dev libxtst-dev curl gnupg2 libgtk2.0-dev jq 
 ```
 
