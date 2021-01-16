@@ -192,6 +192,7 @@ ul.dropdown-menu>li>a>i.fa {
 
 /* ------ Code Highlight Block ----- */
 pre, code {
+  display: block;
   width: 100%;
   color: #fff;
   background-color: #222;
@@ -211,10 +212,5 @@ pre {
 code {
   padding: 3px;
   margin: 0 3px;
-}
-
-pre code {
-  display: block;
-  box-shadow: none;
 }
 /* ----- End Code Highlight Block ----- */ 
