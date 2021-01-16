@@ -7,7 +7,7 @@ highlighter: rouge
 markdown: kramdown
 disqus: dbyll
 google_analytics: dbyll
-title: "WebDev, SysOps, SysAdmin, DevOps, SRE"
+title: InfraCID
 
 defaults:
   -
@@ -24,7 +24,7 @@ author:
   twitter: dbtek
   pinterest: asd123
   linkedin: asd123
-  bio: Your stylish, minimalist theme!
+  bio: WebDev, SysOps, SysAdmin, DevOps, SRE
   email_md5: 726351295ec82e145928582f595aa3aa
 
 rss_path: feed.xml
