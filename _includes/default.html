@@ -48,9 +48,9 @@
 				<i class="fa fa-github"></i>
 			</a>
 			{% endif %}
-			{% if site.author.twitter %}
-			<a type="button" class="navbar-toggle nav-link" href="http://twitter.com/{{ site.author.twitter }}">
-				<i class="fa fa-twitter"></i>
+			{% if site.author.linkedin %}
+			<a type="button" class="navbar-toggle nav-link" href="https://linkedin.com/in/{{ site.author.linkedin }}">
+				<i class="fa fa-linkedin"></i>
 			</a>
 			{% endif %}
 			{% if site.author.email %}
@@ -59,7 +59,7 @@
 			</a>
 			{% endif %}
 			<a class="navbar-brand" href="{{ site.BASE_PATH }}/">
-				<img src="//www.gravatar.com/avatar/{{site.author.email_md5}}?s=35" class="img-circle" />
+				<img src="{{ site.BASE_PATH }}/assets/ico/logo.png" class="img-circle" />
 				{{ site.title }}
 			</a>
 		</div>
