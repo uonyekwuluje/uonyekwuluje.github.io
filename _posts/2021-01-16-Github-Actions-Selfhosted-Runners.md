@@ -55,15 +55,17 @@ sudo mv /tmp/docker-machine /bin/docker-machine
 ### **Action Runner Setup**
 Prepare and install the runners
 ```
+RUNNER_VERSION="2.271.5"
+RUNNER_USER="ubuntu"
+
 sudo mkdir /opt/actions-runner
-sudo chown -R ubuntu:ubuntu /opt/actions-runner
+sudo chown -R ${RUNNER_USER}:${RUNNER_USER} /opt/actions-runner
 cd /opt/actions-runner
 
-RUNNER_VERSION="2.271.5"
 curl -O -sL https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz 
 tar xzf actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 rm actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
-chown -R ubuntu:ubuntu /opt/actions-runner 
+chown -R ${RUNNER_USER}:${RUNNER_USER} /opt/actions-runner 
 sudo /opt/actions-runner/bin/installdependencies.sh
 ```
 
@@ -118,12 +120,12 @@ if the registration process completes successfully, you should see this
 √ Settings Saved.
 ```
 
-### **Action Sunner Service**
+### **Action Runner Service**
 If registration is successful, you can configure a service for your action runners. To do so, change directory to your installation path
 and run the following:
 ```
 # Install service
-sudo ./svc.sh install
+sudo ./svc.sh install ${RUNNER_USER}
 
 # Start Service
 sudo ./svc.sh start
