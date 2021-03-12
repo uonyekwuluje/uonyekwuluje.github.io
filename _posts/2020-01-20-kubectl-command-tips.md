@@ -68,7 +68,23 @@ kubectl port-forward --address localhost,192.168.1.34 svc/argocd-server -n argoc
 You can also adjust for deployments or other service as needed.
 
 
+<hr>
+**Kubernetes Context** <br>
+Kubernetes assumes the default after a clean setup. As you add more namespaces, you have to pass ```-n <namespace>``` as part of the command.
+You can change the context to avoid repeated use of that option
+```
+kubectl get ns
+NAME              STATUS   AGE
+poc1              Active   19h
+default           Active   20h
+poc2              Active   4h
+kube-node-lease   Active   20h
+kube-public       Active   20h
+kube-system       Active   20h
 
+#chage context
+kubectl config set-context --current --namespace=poc1
+```
 
 
 
