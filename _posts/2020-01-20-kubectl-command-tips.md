@@ -22,10 +22,11 @@ Server Version: v1.14.8
 <hr>
 #### **Command Cheat Sheet**
 
-|         Command                 |      Description             |              Reference Links               |
-|:------------------------------: |:----------------------------:| :----------------------------------------: | 
-|  `kubectl config view`          | View current config          |   [kubernetes](https://kubernetes.io/)     |
-|  `kubectl config get-contexts`  | Get all installed contexts   |   [kubernetes](https://kubernetes.io/)     | 
+|         Command                  |      Description             |              Reference Links               |
+|:-------------------------------: |:----------------------------:| :----------------------------------------: | 
+|  `kubectl config view`           | View current config          |   [kubernetes](https://kubernetes.io/)     |
+|  `kubectl config get-contexts`   | Get all installed contexts   |   [kubernetes](https://kubernetes.io/)     | 
+|  `kubectl delete ns <namesapce>` | Delete kubernetes namespace  |   [kubernetes](https://kubernetes.io/)     | 
 
 <hr>
 **Utilities** <br>
