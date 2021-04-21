@@ -295,3 +295,52 @@ tmpfs                          200M     0  200M   0% /run/user/1000
 /dev/mapper/prodpoc_vg-store2  380M  2.3M  354M   1% /home/ubuntu/st2
 /dev/mapper/prodpoc_vg-store3  1.9G  5.9M  1.8G   1% /home/ubuntu/st3
 ```
+
+
+### **Extend Logical Volume**
+With our filesystem in place, lets extend one of our logical volumes. We will add `3GB` to `/dev/prodpoc_vg/store2`
+```
+sudo lvextend -L +3000 /dev/prodpoc_vg/store2
+```
+you should see something like this
+```
+  Size of logical volume prodpoc_vg/store2 changed from 400.00 MiB (100 extents) to 3.32 GiB (850 extents).
+  Logical volume prodpoc_vg/store2 successfully resized.
+```
+Now we resize it
+```
+sudo resize2fs /dev/prodpoc_vg/store2
+```
+you should see something like this
+```
+resize2fs 1.44.1 (24-Mar-2018)
+Filesystem at /dev/prodpoc_vg/store2 is mounted on /home/ubuntu/st2; on-line resizing required
+old_desc_blocks = 4, new_desc_blocks = 27
+The filesystem on /dev/prodpoc_vg/store2 is now 3481600 (1k) blocks long.
+```
+Testing out with `df -h` we can see our changes
+```
+Filesystem                     Size  Used Avail Use% Mounted on
+udev                           966M     0  966M   0% /dev
+tmpfs                          200M  732K  199M   1% /run
+/dev/sda2                       13G  4.0G  8.2G  33% /
+tmpfs                          997M     0  997M   0% /dev/shm
+tmpfs                          5.0M     0  5.0M   0% /run/lock
+tmpfs                          997M     0  997M   0% /sys/fs/cgroup
+tmpfs                          200M     0  200M   0% /run/user/1000
+/dev/mapper/prodpoc_vg-store1  190M  1.6M  175M   1% /home/ubuntu/st1
+/dev/mapper/prodpoc_vg-store2  3.3G  3.0M  3.1G   1% /home/ubuntu/st2
+/dev/mapper/prodpoc_vg-store3  1.9G  5.9M  1.8G   1% /home/ubuntu/st3
+```
+
+### **Remove Logical Volume**
+We can also remove the logical volumes if we no longer need them. In this case `/dev/prodpoc_vg/store1`
+```
+sudo lvremove /dev/prodpoc_vg/store1
+```
+answer yes
+```
+Do you really want to remove and DISCARD active logical volume prodpoc_vg/store1? [y/n]: y
+  Logical volume "store1" successfully removed
+```
+*Remember to unmount first*
