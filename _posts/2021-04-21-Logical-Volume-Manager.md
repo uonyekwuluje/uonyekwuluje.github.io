@@ -205,7 +205,7 @@ Logical volume "store1" created.
 Logical volume "store2" created.
 Logical volume "store3" created.
 ```
-To list your logical volumes
+**To list your logical volumes**
 ```
 sudo lvdisplay
 ```
@@ -261,4 +261,37 @@ we should see this
   Read ahead sectors     auto
   - currently set to     256
   Block device           253:2
+```
+
+
+### **Create Filesystem**
+With our logical volumes in place, we can now create our filesystem
+```
+sudo mkfs.ext4 /dev/prodpoc_vg/store1
+sudo mkfs.ext4 /dev/prodpoc_vg/store2
+sudo mkfs.ext4 /dev/prodpoc_vg/store3
+```
+Create folders to mount the filesystem
+```
+mkdir ~/{st1,st2,st3}
+```
+Mount filesystem `/etc/fstab`
+```
+/dev/prodpoc_vg/store1   /home/ubuntu/st1   ext4  defaults 0 0
+/dev/prodpoc_vg/store2   /home/ubuntu/st2   ext4  defaults 0 0
+/dev/prodpoc_vg/store3   /home/ubuntu/st3   ext4  defaults 0 0
+```
+`sudo mount -a`. Type `df -a` and you should see this
+```
+Filesystem                     Size  Used Avail Use% Mounted on
+udev                           966M     0  966M   0% /dev
+tmpfs                          200M  732K  199M   1% /run
+/dev/sda2                       13G  4.0G  8.2G  33% /
+tmpfs                          997M     0  997M   0% /dev/shm
+tmpfs                          5.0M     0  5.0M   0% /run/lock
+tmpfs                          997M     0  997M   0% /sys/fs/cgroup
+tmpfs                          200M     0  200M   0% /run/user/1000
+/dev/mapper/prodpoc_vg-store1  190M  1.6M  175M   1% /home/ubuntu/st1
+/dev/mapper/prodpoc_vg-store2  380M  2.3M  354M   1% /home/ubuntu/st2
+/dev/mapper/prodpoc_vg-store3  1.9G  5.9M  1.8G   1% /home/ubuntu/st3
 ```
