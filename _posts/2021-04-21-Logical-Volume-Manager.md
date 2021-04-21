@@ -88,7 +88,7 @@ sr0     11:0    1 1024M  0 rom
 ```
 
 ### **Create Physical Volumes**
-Create physical volumes
+**Create physical volumes**
 ```
 sudo pvcreate /dev/sdb1
 sudo pvcreate /dev/sdc1
@@ -101,7 +101,7 @@ Physical volume "/dev/sdc1" successfully created.
 Physical volume "/dev/sdd1" successfully created.
 ```
 
-List Physical Volumes
+**List Physical Volumes**
 ```
 sudo pvdisplay
 ```
@@ -142,4 +142,49 @@ You should see this
   Free PE               0
   Allocated PE          0
   PV UUID               e4WEPR-Rtxk-yECB-Z4je-cDt6-J3w9-u0JQ9I
+```
+
+### **Create Volume Group**
+With our physical volumes in place, we can now create our volume group
+```
+sudo vgcreate devpoc_vg /dev/sdb1
+OR
+sudo vgcreate prodpoc_vg /dev/sdb1 /dev/sdc1 /dev/sdd1
+```
+*Not Both*
+using `prodpoc_vg` in this case, we have
+```
+  Volume group "prodpoc_vg" successfully created
+```
+List volume group
+```
+sudo vgdisplay
+```
+You should seee this
+```
+  --- Volume group ---
+  VG Name               prodpoc_vg
+  System ID             
+  Format                lvm2
+  Metadata Areas        3
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                3
+  Act PV                3
+  VG Size               <38.99 GiB
+  PE Size               4.00 MiB
+  Total PE              9981
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       9981 / <38.99 GiB
+  VG UUID               CaLrye-GWnD-Kmo1-2MZb-rdEV-hJtP-fso1LD
+```
+If we go thr route of `sudo vgcreate devpoc_vg /dev/sdb1` we can do this
+```
+sudo vgcreate devpoc_vg /dev/sdb1
+sudo vgextend devpoc_vg /dev/sdc1
 ```
