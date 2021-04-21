@@ -19,8 +19,14 @@ sudo apt install lvm2
 
 ### **LVM Storage Terms**
 
-|-----------------|-------|------------------------
-|Physical Volumes |  pv   |  Physical disks. /dev/sda,/dev/hda etc
-|Volume Group     |  vg   |   
-|Logical Volumes  |  lv   |   
+**Physical Volumes:** 
+* Prefix `pv`
+* Description:  Physical disks. /dev/sda,/dev/hda etc
 
+**Volume Group:**
+* Prefix `vg`
+* Description:  Combination of physical volumes
+   
+**Logical Volumes:**
+* Prefix `lv`   
+* Description:  Volume group broken down into slices, volume groups, partitions
