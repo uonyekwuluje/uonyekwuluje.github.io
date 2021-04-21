@@ -183,8 +183,82 @@ You should seee this
   Free  PE / Size       9981 / <38.99 GiB
   VG UUID               CaLrye-GWnD-Kmo1-2MZb-rdEV-hJtP-fso1LD
 ```
-If we go thr route of `sudo vgcreate devpoc_vg /dev/sdb1` we can do this
+If we go the route of `sudo vgcreate devpoc_vg /dev/sdb1` we can do this
 ```
 sudo vgcreate devpoc_vg /dev/sdb1
 sudo vgextend devpoc_vg /dev/sdc1
+```
+in this case, we create and extend
+
+
+### **Create Logical Volumes**
+With our volume group in place, we can now create our logical volumes. Lets create three logical volumes
+with 200MB,400MB and 2GB
+```
+sudo lvcreate -L 200 -n store1 prodpoc_vg
+sudo lvcreate -L 400 -n store2 prodpoc_vg
+sudo lvcreate -L 2000 -n store3 prodpoc_vg
+```
+You should see this respectively
+```
+Logical volume "store1" created.
+Logical volume "store2" created.
+Logical volume "store3" created.
+```
+To list your logical volumes
+```
+sudo lvdisplay
+```
+we should see this
+```
+  --- Logical volume ---
+  LV Path                /dev/prodpoc_vg/store1
+  LV Name                store1
+  VG Name                prodpoc_vg
+  LV UUID                Nqf88X-FLqL-XVv6-l4BN-tst5-T2cz-1hEVrc
+  LV Write Access        read/write
+  LV Creation host, time test-svr, 2021-04-21 07:56:20 +0000
+  LV Status              available
+  # open                 0
+  LV Size                200.00 MiB
+  Current LE             50
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+   
+  --- Logical volume ---
+  LV Path                /dev/prodpoc_vg/store2
+  LV Name                store2
+  VG Name                prodpoc_vg
+  LV UUID                gfGOI5-FV7t-84gb-Nl3P-7uWo-hyCp-1E3J4J
+  LV Write Access        read/write
+  LV Creation host, time test-svr, 2021-04-21 07:56:29 +0000
+  LV Status              available
+  # open                 0
+  LV Size                400.00 MiB
+  Current LE             100
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:1
+   
+  --- Logical volume ---
+  LV Path                /dev/prodpoc_vg/store3
+  LV Name                store3
+  VG Name                prodpoc_vg
+  LV UUID                4vXGSa-egWg-zwhF-fCSc-vtZE-HOTb-ywEiTI
+  LV Write Access        read/write
+  LV Creation host, time test-svr, 2021-04-21 07:56:36 +0000
+  LV Status              available
+  # open                 0
+  LV Size                1.95 GiB
+  Current LE             500
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:2
 ```
