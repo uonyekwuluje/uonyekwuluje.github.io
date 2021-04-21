@@ -86,3 +86,60 @@ sdd      8:48   0   13G  0 disk
 └─sdd1   8:49   0   13G  0 part 
 sr0     11:0    1 1024M  0 rom  
 ```
+
+### **Create Physical Volumes**
+Create physical volumes
+```
+sudo pvcreate /dev/sdb1
+sudo pvcreate /dev/sdc1
+sudo pvcreate /dev/sdd1
+```
+You should have these respectively
+```
+Physical volume "/dev/sdb1" successfully created.
+Physical volume "/dev/sdc1" successfully created.
+Physical volume "/dev/sdd1" successfully created.
+```
+
+List Physical Volumes
+```
+sudo pvdisplay
+```
+You should see this
+```
+  "/dev/sdb1" is a new physical volume of "<13.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdb1
+  VG Name               
+  PV Size               <13.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               nBxpTQ-ZCDY-ScZy-oZj2-0WC8-QbbF-jJ4965
+   
+  "/dev/sdd1" is a new physical volume of "<13.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdd1
+  VG Name               
+  PV Size               <13.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               KV0CFJ-EwcP-yjKK-3ejR-y69y-6Icc-rY53th
+   
+  "/dev/sdc1" is a new physical volume of "<13.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/sdc1
+  VG Name               
+  PV Size               <13.00 GiB
+  Allocatable           NO
+  PE Size               0   
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               e4WEPR-Rtxk-yECB-Z4je-cDt6-J3w9-u0JQ9I
+```
