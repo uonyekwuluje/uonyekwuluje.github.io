@@ -344,3 +344,60 @@ Do you really want to remove and DISCARD active logical volume prodpoc_vg/store1
   Logical volume "store1" successfully removed
 ```
 *Remember to unmount first*
+
+### **Command Summary Reference***
+List of PV Commands
+* **pvchange:** — Change attributes of a Physical Volume.
+* **pvck:** — Check Physical Volume metadata.
+* **pvcreate:** — Initialize a disk or partition for use by LVM.
+* **pvdisplay:** — Display attributes of a Physical Volume.
+* **pvmove:** — Move Physical Extents.
+* **pvremove:** — Remove a Physical Volume.
+* **pvresize:** — Resize a disk or partition in use by LVM2.
+* **pvs:** — Report information about Physical Volumes.
+* **pvscan:** — Scan all disks for Physical Volumes. 
+
+
+List of VG commands
+* **vgcfgbackup:** — Backup Volume Group descriptor area.
+* **vgcfgrestore:** — Restore Volume Group descriptor area.
+* **vgchange:** — Change attributes of a Volume Group.
+* **vgck:** — Check Volume Group metadata.
+* **vgconvert:** — Convert Volume Group metadata format.
+* **vgcreate:** — Create a Volume Group.
+* **vgdisplay:** — Display attributes of Volume Groups.
+* **vgexport:** — Make volume Groups unknown to the system.
+* **vgextend:** — Add Physical Volumes to a Volume Group.
+* **vgimport:** — Make exported Volume Groups known to the system.
+* **vgimportclone:** — Import and rename duplicated Volume Group (e.g. a hardware snapshot).
+* **vgmerge:** — Merge two Volume Groups.
+* **vgmknodes:** — Recreate Volume Group directory and Logical Volume special files
+* **vgreduce:** — Reduce a Volume Group by removing one or more Physical Volumes.
+* **vgremove:** — Remove a Volume Group.
+* **vgrename:** — Rename a Volume Group.
+* **vgs:** — Report information about Volume Groups.
+* **vgscan:** — Scan all disks for Volume Groups and rebuild caches.
+* **vgsplit:** — Split a Volume Group into two, moving any logical volumes from one Volume Group to another by moving entire Physical Volumes. 
+
+
+List of LV commands
+* **lvchange:** — Change attributes of a Logical Volume.
+* **lvconvert:** — Convert a Logical Volume from linear to mirror or snapshot.
+* **lvcreate:** — Create a Logical Volume in an existing Volume Group.
+* **lvdisplay:** — Display the attributes of a Logical Volume.
+* **lvextend:** — Extend the size of a Logical Volume.
+* **lvreduce:** — Reduce the size of a Logical Volume.
+* **lvremove:** — Remove a Logical Volume.
+* **lvrename:** — Rename a Logical Volume.
+* **lvresize:** — Resize a Logical Volume.
+* **lvs:** — Report information about Logical Volumes.
+* **lvscan:** — Scan (all disks) for Logical Volumes. 
+
+
+
+### **Reference Links**
+* [Resize LVM](https://carleton.ca/scs/2019/extend-lvm-disk-space/)
+* [LVM Tutorial](https://linuxconfig.org/linux-lvm-logical-volume-manager)
+* [LVM Examples](http://landoflinux.com/linux_lvm_command_examples.html)
+* [LVM Cheat Sheet](http://www.datadisk.co.uk/html_docs/redhat/rh_lvm.htm)
+* [Debian LVM Reference](https://wiki.debian.org/LVM)
