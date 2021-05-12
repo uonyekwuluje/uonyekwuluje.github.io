@@ -53,7 +53,8 @@ contexts:
 - context:
     cluster: dev-cluster
     user: dev-admin
-  name: dev-admin-context
+  name: dev-cluster-context
+current-context: dev-cluster-context
 ```
 
 Export `KUBECONFIG`
