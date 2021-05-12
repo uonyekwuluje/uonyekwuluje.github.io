@@ -34,20 +34,20 @@ scp $KUSER@$SERVER2:/etc/rancher/rke2/rke2.yaml ~/.kube/prod-kube-context`
 
 ### **Context Configuration**
 After copying the config files over, the following sections need to be updated:
-* Cluster Section
+* Cluster Section.<br>
 ```
 - cluster:
-    server: https://1.1.1.1:6443
+    server: https://192.168.1.x:6443
   name: dev-cluster
 ```
 
-* Users Section
+* Users Section.<br>
 ```
 users:
 - name: dev-admin
 ```
 
-* Contexts Section.
+* Contexts Section.<br>
 ```
 contexts:
 - context:
