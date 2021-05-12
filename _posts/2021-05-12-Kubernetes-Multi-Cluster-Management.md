@@ -56,12 +56,12 @@ contexts:
   name: dev-admin-context
 ```
 
-* Export `KUBECONFIG`
+Export `KUBECONFIG`
 ```
 export KUBECONFIG="$HOME/.kube/dev-kube-context:$HOME/.kube/prod-kube-context"
 ```
 
-* **Get Contexts:** Run the command `kubectl config get-contexts` to get the contests
+**Get Contexts:** Run the command `kubectl config get-contexts` to get the contests
 ```
 CURRENT   NAME                   CLUSTER        AUTHINFO     NAMESPACE
 *         dev-cluster-context    dev-cluster    dev-admin    
