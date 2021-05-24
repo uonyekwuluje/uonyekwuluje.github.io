@@ -102,8 +102,9 @@ sudo cp ubuntu-installer/amd64/{initrd.gz,linux} /var/lib/tftpboot/ubuntu20/
 
 Setup CentOS 8 boot configs
 ```
-wget http://mirrors.mit.edu/centos/8.3.2011/isos/x86_64/CentOS-8.3.2011-x86_64-boot.iso
-sudo mount -o loop CentOS-8.3.2011-x86_64-boot.iso /mnt/
+wget http://mirrors.mit.edu/centos/8.3.2011/isos/x86_64/CentOS-8.3.2011-x86_64-dvd1.iso
+sudo mount -o loop CentOS-8.3.2011-x86_64-dvd1.iso /mnt/
+sudo cp -R /mnt/* /var/www/html/centos8/
 sudo cp /mnt/images/pxeboot/{initrd.img,vmlinuz} /var/lib/tftpboot/centos8/
 ```
 
