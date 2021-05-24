@@ -25,6 +25,70 @@ Setup Timezone
 ```
 sudo timedatectl set-timezone America/New_York
 ```
+reboot the server after this update is completed
+
+### **PXE Configuration**
+Create folders for PXE configs
+```
+sudo mkdir -p /var/lib/tftpboot
+sudo mkdir -p /var/lib/tftpboot/pxelinux.cfg
+sudo mkdir -p /var/lib/tftpboot/{ubuntu18,centos7,centos8}
+sudo mkdir -p /var/lib/tftpboot/pxelinux.cfg/{centos7,centos8,ubuntu18}
+sudo mkdir -p /var/www/html/{ubuntu18,centos7,centos8}
+```
+
+Copy boot configs to their required locations
+```
+sudo cp /usr/lib/PXELINUX/pxelinux.0 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/modules/bios/ldlinux.c32 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/modules/bios/libcom32.c32 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/modules/bios/libutil.c32 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/modules/bios/vesamenu.c32 /var/lib/tftpboot/
+sudo cp /usr/lib/syslinux/modules/bios/menu.c32 /var/lib/tftpboot/
+```
+
+Backup and configure `dnsmasq.conf`
+```
+sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf-orig
+
+sudo bash -c 'cat <<EOF> /etc/dnsmasq.conf
+# Disable DNS Server
+port=0
+
+# Enable DHCP logging
+log-dhcp
+
+# Respond to PXE requests for the specified network;
+# run as DHCP proxy
+dhcp-range=192.168.1.0,proxy 
+dhcp-boot=pxelinux.0
+
+# Provide network boot option called "Network Boot".
+pxe-service=x86PC,"Network Boot",pxelinux
+
+enable-tftp
+tftp-root=/var/lib/tftpboot
+EOF'
+```
+
+Backup and configure `dnsmasq` default
+```
+sudo vim /etc/default/dnsmasq
+
+sudo bash -c 'cat <<EOF> /etc/default/dnsmasq
+ENABLED=1
+DNSMASQ_EXCEPT=lo
+CONFIG_DIR=/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new
+EOF'
+```
+
+Enable, start `dnsmasq` service and check status
+```
+sudo systemctl enable dnsmasq.service
+sudo systemctl start dnsmasq.service
+sudo systemctl status dnsmasq.service
+```
+
 
 
 
