@@ -1,26 +1,34 @@
 ---
 layout: post
-title:  "CentOS PXE Boot Server Setup"
-categories: Automation, PXE
+title:  "PXE Boot Server | Kickstart & Preseed"
+categories: Kickstart & Preseed
 ---
 
-A PXE (Preboot eXecution Environment) Server allows unattended installation of Operating Systems over the Network. This helps when there is a need to setup lots of servers without physically attaching a CD or installation media on the servers. In this post we will setup a PXE Server on CentOS 8 Stream and then drive multiple installations using it
+This post is a follow up from (CentOS PXE Boot Server)[http://testdocs]. The aim and objective is to setup a PXE boot server
+capable of using existing DHCP Server in the network and also serving both CentOS and Ubuntu servers.
 
 ### **Requirements**
 In order to setup the PXE Boot Server, you need the following:
-* CentOS 8 Stream
+* Ubuntu 20.04 LTS
 * Admin Privilleges 
-* ISO for your operating system. *In this post, we will be using CentOS 7 and CentOS 8*
+* ISOs for your operating system. *In this post, we will be using CentOS 7, CentOS 8 and Ubuntu 18.04 LTS* 
 
 ### **Setup**
 Update and install the following packages on the PXE Server
 ```
-sudo yum update -y
-sudo yum group install -y 'Development Tools'
-sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel wget gcc \
-libffi-devel openssl-devel make openssl-devel bzip2-devel
-sudo yum install -y dhcp-server tftp tftp-server syslinux vsftpd xinetd
+sudo apt-get update 
+sudo apt-get install -y jq net-tools npm ntp ntpdate ca-certificates \
+dnsmasq curl software-properties-common pxelinux syslinux-common apache2
 ```
+
+Setup Timezone
+```
+sudo timedatectl set-timezone America/New_York
+```
+
+
+
+
 ***NOTE:*** *Adjust your firewall rules and selinux as needed*
 <br>
 **Configure DHCP**<br>
