@@ -107,5 +107,202 @@ sudo mount -o loop CentOS-8.3.2011-x86_64-boot.iso /mnt/
 sudo cp /mnt/images/pxeboot/{initrd.img,vmlinuz} /var/lib/tftpboot/centos8/
 ```
 
+### Test Kickstart and Preseed Configs
+Ubutu 20 Preseed Configs
+```
+sudo bash -c 'cat <<EOF> /var/www/html/ubuntu20/preseed.cfg
+### Automatic Installation
+d-i auto-install/enable boolean true
+d-i debconf/priority select critical
 
+### Localization
+d-i debian-installer/locale string en_US.UTF-8
+d-i localechooser/supported-locales multiselect en_US.UTF-8
+# Keyboard
+d-i console-setup/ask_detect boolean false
+d-i keyboard-configuration/xkb-keymap select us
+d-i keyboard-configuration/layoutcode string us
+d-i keyboard-configuration/modelcode string pc105
+
+### Network config
+d-i netcfg/choose_interface select auto
+d-i netcfg/get_hostname string build
+d-i netcfg/get_domain string home
+d-i netcfg/hostname string build
+d-i netcfg/dhcp_timeout string 15
+d-i netcfg/dhcpv6_timeout string 15 
+d-i hw-detect/load_firmware boolean true
+
+### Mirror settings
+d-i mirror/country string manual
+d-i mirror/http/hostname string archive.ubuntu.com
+d-i mirror/http/directory string /ubuntu
+d-i mirror/http/proxy string
+
+### Account setup
+d-i passwd/user-fullname string Ubuntu User
+d-i passwd/username string ubuntu
+d-i passwd/user-password password ubuntu
+d-i passwd/user-password-again password ubuntu
+d-i user-setup/allow-password-weak boolean true
+
+### Time zone setup
+d-i time/zone string America/New_York
+d-i clock-setup/utc boolean false
+d-i clock-setup/ntp boolean true
+
+# Finishing up the installation
+d-i finish-install/reboot_in_progress note
+
+# Boot loader installation
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/with_other_os boolean true
+
+### Partitioning
+d-i partman/unmount_active boolean true
+d-i partman-auto/disk string /dev/sda
+d-i partman-auto/method string regular
+d-i partman-auto/choose_recipe select atomic
+# This makes partman automatically partition without confirmation, provided
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+
+### Apt setup
+# You can choose to install restricted and universe software, or to install
+# software from the backports repository.
+d-i apt-setup/restricted boolean true
+d-i apt-setup/universe boolean true
+d-i apt-setup/backports boolean true
+d-i apt-setup/services-select multiselect security
+d-i apt-setup/security_host string security.ubuntu.com
+d-i apt-setup/security_path string /ubuntu
+
+### Package selection
+d-i tasksel/first multiselect openssh-server
+d-i pkgsel/include string open-vm-tools curl jq net-tools
+d-i pkgsel/language-packs multiselect en
+d-i pkgsel/update-policy select none
+
+# Verbose output and no boot splash screen.
+d-i	debian-installer/quiet	boolean false
+d-i	debian-installer/splash	boolean false
+
+# Avoid that last message about the install being complete.
+# This will just finish and reboot
+d-i finish-install/reboot_in_progress note
+#d-i debian-installer/exit/poweroff boolean true
+EOF'
+```
+***NOTE: Adjust your configs as needed***
+
+CentOS 8 kickstart Configs
+```
+sudo bash -c 'cat <<EOF> /var/www/html/centos8/centos8.cfg 
+# Partition clearing information
+clearpart --all --initlabel
+
+# Use text install
+text
+
+# Accept Eula
+eula --agreed
+
+# Do not configure the X Window System
+skipx
+
+# System timezone
+timezone America/New_York --isUtc
+
+# Network Installation
+url --url="http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/"
+
+# Root password Pxe@123# need to escape \$
+rootpw --iscrypted \$1\$e2wrcGGX\$tZPQKPsXVhNmbiGg53MN41
+
+# System authorization information
+auth useshadow passalgo=sha512
+
+# Disable the Setup Agent on first boot
+firstboot --disable
+
+# System keyboard
+keyboard --vckeymap=us --xlayouts='us'
+
+# System language
+lang en_US.UTF-8
+
+# Network information
+network --onboot=yes --bootproto=dhcp --ipv6=auto --activate --hostname=build
+
+# System bootloader configuration
+zerombr
+
+# partitioning
+part /boot --fstype="ext4" --size=1024
+part pv.01 --fstype="lvmpv" --grow
+volgroup cl pv.01
+logvol / --fstype="xfs" --name=root --vgname=cl --size=10000
+logvol /tmp --fstype="xfs" --name=tmp --vgname=cl --size=3000
+logvol /var/log --fstype="xfs" --name=log --vgname=cl --size=5000
+
+# Package Install
+%packages
+@^minimal-environment
+@standard
+%end
+
+# Reboot after installation
+reboot
+
+%anaconda
+pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+%end
+EOF'
+```
+***NOTE: Adjust your configs as needed***
+
+
+### **PXE Boot Menu***
+Create PXE Boot Menu
+```
+sudo bash -c 'cat <<EOF> /var/lib/tftpboot/pxelinux.cfg/default 
+DEFAULT vesamenu.c32
+PROMPT 1
+TIMEOUT 15
+MENU TITLE PXE Menu
+MENU WIDTH 80
+MENU MARGIN 10
+MENU PASSWORDMARGIN 3
+MENU ROWS 10
+MENU TABMSGROW 15
+MENU CMDLINEROW 15
+MENU ENDROW 24
+MENU PASSWORDROW 11
+MENU TIMEOUTROW 16
+menu color title 1;34;49 #eea0a0ff #cc333355 std
+menu color sel 7;37;40 #ff000000 #bb9999aa all
+menu color border 30;44 #ffffffff #00000000 std
+menu color pwdheader 31;47 #eeff1010 #20ffffff std
+menu color hotkey 35;40 #90ffff00 #00000000 std
+menu color hotsel 35;40 #90000000 #bb9999aa all
+menu color timeout_msg 35;40 #90ffffff #00000000 none
+menu color timeout 31;47 #eeff1010 #00000000 none
+
+LABEL Ubuntu_20.04_LTS
+  MENU LABEL Ubuntu 20.04 LTS
+  KERNEL ubuntu20/linux
+  APPEND hostname=unassigned locale=en_US.UTF-8 keyboard-configuration/layoutcode=us initrd=ubuntu20/initrd.gz url=http://192.168.1.105/ubuntu20/preseed.cfg splash toram ---
+
+LABEL CentOS 8
+  MENU LABEL CentOS 8
+  KERNEL centos8/vmlinuz
+  APPEND initrd=centos8/initrd.img inst.repo=http://192.168.1.105/centos8 inst.ks=http://192.168.1.105/centos8/centos8.cfg
+EOF'
+```
+*NOTE: Remember to substitute the IP address of your server above*
 
