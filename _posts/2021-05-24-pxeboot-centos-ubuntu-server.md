@@ -307,3 +307,9 @@ LABEL CentOS 8
 EOF'
 ```
 *NOTE: Remember to substitute the IP address of your server above*
+
+### **References**
+* [Ubuntu 18 Installer](http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/netboot/netboot.tar.gz)
+* [Ubuntu 20 Installer](http://archive.ubuntu.com/ubuntu/dists/focal-updates/main/installer-amd64/current/legacy-images/netboot/netboot.tar.gz)
+* [CentOS 8 ISO](http://mirrors.mit.edu/centos/8.3.2011/isos/x86_64/CentOS-8.3.2011-x86_64-dvd1.iso)
+* [CentOS 8 Missing Config](http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/)
