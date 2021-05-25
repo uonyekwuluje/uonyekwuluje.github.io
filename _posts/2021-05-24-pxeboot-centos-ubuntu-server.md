@@ -71,6 +71,8 @@ enable-tftp
 tftp-root=/var/lib/tftpboot
 EOF'
 ```
+*Note: update `dhcp-range` based on your network*
+
 
 Backup and configure `dnsmasq` default
 ```
@@ -90,7 +92,7 @@ sudo systemctl start dnsmasq.service
 sudo systemctl status dnsmasq.service
 ```
 
-### **Operating System Boot Configs***
+### **Operating System Boot Configs**
 Setup Ubuntu 20 PXE Boot Configs
 ```
 mkdir ubuntu20
@@ -108,7 +110,7 @@ sudo cp -R /mnt/* /var/www/html/centos8/
 sudo cp /mnt/images/pxeboot/{initrd.img,vmlinuz} /var/lib/tftpboot/centos8/
 ```
 
-### Test Kickstart and Preseed Configs
+### **Test Kickstart and Preseed Configs**
 Ubutu 20 Preseed Configs
 ```
 sudo bash -c 'cat <<EOF> /var/www/html/ubuntu20/preseed.cfg
@@ -169,7 +171,6 @@ d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
-
 
 ### Apt setup
 # You can choose to install restricted and universe software, or to install
@@ -306,4 +307,3 @@ LABEL CentOS 8
 EOF'
 ```
 *NOTE: Remember to substitute the IP address of your server above*
-
