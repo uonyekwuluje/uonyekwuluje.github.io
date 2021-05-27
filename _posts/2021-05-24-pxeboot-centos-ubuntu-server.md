@@ -184,7 +184,7 @@ d-i apt-setup/security_path string /ubuntu
 
 ### Package selection
 d-i tasksel/first multiselect openssh-server
-d-i pkgsel/include string open-vm-tools curl jq net-tools
+d-i pkgsel/include string open-vm-tools curl jq net-tools openssh-server vim build-essential rsync curl software-properties-common
 d-i pkgsel/language-packs multiselect en
 d-i pkgsel/update-policy select none
 
