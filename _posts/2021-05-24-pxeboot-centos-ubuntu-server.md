@@ -162,11 +162,19 @@ d-i grub-installer/only_debian boolean true
 d-i grub-installer/with_other_os boolean true
 
 ### Partitioning
-d-i partman/unmount_active boolean true
-d-i partman-auto/disk string /dev/sda
+d-i partman-auto/disk string
 d-i partman-auto/method string regular
-d-i partman-auto/choose_recipe select atomic
-# This makes partman automatically partition without confirmation, provided
+d-i partman-lvm/device_remove_lvm boolean true
+d-i partman-md/device_remove_md boolean true
+d-i partman-lvm/confirm boolean true
+d-i partman-basicfilesystems/no_swap boolean false
+d-i partman-auto/expert_recipe string                         \
+      boot-root ::                                            \
+              500 10000 1000000000 ext4                       \
+                      method{ format } format{ }              \
+                      use_filesystem{ } filesystem{ ext4 }    \
+                      mountpoint{ / }                         \
+              .                                               \
 d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
