@@ -75,4 +75,69 @@ deployment.apps/traefik   1/1     1            1           76m
 NAME                                 DESIRED   CURRENT   READY   AGE
 replicaset.apps/traefik-5d7c8ddd5d   1         1         1       76m
 ```
-*NOTE: Take note of the `EXTERNAL-IP`*
+*NOTE: Take note of the `EXTERNAL-IP`*<br>
+
+
+### **DNS Update**
+Update your DNS with the Ingress IP. In this case `192.168.1.30`. We will be using the `/etc/hosts` for this
+```
+192.168.1.30   nginx.infracid.com
+192.168.1.30   jenkins.infracid.com
+```
+*NOTE: We are defining this upfront because we will be testing out nginx and jenkins. Adjust based on your needs*<br>
+
+
+### **Applications and Deployments**
+Nginx Deployment. `nginx-deployment.yaml`
+```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2 
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+  - name: nginx
+    port: 8080
+    targetPort: 80
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-web-ui
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: nginx.infracid.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-service
+          servicePort: nginx
+```
+Apply config. `kubectl apply -f nginx-deployment.yaml`
