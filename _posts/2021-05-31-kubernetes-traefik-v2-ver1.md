@@ -141,3 +141,89 @@ spec:
           servicePort: nginx
 ```
 Apply config. `kubectl apply -f nginx-deployment.yaml`
+<br>
+
+Jenkins Deployment. `jenkins-deployment.yaml`
+```
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jenkins
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+          - name: jenkins-home
+            mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-home
+          emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-service
+  namespace: jenkins
+  labels:
+    app: jenkins
+spec:
+  ports:
+  - name: jenkins
+    port: 8080
+    protocol: TCP
+  selector:
+    app: jenkins
+    
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jenkins-web-ui
+  namespace: jenkins 
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: jenkins.infracid.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jenkins-service
+          servicePort: jenkins          
+```
+Apply config. `kubectl apply -f jenkins-deployment.yaml`
+
+
+### **Test Deployments**
+Check the URLS and verify they are up
+```
+http://nginx.infracid.com
+http://jenkins.infracid.com
+```
+
+### **References**
+* [Traefik](https://doc.traefik.io/traefik/)
+* [MetalLB](https://metallb.universe.tf/concepts/)
