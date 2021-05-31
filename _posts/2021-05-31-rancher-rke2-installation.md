@@ -21,9 +21,10 @@ We will be building a 3 node cluster comprised of one master and 2 worker nodes:
 Perform these tasks on all 3 hosts. This assumes you are logged in as a user with sudo privilleges.
 
 **Update Hostname, Hosts file and install base packages:**<br>
-```
-sudo hostnamectl set-hostname <Hostname>
+Update Hostname with this command `sudo hostnamectl set-hostname <Hostname>`
 
+Update Hosts file
+```
 sudo bash -c 'cat <<EOF>> /etc/hosts
 192.168.1.160 kube-master
 192.168.1.161 kube-node1
