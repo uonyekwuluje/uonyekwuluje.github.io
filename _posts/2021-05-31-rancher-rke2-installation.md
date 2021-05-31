@@ -114,6 +114,30 @@ kube-master   Ready    control-plane,etcd,master   12m     v1.20.7+rke2r2
 kube-node1    Ready    <none>                      3m12s   v1.20.7+rke2r2
 kube-node2    Ready    <none>                      3m18s   v1.20.7+rke2r2
 ```
+Check all pods. Type `kubectl get pods -A`:
+```
+NAMESPACE     NAME                                                 READY   STATUS      RESTARTS   AGE
+kube-system   etcd-kube-master                                     1/1     Running     1          50m
+kube-system   helm-install-rke2-canal-xx5xp                        0/1     Completed   0          50m
+kube-system   helm-install-rke2-coredns-mhtt2                      0/1     Completed   0          50m
+kube-system   helm-install-rke2-ingress-nginx-q2jkl                0/1     Completed   0          50m
+kube-system   helm-install-rke2-kube-proxy-gph6v                   0/1     Completed   0          50m
+kube-system   helm-install-rke2-metrics-server-wslgf               0/1     Completed   0          50m
+kube-system   kube-apiserver-kube-master                           1/1     Running     1          50m
+kube-system   kube-controller-manager-kube-master                  1/1     Running     1          50m
+kube-system   kube-proxy-d98qh                                     1/1     Running     0          41m
+kube-system   kube-proxy-jfwhb                                     1/1     Running     1          50m
+kube-system   kube-proxy-v5pz8                                     1/1     Running     0          41m
+kube-system   kube-scheduler-kube-master                           1/1     Running     1          50m
+kube-system   rke2-canal-7j6tt                                     2/2     Running     2          50m
+kube-system   rke2-canal-ddhjp                                     2/2     Running     0          41m
+kube-system   rke2-canal-vvgbd                                     2/2     Running     0          41m
+kube-system   rke2-coredns-rke2-coredns-675b5596bc-xhtfb           1/1     Running     1          50m
+kube-system   rke2-ingress-nginx-controller-54946dd48f-kl677       1/1     Running     2          49m
+kube-system   rke2-ingress-nginx-default-backend-5795954f8-mzjf4   1/1     Running     1          49m
+kube-system   rke2-metrics-server-559dc47bd8-lrs6b                 1/1     Running     1          49m
+```
+Your cluster should be ready for use
 
 ## **Reference Links**
 * Kubernetes Cheat Sheet [Kubernetes](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
