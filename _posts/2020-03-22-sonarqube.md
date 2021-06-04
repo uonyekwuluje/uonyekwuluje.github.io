@@ -119,7 +119,7 @@ exit
 
 **Download, Install and Setup SonarQube:**<br>
 ```
-SONARQUBE_VERSION="8.6.0.39681"
+SONARQUBE_VERSION="8.9.0.43852"
 cd /tmp
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-${SONARQUBE_VERSION}.zip
 unzip sonarqube-${SONARQUBE_VERSION}.zip
