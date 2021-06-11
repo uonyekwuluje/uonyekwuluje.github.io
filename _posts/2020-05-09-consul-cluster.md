@@ -80,7 +80,7 @@ sudo useradd -s /sbin/nologin --system -g consul consul
 #### **Download and Install Consul**
 Install and configure consul
 ```
-CONSUL_VERSION="1.9.5"
+CONSUL_VERSION="1.9.6"
 cd /usr/local/bin
 sudo curl -o consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
 
@@ -181,9 +181,9 @@ sudo systemctl restart consul-master
 Check Cluster Membership with ```/usr/local/bin/consul members``` and you should see this:
 ```
 Node                       Address             Status  Type    Build  Protocol  DC       Segment
-consulserver01             192.168.1.137:8301  alive   server  1.9.5  2         DCProd01  <all>
-consulserver02             192.168.1.138:8301  alive   server  1.9.5  2         DCProd01  <all>
-consulserver03             192.168.1.139:8301  alive   server  1.9.5  2         DCProd01  <all>
+consulserver01             192.168.1.137:8301  alive   server  1.9.6  2         DCProd01  <all>
+consulserver02             192.168.1.138:8301  alive   server  1.9.6  2         DCProd01  <all>
+consulserver03             192.168.1.139:8301  alive   server  1.9.6  2         DCProd01  <all>
 ```
 
 
