@@ -83,9 +83,22 @@ kube-node-lease   Active   20h
 kube-public       Active   20h
 kube-system       Active   20h
 
-#chage context
+#change context
 kubectl config set-context --current --namespace=poc1
 ```
+
+
+<hr>
+**Clean Stale Kubernetes Namespace** <br>
+Delete stale namespace and all resource in it
+```
+export NAMESPACE="test"
+kubectl get namespace $NAMESPACE -o json > $NAMESPACE.json
+kubectl replace --raw "/api/v1/namespaces/$NAMESPACE/finalize" -f ./$NAMESPACE.json
+kubectl delete pods -n $NAMESPACE --force
+kubectl get namespace
+```
+
 
 
 
