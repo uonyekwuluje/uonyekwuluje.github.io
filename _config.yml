@@ -5,20 +5,20 @@ paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
 highlighter: rouge
 markdown: kramdown
-disqus: InfraCID
-google_analytics: InfraCID
-title: InfraCID Consulting
+disqus: Uche
+google_analytics: Uche
+title: Uchechukwu Onyekwuluje
 
 defaults:
   -
     scope:
       path: "" # empty string for all files
     values:
-      title: InfraCID Blog
+      title: Uche's Blog
 
-description: InfraCID Blogs
+description: Uche's Blog
 author:
-  name: InfraCID
+  name: Uchechukwu Onyekwuluje
   email: info@infracid.com
   github: uonyekwuluje
   twitter: dbtek
