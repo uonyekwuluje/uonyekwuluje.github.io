@@ -19,7 +19,6 @@ You should see this:
 Client Version: v1.16.0
 Server Version: v1.14.8
 ```
-<hr>
 #### **Command Cheat Sheet**
 
 |         Command                  |      Description             |              Reference Links               |
@@ -28,7 +27,6 @@ Server Version: v1.14.8
 |  `kubectl config get-contexts`   | Get all installed contexts   |   [kubernetes](https://kubernetes.io/)     | 
 |  `kubectl delete ns <namesapce>` | Delete kubernetes namespace  |   [kubernetes](https://kubernetes.io/)     | 
 
-<hr>
 **Utilities** <br>
 Deleting resources in bulk using regEx
 ```
@@ -36,7 +34,6 @@ Deleting resources in bulk using regEx
 kubectl get pods -n mynamespace --no-headers=true | awk '/pattern1|pattern2/{print $1}'| xargs  kubectl delete -n mynamespace pod
 ```
 
-<hr>
 **Port Forwarding** <br>
 Port-Forward allows you to access and interact with internal Kubernetes cluster processes from your localhost. You can use this 
 method to investigate issues and make changes locally without the need to expose the services.
@@ -69,7 +66,6 @@ kubectl port-forward --address localhost,192.168.1.34 svc/argocd-server -n argoc
 You can also adjust for deployments or other service as needed.
 
 
-<hr>
 **Kubernetes Context** <br>
 Kubernetes assumes the default after a clean setup. As you add more namespaces, you have to pass ```-n <namespace>``` as part of the command.
 You can change the context to avoid repeated use of that option
@@ -88,12 +84,12 @@ kubectl config set-context --current --namespace=poc1
 ```
 
 
-<hr>
 **Clean Stale Kubernetes Namespace** <br>
 Delete stale namespace and all resource in it
 ```
 export NAMESPACE="test"
 kubectl get namespace $NAMESPACE -o json > $NAMESPACE.json
+# edit $NAMESPACE.json and change finilizer to an empty list
 kubectl replace --raw "/api/v1/namespaces/$NAMESPACE/finalize" -f ./$NAMESPACE.json
 kubectl delete pods -n $NAMESPACE --force
 kubectl get namespace
@@ -102,7 +98,6 @@ kubectl get namespace
 
 
 
-<hr>
 #### **Reference Links**
 * Kubernetes Cheat Sheet [Kubernetes](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * Rancher Kubernetes Cheat Sheet [Rancher](https://rancher.com/learning-paths/how-to-manage-kubernetes-with-kubectl/)
