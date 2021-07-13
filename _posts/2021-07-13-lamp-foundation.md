@@ -56,7 +56,9 @@ memory_limit = 256M
 upload_max_filesize = 100M
 date.timezone = America/New_York
 ```
-***NOTE:*** *While PHP8 works, you will run into some breaking changes. May not cause issues in your code base*
+***NOTE:*** *While PHP8 works, you will run into some breaking changes. May not cause issues in your code base but something to keep an eye on*
+
+#### **Test Config**
 Create a test config
 ```
 sudo bash -c 'cat <<EOF> /var/www/html/info.php
