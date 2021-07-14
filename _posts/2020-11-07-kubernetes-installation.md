@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Kubernetes Installation"
+title:  "Kubernetes Installation CentOS 7/8"
 categories: Kubernetes
 ---
 Kubernetes is an open-source tool for managing and orchestrating containers. These containers can be built with Docker or other equivallent tool.
