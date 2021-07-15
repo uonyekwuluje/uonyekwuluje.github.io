@@ -84,6 +84,14 @@ kubectl config set-context --current --namespace=poc1
 ```
 
 
+**Kubernetes Options** <br>
+To list enabled options, type this command:
+```
+kubectl api-versions
+```
+
+
+
 **Clean Stale Kubernetes Namespace** <br>
 Delete stale namespace and all resource in it
 ```
