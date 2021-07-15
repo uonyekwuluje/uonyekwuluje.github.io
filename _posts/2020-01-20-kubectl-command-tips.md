@@ -90,7 +90,11 @@ To list enabled options, type this command:
 kubectl api-versions
 ```
 
-
+**Kubernetes ClusterRole Description** <br>
+To list clusterrole description, type:
+```
+kubectl describe clusterrole.rbac
+```
 
 **Clean Stale Kubernetes Namespace** <br>
 Delete stale namespace and all resource in it
