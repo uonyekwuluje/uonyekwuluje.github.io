@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Linux Apache2 MysQL/MariaDB PHP Foundation"
+title:  "Linux Apache2 MysQL/MariaDB PHP (LAMP) Foundation"
 categories: LAMP 
 ---
 
