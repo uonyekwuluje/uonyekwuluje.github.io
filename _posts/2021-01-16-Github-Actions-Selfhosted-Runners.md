@@ -55,7 +55,7 @@ sudo mv /tmp/docker-machine /bin/docker-machine
 ### **Action Runner Setup**
 Prepare and install the runners
 ```
-RUNNER_VERSION="2.278.0"
+RUNNER_VERSION="2.279.0"
 RUNNER_USER="ubuntu"
 
 sudo mkdir /opt/actions-runner
