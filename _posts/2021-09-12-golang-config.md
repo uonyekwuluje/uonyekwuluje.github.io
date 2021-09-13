@@ -17,3 +17,13 @@ sudo tar -C /usr/local -xzf go${GOVERSION}.linux-amd64.tar.gz
 sudo rm go${GOVERSION}.linux-amd64.tar.gz
 /usr/local/go/bin/go version
 ```
+
+#### **Run & Build**
+To run, build compile etc.
+```
+# Run go code
+go run program.go
+
+# Build go code
+go build program.go
+```
