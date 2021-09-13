@@ -14,3 +14,10 @@ set +e
 #Enable exit on non 0. Stop if script fails
 set -e
 ```
+
+### **Packaging & Un-Packaging**
+```
+# open a .bz2 file
+bzip2 -dc my_file.tar.bz2 | tar xvf -
+```
+
