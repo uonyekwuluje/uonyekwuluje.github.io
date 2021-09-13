@@ -27,3 +27,15 @@ go run program.go
 # Build go code
 go build program.go
 ```
+
+#### **Format Go Code**
+To correct format issues in your code for compliance
+```
+# format but don't write
+gofmt program.go
+
+# format and write
+gofmt -w program.go
+```
+
+
