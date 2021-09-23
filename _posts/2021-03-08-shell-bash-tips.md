@@ -15,6 +15,12 @@ set +e
 set -e
 ```
 
+### **Trace in Scripts**
+```
+# Helps debug code as it executes
+set -xv
+```
+
 ### **Packaging & Un-Packaging**
 ```
 # open a .bz2 file
