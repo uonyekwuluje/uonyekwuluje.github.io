@@ -108,6 +108,21 @@ kubectl get namespace
 ```
 
 
+**Drain and Remove Pods** <br>
+Move pods to a new host for maintainance or retiring hosts
+```
+export rNode="kube-node-01"
+# Drain Node
+kubectl drain $rNode --ignore-daemonsets --delete-emptydir-data
+
+# Remove Node
+kubectl delete $rNode
+
+# Un-Cordon Node to allp scheduling
+kubectl uncordon $rNode
+```
+
+
 
 
 #### **Reference Links**
