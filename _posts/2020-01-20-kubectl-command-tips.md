@@ -116,7 +116,7 @@ export rNode="kube-node-01"
 kubectl drain $rNode --ignore-daemonsets --delete-emptydir-data
 
 # Remove Node
-kubectl delete $rNode
+kubectl delete node $rNode
 
 # Un-Cordon Node to allp scheduling
 kubectl uncordon $rNode
