@@ -10,7 +10,17 @@ specifically geared at ubuntu systems.
 ## Install Packages
 Install package
 ```
-sudo apt install lshw hwinfo
+sudo apt install lshw hwinfo pydf
+```
+
+**pydf**<br>
+An improved version of `df`. Type `pydf`. You should see
+```
+Filesystem    Size  Used Avail Use%                              Mounted on
+/dev/pve/root  58G 3559M   52G  6.0 [##........................] /         
+/dev/sda2     511M  328k  511M  0.1 [..........................] /boot/efi 
+/dev/fuse     128M   16k  128M  0.0 [..........................] /etc/pve  
+/dev/sdb1     916G 3516M  866G  0.4 [..........................] /mnt/data 
 ```
 
 **hwinfo**<br>
@@ -172,3 +182,11 @@ Memory block size:       128M
 Total online memory:      14G
 Total offline memory:      0B
 ```
+
+**Other Commands**<br>
+A list of other commands are
+* `demidecode`
+* `free -m`
+* `cat /proc/version`
+* `cat /proc/cpuinfo`
+* `cat /proc/meminfo`
