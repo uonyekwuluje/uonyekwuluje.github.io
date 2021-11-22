@@ -46,6 +46,7 @@ Type this command. `sudo mount -a`. If you type this command `ls /opt/data_mount
 
 #### **NFS Options**
 NFS mount options
+
 | NFS Options      | Description |
 | ----------- | ----------- |
 | rw      | Allow both read and write requests on a NFS volume.       |
