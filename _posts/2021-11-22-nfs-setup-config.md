@@ -40,3 +40,14 @@ I like mounting in `/etc/fstab`.
 192.168.1.10:/opt/data /opt/data_mount  nfs      defaults    0       0
 ```
 Type this command. `sudo mount -a`. If you type this command `ls /opt/data_mount` you should see the remote content
+
+
+
+
+#### **NFS Options**
+NFS mount options
+| NFS Options      | Description |
+| ----------- | ----------- |
+| rw      | Allow both read and write requests on a NFS volume.       |
+| ro   | Allow only read requests on a NFS volume.        |
+
