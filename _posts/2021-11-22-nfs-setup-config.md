@@ -49,6 +49,17 @@ NFS mount options
 
 | NFS Options      | Description |
 | ----------- | ----------- |
-| rw      | Allow both read and write requests on a NFS volume.       |
-| ro   | Allow only read requests on a NFS volume.        |
-
+| rw          | Allow both read and write requests on a NFS volume.       |
+| ro          | Allow only read requests on a NFS volume.        |
+| sync        | Reply to requests only after the changes have been committed to stable storage. (Default) |
+| async       |	Allows NFS server to reply to requests before any changes made by that request have been committed | 
+| secure      |	This option requires that requests originate on an Internet port less than IPPORT_RESERVED (1024). (Default) |
+| insecure    |	This option accepts all ports. |
+| wdelay      |	Delay committing write request to disc slightly if it suspects that another related write request may be in progress |
+| no_wdelay     |  |
+| subtree_check    | This option enables subtree checking. (Default) |
+| no_subtree_check | This option disables subtree checking |
+| root_squash      | Map requests from uid/gid 0 to the anonymous uid/gid. |
+| no_root_squash   | Turn off root squashing. |
+| all_squash 	   | Map all uids and gids to the anonymous user. Useful for NFS exported public FTP directories |
+| no_all_squash    | Turn off all squashing. (Default) |
