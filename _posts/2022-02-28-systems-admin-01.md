@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Find Host IP Addreess"
-categories: Systems-Administration-vol1
+categories: Systems Administration
 ---
 
 When performing various automation tasks, there is usually a need to work with IP Addresses. 
