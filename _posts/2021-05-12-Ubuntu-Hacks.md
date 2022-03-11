@@ -22,3 +22,21 @@ net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 ```
 reload by typing `sudo sysctl -p` or restart the server.
+
+### **Lock down Packages**
+To lock packages and prevent them from being upgraded
+```
+sudo apt-mark hold PACKAGE
+# Example
+sudo apt install -y kubelet=1.20.15-00 kubeadm=1.20.15-00 kubectl=1.20.15-00 containerd
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+Show Packages on Hold
+```
+sudo apt-mark showhold
+```
+
+Remove Package Hold
+```
+sudo apt-mark unhold PACKAGE
+```
