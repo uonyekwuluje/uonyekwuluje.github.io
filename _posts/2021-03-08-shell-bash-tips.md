@@ -27,3 +27,8 @@ set -xv
 bzip2 -dc my_file.tar.bz2 | tar xvf -
 ```
 
+### **Untar contents into a folder**
+```
+mkdir helm
+tar -zxvf helm-v3.8.1-linux-amd64.tar.gz -C helm --strip-components=1
+```
