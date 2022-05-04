@@ -3,7 +3,7 @@ layout: post
 title:  "Rancher Kubernetes Installation"
 categories: Kubernetes
 ---
-Rancher is an open-source container management platform, providing an graphical interface making container management easier. It has a 
+Rancher is an open-source container management platform, providing a graphical interface making container management easier. It has a 
 smaller footprint and makes the installation process much easier.
 
 ## **Server Requirements**
