@@ -19,13 +19,11 @@ defaults:
 description: Uche's Blog
 author:
   name: Uchechukwu Onyekwuluje
-  email: info@infracid.com
+  email: ucheonyekwuluje@infracid.com
   github: uonyekwuluje
-  twitter: dbtek
-  pinterest: asd123
   linkedin: uchechukwu-onyekwuluje-sde 
   bio: WebDev, SysOps, SysAdmin, DevOps, SRE
-  email_md5: info@infracid.com
+  email_md5: ucheonyekwuluje@infracid.com
 
 rss_path: feed.xml
 categories_path: categories.html
