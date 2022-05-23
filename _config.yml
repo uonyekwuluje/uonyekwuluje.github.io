@@ -1,43 +1,38 @@
-title: Texture Theme
-author: GitHub User
-email: your-email@domain.com
-description: > # this means to ignore newlines until "show_exerpts:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-show_excerpts: true # set to true to show excerpts on the homepage
-baseurl: /texture
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
 
-# Minima date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-sass:
-  sass_dir: _sass
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["README.md"] # files to exclude
+highlighter: rouge
+markdown: kramdown
+disqus: Uche
+google_analytics: Uche
+title: Uchechukwu Onyekwuluje
 
-permalink: /posts/:title/
-texture:
-  title: Adam Denisov
-  tagline: Developer. Designer
-  date_format: "%b %-d, %Y"
-  style: black
-  showNav: false
-  showPicker: true
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      title: Uche's Blog
 
-  # generate social links in footer
-  social_links:
-    twitter: thelehhman
-    github:  thelehhman
-    linkedIn: in/thelehhman
-    rss: rss
- 
+description: Uche's Blog
+author:
+  name: Uchechukwu Onyekwuluje
+  email: ucheonyekwuluje@infracid.com
+  github: uonyekwuluje
+  linkedin: uchechukwu-onyekwuluje-sde 
+  bio: WebDev, SysOps, SysAdmin, DevOps, SRE
+  email_md5: ucheonyekwuluje@infracid.com
 
-# If you want to link only specific pages in your header, uncomment
-# this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
 
-# Build settings
-# theme: texture
+# set it as url of an image
+# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
+
+BASE_PATH:
 
 plugins:
-  - jekyll-seo-tag
-#  - jekyll-feed
+  - jekyll-paginate
