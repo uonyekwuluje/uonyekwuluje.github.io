@@ -83,7 +83,6 @@ kube-system       Active   20h
 kubectl config set-context --current --namespace=poc1
 ```
 
-
 **Kubernetes Options** <br>
 To list enabled options, type this command:
 ```
@@ -121,6 +120,15 @@ kubectl delete node $rNode
 # Un-Cordon Node to allp scheduling
 kubectl uncordon $rNode
 ```
+
+
+### Troubleshooting Persistent Volume Claim issues
+**Issue:** 0/3 nodes are available: 3 pod has unbound immediate PersistentVolumeClaims. <br>
+* Check all persistent volumes and claims and cleanup as needed
+* Check to ensure schedulable nodes exist. If non, fix it
+- `kubectl taint nodes node1 node-role.kubernetes.io/master-`
+
+
 
 
 
