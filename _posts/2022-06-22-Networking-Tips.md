@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Networking"
+title:  "Networking Troubleshooting Tips"
 categories: Sysadmin
 ---
 
