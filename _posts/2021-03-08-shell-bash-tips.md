@@ -48,3 +48,9 @@ Create user and set password
 ```
 useradd newuser; echo -e "passwdofuser\npasswdofuser" | passwd newuser
 ```
+
+### **Get folder of current directory**
+Print out the value of the folder of the current working directory
+```
+echo $(basename "$PWD")
+```
