@@ -12,6 +12,8 @@ applies to Ubuntu, Centos and others.
 On the NFS server, install this.
 ```
 sudo apt -y install nfs-kernel-server nfs-common
+sudo systemctl enable nfs-server
+sudo systemctl start nfs-server
 ```
 Create the directory to share on the NFS server.
 ```
@@ -19,12 +21,12 @@ sudo mkdir /opt/data
 ```
 Update the exports file `/etc/exports`
 ```
-/opt/data  *(rw,sync,no_subtree_check)
+/opt/data  *(rw,sync,no_subtree_check,no_root_squash)
 ```
 *NOTE:* In this case, I am allowing all because it's my private network. You have to be more restrictive on other networks<br>
 Mount when done
 ```
-sudo exportfs -a
+sudo exportfs -ar
 ```
 
 
