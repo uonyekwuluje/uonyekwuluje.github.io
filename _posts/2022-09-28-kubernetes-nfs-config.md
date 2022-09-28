@@ -9,24 +9,32 @@ One of the challenges centers on using Persistent Volumes. While options exists 
 a lot with minimal effort relative to the others. See my previous post on [NFS Setup](http://blog.ucheonyekwuluje.com/nfs/2021/11/22/nfs-setup-config.html) before continuing with this tutorial.
 
 
-#### **Server Installation & Config**
-On the NFS server, install this.
+## Connecting to NFS directly with Pod manifest 
+To connect to the NFS volume directly with Pod manifest, use the NFSVolumeSource in the Pod. Here is an example:
 ```
-sudo apt -y install nfs-kernel-server nfs-common
-sudo systemctl enable nfs-server
-sudo systemctl start nfs-server
-```
-Create the directory to share on the NFS server.
-```
-sudo mkdir /opt/data
-```
-Update the exports file `/etc/exports`
-```
-/opt/data  *(rw,sync,no_subtree_check,no_root_squash)
-```
-*NOTE:* In this case, I am allowing all because it's my private network. You have to be more restrictive on other networks<br>
-Mount when done
-```
-sudo exportfs -ar
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-nfs-pod
+  labels:
+    app.kubernetes.io/name: alpine
+    app.kubernetes.io/part-of: kubernetes-complete-reference
+spec:
+  containers:
+  - name: alpine
+    image: alpine:latest
+    command:
+      - touch
+      - /data/test
+    volumeMounts:
+    - name: nfs-volume
+      mountPath: /data
+  volumes:
+  - name: nfs-volume
+    nfs:
+      server: 192.168.1.50
+      path: /data
+      readOnly: no
 ```
 
