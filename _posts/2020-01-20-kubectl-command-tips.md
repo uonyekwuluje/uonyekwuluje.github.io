@@ -121,6 +121,15 @@ kubectl delete node $rNode
 kubectl uncordon $rNode
 ```
 
+### Force Delete Pods
+```
+kubectl delete pods name-of-pod --grace-period=0 --force
+kubectl delete pod pod-two --force --grace-period=0 --namespace=default
+kubectl patch pod pod-two -p '{"metadata":{"finalizers":null}}'
+```
+
+
+
 
 ### Troubleshooting Persistent Volume Claim issues
 **Issue:** 0/3 nodes are available: 3 pod has unbound immediate PersistentVolumeClaims. <br>
