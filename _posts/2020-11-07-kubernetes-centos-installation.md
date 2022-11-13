@@ -12,11 +12,11 @@ In this post we will be looking at setting up a Kubernetes Cluster from the grou
 ## **Server Requirements**
 We will be building a 3 node cluster comprised of one master and 2 worker nodes:
 
-| Hostname      |  Ip Address      | Host Specifications | Operating System |
-|---------------|------------------|---------------------|------------------|
-|kube8-master-node |  192.168.1.160   |2 CPU, 8GB RAM, 20GB HDD | CentOS 7  |
-|kube8-node-1 |  192.168.1.161   | 2 CPU, 4GB RAM, 20GB HDD | CentOS 7 |
-|kube8-node-2 |  192.168.1.162   | 2 CPU, 4GB RAM, 20GB HDD | CentOS 7 |
+| Hostname      |  Ip Address      | Host Specifications       | Operating System |
+|---------------|------------------|---------------------------|------------------|
+|kube-master    |  192.168.1.160   | 2 CPU, 8GB RAM, 20GB HDD  | CentOS 7         |
+|kube-node-01   |  192.168.1.161   | 2 CPU, 4GB RAM, 20GB HDD  | CentOS 7         |
+|kube-node-02   |  192.168.1.162   | 2 CPU, 4GB RAM, 20GB HDD  | CentOS 7         |
 
 *NOTE: The above should be updated based on your specification*
 
@@ -28,9 +28,9 @@ Perform these tasks on all 3 hosts. This assumes you are logged in as a user wit
 sudo hostnamectl set-hostname <Hostname>
 
 sudo bash -c 'cat <<EOF>> /etc/hosts
-192.168.1.160 kube8-master-node
-192.168.1.161 kube8-node-1
-192.168.1.162 kube8-node-2
+192.168.1.160 kube-master
+192.168.1.161 kube-node-01
+192.168.1.162 kube-node-02
 EOF'
 
 sudo yum update -y
@@ -160,7 +160,7 @@ kubeadm join 192.168.1.160:6443 --token ty30fx.l6kbncckfazhpgot \
 Test your installation by typeing this command ```kubectl get nodes```. You should see
 ```
 NAME                STATUS     ROLES    AGE    VERSION
-kube8-master-node   NotReady   master   4m9s   v1.19.3
+kube-master         NotReady   master   4m9s   v1.19.3
 ```
 
 Now, login to the other nodes and type this command:
@@ -172,16 +172,16 @@ kubeadm join 192.168.1.160:6443 --token ty30fx.l6kbncckfazhpgot \
 Now log back to the master node and run this command ```kubectl get nodes```. If all goes well, you should see this
 ```
 NAME                STATUS     ROLES    AGE     VERSION
-kube8-master-node   NotReady   master   9m52s   v1.19.3
-kube8-node-1        NotReady   <none>   41s     v1.19.3
-kube8-node-2        NotReady   <none>   8s      v1.19.3
+kube-master         NotReady   master   9m52s   v1.19.3
+kube-node-01        NotReady   <none>   41s     v1.19.3
+kube-node-02        NotReady   <none>   8s      v1.19.3
 ```
 For detailed node information, type ```kubectl get nodes -o wide```. You should see
 ```
 NAME                STATUS   ROLES    AGE    VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION                CONTAINER-RUNTIME
-kube8-master-node   Ready    master   35m    v1.19.3   192.168.1.163   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
-kube8-node-1        Ready    <none>   114s   v1.19.3   192.168.1.164   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
-kube8-node-2        Ready    <none>   62s    v1.19.3   192.168.1.165   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
+kube-master         Ready    master   35m    v1.19.3   192.168.1.163   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
+kube-node-01        Ready    <none>   114s   v1.19.3   192.168.1.164   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
+kube-node-02        Ready    <none>   62s    v1.19.3   192.168.1.165   <none>        CentOS Linux 7 (Core)   3.10.0-1127.19.1.el7.x86_64   docker://19.3.13
 ```
 
 
