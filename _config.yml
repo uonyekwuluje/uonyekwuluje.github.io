@@ -14,9 +14,9 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: Uche's Blog
+      title: Uchechukwu Onyekwuluje's Knowledge & Brain Dumps
 
-description: Uche's Blog
+description: Uchechukwu Onyekwuluje's Knowledge & Brain Dumps
 author:
   name: Uchechukwu Onyekwuluje
   email: ucheonyekwuluje@infracid.com
