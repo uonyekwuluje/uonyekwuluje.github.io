@@ -1,43 +1,26 @@
-<!-- sidebar.html -->
-<header class="sidebar-header" role="banner">
-	<a href="{{ site.BASE_PATH }}/">
-	     <!--<img src="//www.gravatar.com/avatar/{{site.author.email_md5}}?s=150" class="img-circle" />-->
-             <img src="{{ site.BASE_PATH }}/assets/ico/logo.png" class="img-circle" />
-	</a>
-	<h3 class="title">
-        <a href="{{ site.BASE_PATH }}/">{{ site.title }}</a>
-    </h3>
-</header>
-
-{% if site.author.bio %}
-<div id="bio" class="text-center">
-	{{ site.author.bio }}
-</div>
-{% endif %}
-
-<div id="contact-list" class="text-center">
-	<ul class="list-unstyled list-inline">
-		{% if site.author.github %}
-		<li>
-			<a class="btn btn-default btn-sm" href="https://github.com/{{ site.author.github }}">
-				<i class="fa fa-github-alt fa-lg"></i>
-			</a>
-		</li>
-		{% endif %}
-		{% if site.author.email %}
-		<li>
-			<a class="btn btn-default btn-sm" href="mailto:{{ site.author.email }}">
-				<i class="fa fa-envelope fa-lg"></i>
-			</a>
-		</li>
-		{% endif %}
-		{% if site.author.linkedin %}
-		<li>
-			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/{{ site.author.linkedin }}">
-				<i class="fa fa-linkedin fa-lg"></i>
-			</a>
-		</li>
-		{% endif %}
-	</ul>
-</div>
-<!-- sidebar.html end -->
+<link rel="stylesheet" href="{{ "/assets/css/sidebar.css" | relative_url }}" media="screen and (min-width: 70em)">
+<aside style="display: none">
+  <nav>
+  {%- for item in site.navigation -%}
+    {%- assign node = site.pages | where: "name", item.file | first -%}
+    {%- assign url = item.url | default: node.url -%}
+    {%- assign title = item.title | default: node.title -%}
+    {%- assign icon = item.icon | default: item.sidebaricon -%}
+    <a aria-label="{{ title }}" href="{{ url | relative_url }}" {% if url == page.url %}class="selected"{% endif %}>
+      <svg aria-hidden="true" class="icon"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ icon }}"></use></svg>
+      <span aria-hidden="true">{{ title }}</span>
+    </a>
+  {%- endfor -%}
+  {%- for item in site.external -%}
+    {%- assign node = site.pages | where: "name", item.file | first -%}
+    {%- assign url = item.url | default: node.url -%}
+    {%- assign title = item.title | default: node.title -%}
+    {%- assign icon = item.icon | default: item.sidebaricon -%}
+    <a aria-label="{{ title }}" href="{{ url | relative_url }}" {% if url == page.url %}class="selected"{% endif %}>
+      <svg aria-hidden="true" class="icon"><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ icon }}"></use></svg>
+      <span aria-hidden="true">{{ title }}</span>
+    </a>
+  {%- endfor -%}
+  </nav>
+  <div class="description">{{ site.description }}</div>
+</aside>

@@ -1,38 +1,32 @@
-# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+title: "Blog Title"
+author: "Blog Author"
+description: "Made with <b style=\"color: #f45;\">&lt;3</b>"
+permalink: /:title/
+lang: "en"
+excerpt_separator: "\n\n\n"
+date_format: "%B %d, %Y"
 
-paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
-exclude: ["README.md"] # files to exclude
-highlighter: rouge
-markdown: kramdown
-disqus: Uche
-google_analytics: Uche
-title: Uchechukwu Onyekwuluje
+# Layout
 
-defaults:
-  -
-    scope:
-      path: "" # empty string for all files
-    values:
-      title: Uchechukwu Onyekwuluje's Knowledge & Brain Dumps
+show_excerpts: true        # show article excerpts on the home page
+show_frame: true           # adds a gray frame to the site
+show_sidebar: false        # show a sidebar instead of the usual header
+minimal: false             # use a dark header
 
-description: Uchechukwu Onyekwuluje's Knowledge & Brain Dumps
-author:
-  name: Uchechukwu Onyekwuluje
-  email: ucheonyekwuluje@infracid.com
-  github: uonyekwuluje
-  linkedin: uchechukwu-onyekwuluje-sde 
-  bio: WebDev, SysOps, SysAdmin, DevOps, SRE
-  email_md5: ucheonyekwuluje@infracid.com
+# Menu
 
-rss_path: feed.xml
-categories_path: categories.html
-tags_path: tags.html
+navigation:                # accepts {file, title, url, icon, sidebaricon}
+  - {file: "index.html"}
+  - {file: "README.md"}
 
-# set it as url of an image
-# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
+external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
+  - {title: Mail, icon: envelope, url: "mailto:niklasbuschmann@users.noreply.github.com"}
+  - {title: Github, icon: github, url: "https://github.com/niklasbuschmann/contrast"}
+  - {title: Subscribe, icon: rss, url: "/feed.xml"}
 
-BASE_PATH:
+comments:
+#  disqus_shortname: ""    # see https://disqus.com/
+#  isso_domain: ""         # see https://posativ.org/isso/
 
 plugins:
-  - jekyll-paginate
+ - jekyll-feed
