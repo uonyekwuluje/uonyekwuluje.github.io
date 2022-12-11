@@ -121,20 +121,21 @@ kubectl delete node $rNode
 kubectl uncordon $rNode
 ```
 
-# Force Delete Pods
+#### Force Delete Pods
 ```
 kubectl delete pods name-of-pod --grace-period=0 --force
 kubectl delete pod pod-two --force --grace-period=0 --namespace=default
 kubectl patch pod pod-two -p '{"metadata":{"finalizers":null}}'
 ```
-# Scale in or scale out
+
+#### Scale in or scale out
 ```yaml
 kubectl scale --replicas=3 deployment/nginx -n nginx-demo 
 kubectl scale --replicas=1 deployment/nginx -n nginx-demo 
 ```
 
 
-# Troubleshooting Persistent Volume Claim issues
+#### Troubleshooting Persistent Volume Claim issues
 **Issue:** 0/3 nodes are available: 3 pod has unbound immediate PersistentVolumeClaims. <br>
 * Check all persistent volumes and claims and cleanup as needed
 * Check to ensure schedulable nodes exist. If non, fix it
