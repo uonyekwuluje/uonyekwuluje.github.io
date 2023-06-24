@@ -50,6 +50,6 @@ layout: page
   <br>
 
   <p>
-    <b>NOTE:</b> *The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer*.
+    <b>NOTE:</b> <i>The opinions expressed in my site’s blog are solely my own and do not express the views or opinions of my employer</i>.
   </p>
 </div>
