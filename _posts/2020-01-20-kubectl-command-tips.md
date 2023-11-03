@@ -120,7 +120,6 @@ kubectl delete node $rNode
 # Un-Cordon Node to allp scheduling
 kubectl uncordon $rNode
 ```
-
 #### Force Delete Pods
 ```
 kubectl delete pods name-of-pod --grace-period=0 --force
@@ -133,6 +132,14 @@ kubectl patch pod pod-two -p '{"metadata":{"finalizers":null}}'
 kubectl scale --replicas=3 deployment/nginx -n nginx-demo 
 kubectl scale --replicas=1 deployment/nginx -n nginx-demo 
 ```
+
+### Check Rollout Status
+To check the rollout status of multiple deployments in a namespace, type
+```
+deploy=$(kubectl -n namespace get deploy -o name)
+for i in $deploy; do kubectl -n namespace rollout status $i; done
+```
+
 
 
 #### Troubleshooting Persistent Volume Claim issues
