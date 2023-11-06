@@ -140,6 +140,10 @@ deploy=$(kubectl -n namespace get deploy -o name)
 for i in $deploy; do kubectl -n namespace rollout status $i; done
 ```
 
+### Check Node Taints
+```
+kubectl get nodes -o json | jq ".items[]|{name:.metadata.name, taints:.spec.taints}"
+```
 
 
 #### Troubleshooting Persistent Volume Claim issues
