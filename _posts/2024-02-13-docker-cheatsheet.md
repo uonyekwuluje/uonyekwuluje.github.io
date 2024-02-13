@@ -77,3 +77,23 @@ View resource usage stats
 ```
 docker container stats
 ```
+
+### Cleanup Commands
+Curation of cleanuo commands below:
+```
+docker rm -f $(docker ps -a -q)
+docker network rm $(docker network list -q)
+docker volume rm $(docker volume list -q)
+docker rmi $(docker images -q)
+docker system prune -a --volumes
+```
+
+### Docker Compose Commands
+The commands work when there is a default `docker-compose.yaml` in the current path
+```
+docker-compose up -d      
+docker-compose up -d --force-recreate
+docker-compose up -d --force-recreate --remove-orphans
+docker-compose down
+docker-compose down --remove-orphans
+```
