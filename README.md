@@ -11,7 +11,7 @@ layout: page
    </div>
 
    <p class="aboutmeparagraphsetting">
-    ![Uche](../assets/image/mypic.jpg#thumbnail){:height="66px" width="66px"} Hi, My name is Uchechukwu Onyekwuluje. I am a Site Reliability Engineer. I have worked in various capacities ranging from Systems Administration, Systems Engineering, DevOps, and Software Engineering. I love building tools to automate on-prem and cloud infrastructure in AWS, Azure. Researching open source tools and using my findings to solve complex problems or improve existing systems is something I love to do.
+     <img src="./assets/image/mypic.jpg" width="200" height="200"/>Hi, My name is Uchechukwu Onyekwuluje. I am a Site Reliability Engineer. I have worked in various capacities ranging from Systems Administration, Systems Engineering, DevOps, and Software Engineering. I love building tools to automate on-prem and cloud infrastructure in AWS, Azure. Researching open source tools and using my findings to solve complex problems or improve existing systems is something I love to do.
    </p>
 
    <p class="aboutmeparagraphsetting">
