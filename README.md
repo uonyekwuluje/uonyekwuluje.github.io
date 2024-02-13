@@ -39,9 +39,10 @@ layout: page
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Continuous Integration/Delivery:</b> Jenkins, Azure DevOps, GitLab CI, GitHub Actions</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Container Services:</b> Docker, Kubernetes</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Cloud Services:</b> AWS, Azure</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Virtualization:</b> KVM, XEN, VMWare</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Virtualization:</b> KVM, XEN, VMWare, Proxmox</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Operating Systems:</b> RedHat, CentOS, Debian, Ubuntu, Windows</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Monitoring:</b> Nagios, Prometheus, Sensu</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Static Analysis / Security:</b> Sonarqube, Aqua Trivy, Kubescape, Wazuh-OSEEC</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>
       </div>
