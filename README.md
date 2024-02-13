@@ -7,7 +7,7 @@ layout: page
 <div class="aboutmeformat">
   <div>
    <div class="custom" markdown="1">
-   ![Uche](../assets/image/mypic.jpg#thumbnail)
+   ![Uche](../assets/image/mypic.jpg#thumbnail){:height="36px" width="36px"}
    </div>
 
    <p class="aboutmeparagraphsetting">
