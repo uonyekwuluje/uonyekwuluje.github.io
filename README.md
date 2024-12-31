@@ -26,8 +26,8 @@ layout: page
    <div class="row">
       <div class="col-sm">
         <ul class="fa-ul">
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> Python, JAVA, Golang, BASH</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Development:</b> HTML, CSS, JavaScript, Bootstrap</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Programming Languages:</b> Python, Golang, BASH</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Development:</b> HTML, CSS, JavaScript</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Web Frameworks:</b> Flask</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Databases:</b> Postgres, MySQL, MongoDB</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Configuration Management & Deployments:</b> Ansible, Chef, Puppet, Saltstack</li>
@@ -36,8 +36,8 @@ layout: page
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Container Services:</b> Docker, Kubernetes</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Cloud Services:</b> AWS, Azure</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Virtualization:</b> KVM, XEN, VMWare, Proxmox</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Operating Systems:</b> RedHat, CentOS, Debian, Ubuntu, Windows</li>
-           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Monitoring:</b> Nagios, Prometheus, Sensu</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Operating Systems:</b> RedHat, Debian, Ubuntu, Windows</li>
+           <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Monitoring:</b> Nagios, Prometheus</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Static Analysis / Security:</b> Sonarqube, Aqua Trivy, Kubescape, Wazuh-OSEEC</li>
            <li><span class="fa-li"><i class="fas fa-check-square"></i></span><b>Search & Data:</b> Elasticsearch, Logstash, Kibana, Filebeat, Fluentd, Statsd, InfluxDB, Telegraph</li>
         </ul>

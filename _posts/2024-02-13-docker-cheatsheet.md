@@ -42,6 +42,7 @@ docker run --name <container_name> <image_name>
 Run a container with and publish a container’s port(s) to the host
 ```
 docker run -p <host_port>:<container_port> <image_name>
+docker run -p <host_port>:<container_port> --name <container_name> <image_name>
 ```
 Run a container in the background. As a daemon
 ```
